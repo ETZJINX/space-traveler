@@ -36,10 +36,13 @@
             button3 = new Button();
             button4 = new Button();
             button5 = new Button();
+            tableLayoutPanel1 = new TableLayoutPanel();
+            tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.Top;
             label1.AutoSize = true;
             label1.BackColor = SystemColors.HighlightText;
             label1.BorderStyle = BorderStyle.Fixed3D;
@@ -54,6 +57,7 @@
             // 
             // label2
             // 
+            label2.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             label2.AutoSize = true;
             label2.BackColor = SystemColors.ButtonHighlight;
             label2.BorderStyle = BorderStyle.FixedSingle;
@@ -66,6 +70,7 @@
             // 
             // label3
             // 
+            label3.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             label3.AutoSize = true;
             label3.BorderStyle = BorderStyle.FixedSingle;
             label3.Font = new Font("Sylfaen", 10.2F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
@@ -79,53 +84,79 @@
             // 
             button1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             button1.Font = new Font("Sylfaen", 10.2F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            button1.Location = new Point(676, 100);
+            button1.Location = new Point(3, 3);
             button1.Name = "button1";
-            button1.Size = new Size(94, 29);
+            button1.Size = new Size(525, 73);
             button1.TabIndex = 3;
             button1.Text = "PLAY";
             button1.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
+            button2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             button2.Font = new Font("Sylfaen", 10.2F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            button2.Location = new Point(676, 170);
+            button2.Location = new Point(3, 82);
             button2.Name = "button2";
-            button2.Size = new Size(94, 29);
+            button2.Size = new Size(525, 73);
             button2.TabIndex = 4;
             button2.Text = "SHOP";
             button2.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
+            button3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             button3.Font = new Font("Sylfaen", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            button3.Location = new Point(676, 233);
+            button3.Location = new Point(3, 161);
             button3.Name = "button3";
-            button3.Size = new Size(94, 29);
+            button3.Size = new Size(525, 73);
             button3.TabIndex = 5;
             button3.Text = "OPTIONS";
             button3.UseVisualStyleBackColor = true;
             // 
             // button4
             // 
+            button4.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             button4.Font = new Font("Sylfaen", 7.8F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            button4.Location = new Point(676, 303);
+            button4.Location = new Point(3, 240);
             button4.Name = "button4";
-            button4.Size = new Size(94, 29);
+            button4.Size = new Size(525, 73);
             button4.TabIndex = 6;
             button4.Text = "ABOUT US";
             button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
             // 
             // button5
             // 
+            button5.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             button5.Font = new Font("Sylfaen", 10.2F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            button5.Location = new Point(676, 377);
+            button5.Location = new Point(3, 319);
             button5.Name = "button5";
-            button5.Size = new Size(94, 29);
+            button5.Size = new Size(525, 76);
             button5.TabIndex = 7;
             button5.Text = "QUIT";
             button5.UseVisualStyleBackColor = true;
             button5.Click += button5_Click;
+            // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            tableLayoutPanel1.ColumnCount = 1;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel1.Controls.Add(button1, 0, 0);
+            tableLayoutPanel1.Controls.Add(button5, 0, 4);
+            tableLayoutPanel1.Controls.Add(button2, 0, 1);
+            tableLayoutPanel1.Controls.Add(button4, 0, 3);
+            tableLayoutPanel1.Controls.Add(button3, 0, 2);
+            tableLayoutPanel1.Location = new Point(429, 53);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 5;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
+            tableLayoutPanel1.Size = new Size(531, 398);
+            tableLayoutPanel1.TabIndex = 8;
             // 
             // Form1
             // 
@@ -133,16 +164,13 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
             ClientSize = new Size(1363, 450);
-            Controls.Add(button5);
-            Controls.Add(button4);
-            Controls.Add(button3);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(tableLayoutPanel1);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "Form1";
             Text = "MainMenu";
+            tableLayoutPanel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -157,5 +185,6 @@
         private Button button3;
         private Button button4;
         private Button button5;
+        private TableLayoutPanel tableLayoutPanel1;
     }
 }

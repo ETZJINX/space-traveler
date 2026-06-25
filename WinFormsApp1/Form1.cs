@@ -12,5 +12,13 @@ namespace WinFormsApp1
             System.Windows.Forms.Application.Exit();
             // for exiting
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Form2 aboutus = new Form2();
+            aboutus.Show();
+        }
+
+        
     }
 }
