@@ -28,18 +28,38 @@
         /// </summary>
         private void InitializeComponent()
         {
+            label1 = new Label();
             SuspendLayout();
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = SystemColors.HighlightText;
+            label1.BorderStyle = BorderStyle.Fixed3D;
+            label1.Font = new Font("Sylfaen", 18F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.Black;
+            label1.Location = new Point(445, 45);
+            label1.Name = "label1";
+            label1.Size = new Size(272, 41);
+            label1.TabIndex = 0;
+            label1.Text = "SPACE-SHOOTER";
+            label1.TextAlign = ContentAlignment.TopCenter;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            BackColor = SystemColors.Control;
+            ClientSize = new Size(1093, 450);
+            Controls.Add(label1);
             Name = "Form1";
-            Text = "Form1";
+            Text = "MainMenu";
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private Label label1;
     }
 }
