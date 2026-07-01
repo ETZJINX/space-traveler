@@ -1,6 +1,6 @@
 ﻿namespace WinFormsApp1
 {
-    partial class Form1
+    partial class MAINMENU
     {
         /// <summary>
         ///  Required designer variable.
@@ -158,7 +158,7 @@
             tableLayoutPanel1.Size = new Size(531, 398);
             tableLayoutPanel1.TabIndex = 8;
             // 
-            // Form1
+            // MAINMENU
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -168,7 +168,7 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Name = "Form1";
+            Name = "MAINMENU";
             Text = "MainMenu";
             tableLayoutPanel1.ResumeLayout(false);
             ResumeLayout(false);

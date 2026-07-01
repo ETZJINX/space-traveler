@@ -1,8 +1,9 @@
 namespace WinFormsApp1
 {
-    public partial class Form1 : Form
+    using WinFormsApp1.Managers;
+    public partial class MAINMENU : Form
     {
-        public Form1()
+        public MAINMENU()
         {
             InitializeComponent();
         }
@@ -15,8 +16,7 @@ namespace WinFormsApp1
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Form2 aboutus = new Form2();
-            aboutus.Show();
+            FORMMANAGER.handleform(this, new aboutus());
         }
 
         
