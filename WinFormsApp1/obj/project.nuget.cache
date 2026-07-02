@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "S07J3shayLU=",
+  "dgSpecHash": "B+yChVYYcwI=",
   "success": true,
   "projectFilePath": "E:\\university.classes\\advanced.programing\\project\\WinFormsApp1\\WinFormsApp1\\WinFormsApp1.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\admin\\.nuget\\packages\\stub.system.data.sqlite.core.netstandard\\1.0.119\\stub.system.data.sqlite.core.netstandard.1.0.119.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\system.data.sqlite.core\\1.0.119\\system.data.sqlite.core.1.0.119.nupkg.sha512"
+  ],
   "logs": []
 }
