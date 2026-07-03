@@ -24,3 +24,10 @@ E:\university.classes\advanced.programing\project\WinFormsApp1\WinFormsApp1\obj\
 E:\university.classes\advanced.programing\project\WinFormsApp1\WinFormsApp1\obj\Debug\net10.0-windows\WinFormsApp1.aboutus.resources
 E:\university.classes\advanced.programing\project\WinFormsApp1\WinFormsApp1\obj\Debug\net10.0-windows\WinFormsApp1.MAINMENU.resources
 E:\university.classes\advanced.programing\project\WinFormsApp1\WinFormsApp1\obj\Debug\net10.0-windows\WinForms.E4050A35.Up2Date
+E:\university.classes\advanced.programing\project\WinFormsApp1\WinFormsApp1\bin\Debug\net10.0-windows\NAudio.dll
+E:\university.classes\advanced.programing\project\WinFormsApp1\WinFormsApp1\bin\Debug\net10.0-windows\NAudio.Asio.dll
+E:\university.classes\advanced.programing\project\WinFormsApp1\WinFormsApp1\bin\Debug\net10.0-windows\NAudio.Core.dll
+E:\university.classes\advanced.programing\project\WinFormsApp1\WinFormsApp1\bin\Debug\net10.0-windows\NAudio.Midi.dll
+E:\university.classes\advanced.programing\project\WinFormsApp1\WinFormsApp1\bin\Debug\net10.0-windows\NAudio.Wasapi.dll
+E:\university.classes\advanced.programing\project\WinFormsApp1\WinFormsApp1\bin\Debug\net10.0-windows\NAudio.WinForms.dll
+E:\university.classes\advanced.programing\project\WinFormsApp1\WinFormsApp1\bin\Debug\net10.0-windows\NAudio.WinMM.dll
