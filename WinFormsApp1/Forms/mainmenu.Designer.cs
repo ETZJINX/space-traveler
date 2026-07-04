@@ -112,6 +112,7 @@
             button3.TabIndex = 5;
             button3.Text = "OPTIONS";
             button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // button4
             // 
@@ -170,6 +171,7 @@
             Controls.Add(label1);
             Name = "MAINMENU";
             Text = "MainMenu";
+            FormClosing += MAINMENU_FormClosing;
             tableLayoutPanel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
