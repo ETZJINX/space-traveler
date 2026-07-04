@@ -59,6 +59,7 @@ namespace WinFormsApp1.Forms
             soundeffect.Name = "soundeffect";
             soundeffect.Size = new Size(606, 56);
             soundeffect.TabIndex = 0;
+            soundeffect.Value = (int)(Sound.sounds[0].Sound1.Volume * 100);
             soundeffect.Scroll += soundeffect_Scroll;
             // 
             // music
@@ -69,6 +70,7 @@ namespace WinFormsApp1.Forms
             music.Name = "music";
             music.Size = new Size(606, 56);
             music.TabIndex = 1;
+            music.Value = (int)(Music.musics[0].audio.Volume * 100);
             music.Scroll += music_Scroll;
             // 
             // label1

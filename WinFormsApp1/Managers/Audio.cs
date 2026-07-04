@@ -16,7 +16,7 @@ namespace WinFormsApp1.Managers
         sound = 1,
         audio = 2
     }
-    pub class Sound : Idispose
+    internal class Sound : Idispose
     {
         public static List<Sound> sounds = new List<Sound>();
         private Audiotype type;
