@@ -16,14 +16,16 @@ namespace WinFormsApp1.Managers
         sound = 1,
         audio = 2
     }
-    internal class Sound : Idispose
+    pub class Sound : Idispose
     {
+        public static List<Sound> sounds = new List<Sound>();
         private Audiotype type;
         private bool loop = true;
         public Audiotype Type { get { return type; } }
         private string path;
         internal AudioFileReader reader;
         internal WaveOutEvent sound;
+        public WaveOutEvent Sound1 { get { return sound; } }
         public Sound(string path)
         {
             type = Audiotype.sound;
@@ -40,9 +42,11 @@ namespace WinFormsApp1.Managers
                     sound.Play();
                 }
             };
+            sounds.Add(this);
         }
         public bool dispose()
         {
+            loop = false;
             sound.Dispose();
             reader.Dispose();
             return true;
@@ -53,6 +57,7 @@ namespace WinFormsApp1.Managers
         }
         public void Play()
         {
+            reader.CurrentTime = TimeSpan.Zero;
             sound.Play();
         }
         public void Stop()
@@ -64,12 +69,14 @@ namespace WinFormsApp1.Managers
     }
     internal class Music : Idispose
     {
+        public static List<Music> musics = new List<Music>();
         private Audiotype type;
         bool loop = true;
         public Audiotype Type { get { return type; } }
         private string path;
         internal AudioFileReader reader;
         internal WaveOutEvent audio;
+        public WaveOutEvent Audio1 { get { return audio; } }
         public Music(string path)
         {
             type = Audiotype.audio;
@@ -86,15 +93,18 @@ namespace WinFormsApp1.Managers
                 }
             };
             //یادگیری ایونت چیست و چگونه کار میکند به همراه کتابخانه naudio 
+            musics.Add(this);
         }
         public bool dispose()
         {
+            loop = false;
             audio.Dispose();
             reader.Dispose();
             return true;
         }
         public void Play()
         {
+            reader.CurrentTime = TimeSpan.Zero;
             audio.Play();
         }
         public void Stop()
@@ -116,9 +126,12 @@ namespace WinFormsApp1.Managers
         {
             try
             {
+                
                 if (volume <= 1 && volume >= 0)
                 {
                     player.sound.Volume = volume;
+                    player.reader.Volume = volume;
+                    
                     return true;
                 }
                 else
@@ -126,6 +139,7 @@ namespace WinFormsApp1.Managers
                     Console.WriteLine("wrong input for volume");
                     return false;
                 }
+
             }
             catch
             {
@@ -144,9 +158,12 @@ namespace WinFormsApp1.Managers
         }
         public static bool Volumemusic(Music music,float volume)
         {
+            
             if (volume <= 1 && volume >= 0)
             {
                 music.audio.Volume = volume;
+                music.reader.Volume = volume;
+               
                 return true;
             }
             else

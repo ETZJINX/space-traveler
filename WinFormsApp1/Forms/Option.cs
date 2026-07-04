@@ -12,6 +12,9 @@ namespace WinFormsApp1.Forms
 {
     public partial class Option : Form
     {
+        float Output1;
+        float Output2;
+
         public Option()
         {
             InitializeComponent();
@@ -21,19 +24,15 @@ namespace WinFormsApp1.Forms
 
         private void soundeffect_Scroll(object sender, EventArgs e)
         {
-            float Output = (float)soundeffect.Value;
-            Output /= 100f;
-            Audio.Volumesound(player, Output);
+            Output1 = (float)soundeffect.Value;
+            Output1 /= 100f;
             label2.Text = soundeffect.Value.ToString() + "%";
-
-
         }
 
         private void music_Scroll(object sender, EventArgs e)
         {
-            float Output = (float)music.Value;
-            Output /= 100f;
-            Audio.Volumemusic(musicsound, Output);
+            Output2 = (float)music.Value;
+            Output2 /= 100f;
             label3.Text = music.Value.ToString() + "%";
         }
 
@@ -41,15 +40,21 @@ namespace WinFormsApp1.Forms
         {
             if (checkBox2.Checked)
             {
-                Audio.Volumesound(player, 0f);
+                foreach (var item in Sound.sounds)
+                {
+                    Audio.Volumesound(item, 0f);
+                }
                 label2.Text = soundeffect.Value.ToString() + "%";
                 return;
             }
             else
             {
-                float Output = (float)soundeffect.Value;
-                Output /= 100f;
-                Audio.Volumesound(player, Output);
+                Output1 = (float)soundeffect.Value;
+                Output1 /= 100f;
+                foreach (var item in Sound.sounds)
+                {
+                    Audio.Volumesound(item, Output1);
+                }
                 label2.Text = soundeffect.Value.ToString() + "%";
                 return;
             }
@@ -59,17 +64,41 @@ namespace WinFormsApp1.Forms
         {
             if (MuteMusic.Checked)
             {
-                Audio.Volumemusic(musicsound, 0f);
+                foreach (var item in Music.musics)
+                {
+                    Audio.Volumemusic(item, 0f);
+                }
                 label3.Text = music.Value.ToString() + "%";
                 return;
             }
             else
             {
-                float Output = (float)music.Value;
-                Output /= 100f;
-                Audio.Volumesound(musicsound, Output);
+                Output2 = (float)music.Value;
+                Output2 /= 100f;
+                foreach (var item in Music.musics)
+                {
+                    Audio.Volumemusic(item, Output2);
+                }
                 label3.Text = music.Value.ToString() + "%";
                 return;
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            foreach (var item in Sound.sounds)
+            {
+
+                Audio.Volumesound(item, Output1);
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            foreach (var item in Music.musics)
+            {
+
+                Audio.Volumemusic(item, Output2);
             }
         }
     }

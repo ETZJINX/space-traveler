@@ -1,4 +1,6 @@
-﻿namespace WinFormsApp1.Forms
+﻿using WinFormsApp1.Managers;
+
+namespace WinFormsApp1.Forms
 {
     partial class Option
     {
@@ -36,6 +38,8 @@
             MuteMusic = new CheckBox();
             checkBox2 = new CheckBox();
             groupBox1 = new GroupBox();
+            button2 = new Button();
+            button1 = new Button();
             label3 = new Label();
             label2 = new Label();
             AUDIO = new TabControl();
@@ -55,7 +59,6 @@
             soundeffect.Name = "soundeffect";
             soundeffect.Size = new Size(606, 56);
             soundeffect.TabIndex = 0;
-            soundeffect.Value = 60;
             soundeffect.Scroll += soundeffect_Scroll;
             // 
             // music
@@ -129,6 +132,8 @@
             // groupBox1
             // 
             groupBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            groupBox1.Controls.Add(button2);
+            groupBox1.Controls.Add(button1);
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(soundeffect);
@@ -144,6 +149,27 @@
             groupBox1.TabIndex = 7;
             groupBox1.TabStop = false;
             groupBox1.Text = "AUDIO";
+            // 
+            // button2
+            // 
+            button2.Anchor = AnchorStyles.Left;
+            button2.Location = new Point(268, 258);
+            button2.Name = "button2";
+            button2.Size = new Size(130, 37);
+            button2.TabIndex = 10;
+            button2.Text = "music";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(268, 112);
+            button1.Name = "button1";
+            button1.Size = new Size(130, 37);
+            button1.TabIndex = 9;
+            button1.Text = "sound";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // label3
             // 
@@ -231,5 +257,7 @@
         private TabControl AUDIO;
         private TabPage tabPage1;
         private TabPage tabPage2;
+        private Button button2;
+        private Button button1;
     }
 }
