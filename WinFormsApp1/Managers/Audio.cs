@@ -77,12 +77,12 @@ namespace WinFormsApp1.Managers
             reader = new AudioFileReader(path);
             audio = new WaveOutEvent();
             audio.Init(reader);
-            sound.PlaybackStopped += (s, e) =>
+            audio.PlaybackStopped += (s, e) =>
             {
                 if (loop)
                 {
                     reader.CurrentTime = TimeSpan.Zero;
-                    sound.Play();
+                    audio.Play();
                 }
             };
             //یادگیری ایونت چیست و چگونه کار میکند به همراه کتابخانه naudio 
