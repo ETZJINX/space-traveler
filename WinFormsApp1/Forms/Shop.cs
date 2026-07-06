@@ -78,13 +78,32 @@ namespace WinFormsApp1.Forms
             switch (itemType)
             {
                 case ItemType.Ship:
+                    DamageDamage.Visible = true;
+                    DamageDamage.BackColor = Color.DarkGray;
+                    HealthSpeed.Visible = true;
+                    HealthSpeed.BackColor = Color.DarkGray;
+                    damagebar.Visible = true;
+                    healthbar.Visible = true;
+                    damagebar1.Visible = true;
+                    healthbar1.Visible = true;
+                    damagebar1.Size = new Size((int)(sample.item.Damage * 3), 50);
+                    healthbar1.Size = new Size(sample.item.Health, 50);
+                    damagebar1.BackColor = Color.Red;
+                    healthbar1.BackColor = Color.LightSeaGreen;
+                    healthbar.Text = "Health";
+                    Itemdamage.Visible = true;
+                    Itemspeed.Visible = true;
+                    Health.Visible = true;
+                    Health.Text = "health: " + sample.item.Health.ToString();
                     Itemtype12.Text = sample.item.Description;
-                    Itemname.Text = sample.item.Name;
-                    Itemprice.Text = sample.item.Price.ToString();
-                    Itemdamage.Text = sample.item.Damage.ToString();
-                    Itemspeed.Text = sample.item.Speed.ToString();
+                    Itemname.Text = "name: " + sample.item.Name;
+                    Itemprice.Text = "price: " + sample.item.Price.ToString() + "$";
+                    Itemdamage.Text = "damage: " + sample.item.Damage.ToString();
+                    Itemspeed.Text = "speed: " + sample.item.Speed.ToString();
+                    coin3.Text = player.coin.ToString() + "$";
                     if (sample.Selled)
                     {
+
                         Buybutton.Enabled = false;
                         Buybutton.BackColor = Color.Gray;
                         Sellbutton.Enabled = true;
@@ -113,11 +132,19 @@ namespace WinFormsApp1.Forms
                     }
                     break;
                 case ItemType.BackGroundImage:
+                    DamageDamage.Visible = false;
+                    HealthSpeed.Visible = false;
+                    damagebar.Visible = false;
+                    healthbar.Visible = false;
+                    damagebar1.Visible = false;
+                    healthbar1.Visible = false;
+                    Health.Visible = false;
                     Itemtype12.Text = sample1.item.Description;
-                    Itemname.Text = sample1.item.Name;
-                    Itemprice.Text = sample1.item.Price.ToString();
-                    Itemdamage.Enabled = false;
-                    Itemspeed.Enabled = false;
+                    Itemname.Text = "name: " + sample1.item.Name;
+                    Itemprice.Text = "price: " + sample1.item.Price.ToString() + "$";
+                    Itemdamage.Visible = false;
+                    Itemspeed.Visible = false;
+                    coin3.Text = player.coin.ToString() + "$";
                     if (sample1.Selled)
                     {
                         Buybutton.Enabled = false;
@@ -148,11 +175,29 @@ namespace WinFormsApp1.Forms
                     }
                     break;
                 case ItemType.Bullet:
+                    DamageDamage.Visible = true;
+                    DamageDamage.BackColor = Color.DarkGray;
+                    HealthSpeed.Visible = true;
+                    HealthSpeed.BackColor = Color.DarkGray;
+                    damagebar.Visible = true;
+                    healthbar.Visible = true;
+                    damagebar1.Visible = true;
+                    healthbar1.Visible = true;
+                    damagebar1.Size = new Size((int)(sample2.item.Damage * 3), 50);
+                    healthbar1.Size = new Size(sample2.item.Speed * 3, 50);
+                    damagebar1.BackColor = Color.Red;
+                    healthbar1.BackColor = Color.Yellow;
+                    healthbar.Text = "Speed";
+
+                    Health.Visible = false;
+                    Itemdamage.Visible = true;
+                    Itemspeed.Visible = true;
+                    coin3.Text = player.coin.ToString() + "$";
                     Itemtype12.Text = sample2.item.Description;
-                    Itemname.Text = sample2.item.Name;
-                    Itemprice.Text = sample2.item.Price.ToString();
-                    Itemdamage.Text = sample2.item.Damage.ToString();
-                    Itemspeed.Text = sample2.item.Speed.ToString();
+                    Itemname.Text = "name: " + sample2.item.Name;
+                    Itemprice.Text = "price: " + sample2.item.Price.ToString() + "$";
+                    Itemdamage.Text = "damage: " + sample2.item.Damage.ToString();
+                    Itemspeed.Text = "speed: " + sample2.item.Speed.ToString();
                     if (sample2.Selled)
                     {
                         Buybutton.Enabled = false;
@@ -310,6 +355,7 @@ namespace WinFormsApp1.Forms
                         sample4.UnEquipItem();
                     }
                     sample.EquipItem();
+                    info();
                     break;
                 case ItemType.BackGroundImage:
                     ItemShop<ItemBackGround> sample5 = null;
@@ -326,6 +372,7 @@ namespace WinFormsApp1.Forms
                         sample5.UnEquipItem();
                     }
                     sample1.EquipItem();
+                    info();
                     break;
                 case ItemType.Bullet:
                     ItemShop<ItemBullet> sample6 = null;
@@ -342,8 +389,10 @@ namespace WinFormsApp1.Forms
                         sample6.UnEquipItem();
                     }
                     sample2.EquipItem();
+                    info();
                     break;
             }
         }
+
     }
 }

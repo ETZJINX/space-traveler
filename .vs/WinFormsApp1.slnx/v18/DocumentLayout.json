@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "E:\\university.classes\\advanced.programing\\project\\WinFormsApp1\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{BC150CE2-BC7F-BB20-899B-A29BED553BB8}|WinFormsApp1\\WinFormsApp1.csproj|e:\\university.classes\\advanced.programing\\project\\winformsapp1\\winformsapp1\\managers\\shop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BC150CE2-BC7F-BB20-899B-A29BED553BB8}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\managers\\shop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{BC150CE2-BC7F-BB20-899B-A29BED553BB8}|WinFormsApp1\\WinFormsApp1.csproj|e:\\university.classes\\advanced.programing\\project\\winformsapp1\\winformsapp1\\forms\\shop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BC150CE2-BC7F-BB20-899B-A29BED553BB8}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\forms\\shop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -11,24 +15,20 @@
       "RelativeMoniker": "D:0:0:{BC150CE2-BC7F-BB20-899B-A29BED553BB8}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\forms\\shop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BC150CE2-BC7F-BB20-899B-A29BED553BB8}|WinFormsApp1\\WinFormsApp1.csproj|e:\\university.classes\\advanced.programing\\project\\winformsapp1\\winformsapp1\\forms\\aboutus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{BC150CE2-BC7F-BB20-899B-A29BED553BB8}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\forms\\aboutus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BC150CE2-BC7F-BB20-899B-A29BED553BB8}|WinFormsApp1\\WinFormsApp1.csproj|e:\\university.classes\\advanced.programing\\project\\winformsapp1\\winformsapp1\\forms\\mainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BC150CE2-BC7F-BB20-899B-A29BED553BB8}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\forms\\mainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BC150CE2-BC7F-BB20-899B-A29BED553BB8}|WinFormsApp1\\WinFormsApp1.csproj|e:\\university.classes\\advanced.programing\\project\\winformsapp1\\winformsapp1\\forms\\shop.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BC150CE2-BC7F-BB20-899B-A29BED553BB8}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\forms\\shop.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BC150CE2-BC7F-BB20-899B-A29BED553BB8}|WinFormsApp1\\WinFormsApp1.csproj|E:\\university.classes\\advanced.programing\\project\\WinFormsApp1\\winformsapp1\\forms\\mainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{BC150CE2-BC7F-BB20-899B-A29BED553BB8}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\forms\\mainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BC150CE2-BC7F-BB20-899B-A29BED553BB8}|WinFormsApp1\\WinFormsApp1.csproj|e:\\university.classes\\advanced.programing\\project\\winformsapp1\\winformsapp1\\managers\\shop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BC150CE2-BC7F-BB20-899B-A29BED553BB8}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\managers\\shop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BC150CE2-BC7F-BB20-899B-A29BED553BB8}|WinFormsApp1\\WinFormsApp1.csproj|E:\\university.classes\\advanced.programing\\project\\WinFormsApp1\\winformsapp1\\forms\\aboutus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{BC150CE2-BC7F-BB20-899B-A29BED553BB8}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\forms\\aboutus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BC150CE2-BC7F-BB20-899B-A29BED553BB8}|WinFormsApp1\\WinFormsApp1.csproj|e:\\university.classes\\advanced.programing\\project\\winformsapp1\\winformsapp1\\forms\\shop.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BC150CE2-BC7F-BB20-899B-A29BED553BB8}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\forms\\shop.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BC150CE2-BC7F-BB20-899B-A29BED553BB8}|WinFormsApp1\\WinFormsApp1.csproj|e:\\university.classes\\advanced.programing\\project\\winformsapp1\\winformsapp1\\forms\\mainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BC150CE2-BC7F-BB20-899B-A29BED553BB8}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\forms\\mainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BC150CE2-BC7F-BB20-899B-A29BED553BB8}|WinFormsApp1\\WinFormsApp1.csproj|e:\\university.classes\\advanced.programing\\project\\winformsapp1\\winformsapp1\\managers\\audio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -90,15 +90,23 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 2,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "Shop.cs [Design]",
+              "DocumentMoniker": "E:\\university.classes\\advanced.programing\\project\\WinFormsApp1\\WinFormsApp1\\Forms\\Shop.cs",
+              "RelativeDocumentMoniker": "WinFormsApp1\\Forms\\Shop.cs",
+              "ToolTip": "E:\\university.classes\\advanced.programing\\project\\WinFormsApp1\\WinFormsApp1\\Forms\\Shop.cs [Design]",
+              "RelativeToolTip": "WinFormsApp1\\Forms\\Shop.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-06T10:27:26.99Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "aboutus.cs [Design]",
               "DocumentMoniker": "E:\\university.classes\\advanced.programing\\project\\WinFormsApp1\\WinFormsApp1\\Forms\\aboutus.cs",
               "RelativeDocumentMoniker": "WinFormsApp1\\Forms\\aboutus.cs",
@@ -110,51 +118,39 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Shop.cs [Design]",
-              "DocumentMoniker": "E:\\university.classes\\advanced.programing\\project\\WinFormsApp1\\WinFormsApp1\\Forms\\Shop.cs",
-              "RelativeDocumentMoniker": "WinFormsApp1\\Forms\\Shop.cs",
-              "ToolTip": "E:\\university.classes\\advanced.programing\\project\\WinFormsApp1\\WinFormsApp1\\Forms\\Shop.cs [Design]",
-              "RelativeToolTip": "WinFormsApp1\\Forms\\Shop.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-05T18:51:45.381Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 0,
               "Title": "Shop.cs",
               "DocumentMoniker": "E:\\university.classes\\advanced.programing\\project\\WinFormsApp1\\WinFormsApp1\\Managers\\Shop.cs",
               "RelativeDocumentMoniker": "WinFormsApp1\\Managers\\Shop.cs",
               "ToolTip": "E:\\university.classes\\advanced.programing\\project\\WinFormsApp1\\WinFormsApp1\\Managers\\Shop.cs",
               "RelativeToolTip": "WinFormsApp1\\Managers\\Shop.cs",
-              "ViewState": "AgIAAPMAAAAAAAAAAAAqwEYBAAAdAAAAAAAAAA==",
+              "ViewState": "AgIAAEAAAAAAAAAAAAAUwGIAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-07-05T11:48:27.99Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 3,
               "Title": "Shop.Designer.cs",
               "DocumentMoniker": "E:\\university.classes\\advanced.programing\\project\\WinFormsApp1\\WinFormsApp1\\Forms\\Shop.Designer.cs",
               "RelativeDocumentMoniker": "WinFormsApp1\\Forms\\Shop.Designer.cs",
               "ToolTip": "E:\\university.classes\\advanced.programing\\project\\WinFormsApp1\\WinFormsApp1\\Forms\\Shop.Designer.cs",
               "RelativeToolTip": "WinFormsApp1\\Forms\\Shop.Designer.cs",
-              "ViewState": "AgIAAO8AAAAAAAAAAAAmwP0AAAAgAAAAAAAAAA==",
+              "ViewState": "AgIAAFABAAAAAAAAAAAAAFYBAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-07-05T10:46:23.171Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Shop.cs",
               "DocumentMoniker": "E:\\university.classes\\advanced.programing\\project\\WinFormsApp1\\WinFormsApp1\\Forms\\Shop.cs",
               "RelativeDocumentMoniker": "WinFormsApp1\\Forms\\Shop.cs",
               "ToolTip": "E:\\university.classes\\advanced.programing\\project\\WinFormsApp1\\WinFormsApp1\\Forms\\Shop.cs",
               "RelativeToolTip": "WinFormsApp1\\Forms\\Shop.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAEsAAAAbAAAAAAAAAA==",
+              "ViewState": "AgIAAKgAAAAAAAAAAAAswLQAAAA6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-07-05T10:46:07.584Z",
               "EditorCaption": ""
@@ -173,7 +169,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "mainmenu.cs",
               "DocumentMoniker": "E:\\university.classes\\advanced.programing\\project\\WinFormsApp1\\WinFormsApp1\\Forms\\mainmenu.cs",
               "RelativeDocumentMoniker": "WinFormsApp1\\Forms\\mainmenu.cs",
@@ -181,8 +177,7 @@
               "RelativeToolTip": "WinFormsApp1\\Forms\\mainmenu.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAwBgAAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-04T12:35:54.847Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-04T12:35:54.847Z"
             },
             {
               "$type": "Document",
@@ -194,8 +189,7 @@
               "RelativeToolTip": "WinFormsApp1\\Managers\\Audio.cs",
               "ViewState": "AgIAAEEAAAAAAAAAAAArwFQAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-03T18:08:21.739Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-03T18:08:21.739Z"
             },
             {
               "$type": "Document",

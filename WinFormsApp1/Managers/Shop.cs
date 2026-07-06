@@ -56,13 +56,16 @@ internal class ItemShip : Item, IDynamic
 {
     private float damage;
     private int speed;
+    private int health;
+    public int Health { get { return health;  } set { health = value; }  }
     public ItemType itemtype;
     public float Damage { get { return damage; } set { damage = value; } }
     public int Speed { get { return speed; } set { speed = value; } }
-    public ItemShip(string name, string description, int price, float damage, int speed) : base(name, description, price)
+    public ItemShip(string name, string description, int price, float damage, int speed,int health) : base(name, description, price)
     {
         Damage = damage;
         Speed = speed;
+        Health = health;
         itemtype = ItemType.Ship;
     }
 }
@@ -165,9 +168,9 @@ internal class ShopManager
     public static List<ItemShop<ItemShip>> ships = new List<ItemShop<ItemShip>>();
     public static List<ItemShop<ItemBackGround>> backGrounds = new List<ItemShop<ItemBackGround>>();
     public static List<ItemShop<ItemBullet>> bullets = new List<ItemShop<ItemBullet>>();
-    public static bool AddShip(string name, string description, int price, float damage, int speed, int id)
+    public static bool AddShip(string name, string description, int price, float damage, int speed,int health, int id)
     {
-        ItemShip ship1 = new ItemShip(name, description, price, damage, speed);
+        ItemShip ship1 = new ItemShip(name, description, price, damage, speed,health);
 
         ItemShop<ItemShip> ship = new ItemShop<ItemShip>(ship1, id);
         ships.Add(ship);
@@ -327,10 +330,10 @@ internal class ShopManager
     public static void init()
     {
         // ===================== Ships =====================
-        ShopManager.AddShip("Falcon", "Balanced starter ship", 250, 20f, 10, 1);
-        ShopManager.AddShip("Phoenix", "Fast attack ship", 500, 35f, 18, 2);
-        ShopManager.AddShip("Destroyer", "Heavy armored ship", 800, 60f, 7, 3);
-        ShopManager.AddShip("Titan", "Ultimate battle ship", 1500, 90f, 5, 4);
+        ShopManager.AddShip("Falcon", "Balanced starter ship", 250, 20f, 10, 200,1);
+        ShopManager.AddShip("Phoenix", "Fast attack ship", 500, 35f, 18, 150,2);
+        ShopManager.AddShip("Destroyer", "Heavy armored ship", 800, 60f, 7, 100,3);
+        ShopManager.AddShip("Titan", "Ultimate battle ship", 1500, 90f, 5, 300,4);
 
         // ===================== Bullets =====================
         ShopManager.AddBullet("Normal Bullet", "Standard bullet", 100, 10f, 20, 101);

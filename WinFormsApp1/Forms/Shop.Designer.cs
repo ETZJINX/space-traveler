@@ -37,6 +37,7 @@ namespace WinFormsApp1.Forms
             panel4 = new Panel();
             coin3 = new Label();
             Showinfo2 = new Panel();
+            Health = new Label();
             Itemspeed = new Label();
             Itemdamage = new Label();
             Itemprice = new Label();
@@ -49,6 +50,13 @@ namespace WinFormsApp1.Forms
             playername2 = new Label();
             Shop1 = new Label();
             panel2 = new Panel();
+            healthbar1 = new Panel();
+            pictureBox1 = new PictureBox();
+            healthbar = new Label();
+            damagebar = new Label();
+            HealthSpeed = new Panel();
+            DamageDamage = new Panel();
+            damagebar1 = new Panel();
             prebutton = new Button();
             nextbutton = new Button();
             panel1.SuspendLayout();
@@ -56,6 +64,8 @@ namespace WinFormsApp1.Forms
             Showinfo2.SuspendLayout();
             panel3.SuspendLayout();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            DamageDamage.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -119,6 +129,7 @@ namespace WinFormsApp1.Forms
             // Showinfo2
             // 
             Showinfo2.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            Showinfo2.Controls.Add(Health);
             Showinfo2.Controls.Add(Itemspeed);
             Showinfo2.Controls.Add(Itemdamage);
             Showinfo2.Controls.Add(Itemprice);
@@ -133,10 +144,19 @@ namespace WinFormsApp1.Forms
             Showinfo2.Size = new Size(431, 429);
             Showinfo2.TabIndex = 2;
             // 
+            // Health
+            // 
+            Health.AutoSize = true;
+            Health.Location = new Point(179, 270);
+            Health.Name = "Health";
+            Health.Size = new Size(78, 26);
+            Health.TabIndex = 8;
+            Health.Text = "Health";
+            // 
             // Itemspeed
             // 
             Itemspeed.AutoSize = true;
-            Itemspeed.Location = new Point(179, 240);
+            Itemspeed.Location = new Point(179, 221);
             Itemspeed.Name = "Itemspeed";
             Itemspeed.Size = new Size(67, 26);
             Itemspeed.TabIndex = 7;
@@ -145,7 +165,7 @@ namespace WinFormsApp1.Forms
             // Itemdamage
             // 
             Itemdamage.AutoSize = true;
-            Itemdamage.Location = new Point(179, 183);
+            Itemdamage.Location = new Point(179, 169);
             Itemdamage.Name = "Itemdamage";
             Itemdamage.Size = new Size(89, 26);
             Itemdamage.TabIndex = 6;
@@ -154,7 +174,7 @@ namespace WinFormsApp1.Forms
             // Itemprice
             // 
             Itemprice.AutoSize = true;
-            Itemprice.Location = new Point(179, 122);
+            Itemprice.Location = new Point(179, 123);
             Itemprice.Name = "Itemprice";
             Itemprice.Size = new Size(61, 26);
             Itemprice.TabIndex = 5;
@@ -163,7 +183,7 @@ namespace WinFormsApp1.Forms
             // Itemname
             // 
             Itemname.AutoSize = true;
-            Itemname.Location = new Point(179, 61);
+            Itemname.Location = new Point(179, 69);
             Itemname.Name = "Itemname";
             Itemname.Size = new Size(68, 26);
             Itemname.TabIndex = 4;
@@ -246,12 +266,73 @@ namespace WinFormsApp1.Forms
             // 
             // panel2
             // 
+            panel2.Controls.Add(healthbar1);
+            panel2.Controls.Add(pictureBox1);
+            panel2.Controls.Add(healthbar);
+            panel2.Controls.Add(damagebar);
+            panel2.Controls.Add(HealthSpeed);
+            panel2.Controls.Add(DamageDamage);
             panel2.Controls.Add(prebutton);
             panel2.Controls.Add(nextbutton);
             panel2.Location = new Point(141, 52);
             panel2.Name = "panel2";
             panel2.Size = new Size(795, 429);
             panel2.TabIndex = 6;
+            // 
+            // healthbar1
+            // 
+            healthbar1.Location = new Point(223, 337);
+            healthbar1.Name = "healthbar1";
+            healthbar1.Size = new Size(100, 50);
+            healthbar1.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Location = new Point(223, 35);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(300, 212);
+            pictureBox1.TabIndex = 6;
+            pictureBox1.TabStop = false;
+            // 
+            // healthbar
+            // 
+            healthbar.AutoSize = true;
+            healthbar.Location = new Point(128, 354);
+            healthbar.Name = "healthbar";
+            healthbar.Size = new Size(53, 20);
+            healthbar.TabIndex = 5;
+            healthbar.Text = "Health";
+            // 
+            // damagebar
+            // 
+            damagebar.AutoSize = true;
+            damagebar.Location = new Point(128, 285);
+            damagebar.Name = "damagebar";
+            damagebar.Size = new Size(66, 20);
+            damagebar.TabIndex = 4;
+            damagebar.Text = "Damage";
+            // 
+            // HealthSpeed
+            // 
+            HealthSpeed.Location = new Point(223, 337);
+            HealthSpeed.Name = "HealthSpeed";
+            HealthSpeed.Size = new Size(300, 50);
+            HealthSpeed.TabIndex = 3;
+            // 
+            // DamageDamage
+            // 
+            DamageDamage.Controls.Add(damagebar1);
+            DamageDamage.Location = new Point(223, 270);
+            DamageDamage.Name = "DamageDamage";
+            DamageDamage.Size = new Size(300, 50);
+            DamageDamage.TabIndex = 2;
+            // 
+            // damagebar1
+            // 
+            damagebar1.Location = new Point(0, 0);
+            damagebar1.Name = "damagebar1";
+            damagebar1.Size = new Size(200, 50);
+            damagebar1.TabIndex = 4;
             // 
             // prebutton
             // 
@@ -295,6 +376,9 @@ namespace WinFormsApp1.Forms
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             panel2.ResumeLayout(false);
+            panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            DamageDamage.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -322,5 +406,13 @@ namespace WinFormsApp1.Forms
         private Panel panel2;
         private Button prebutton;
         private Button nextbutton;
+        private Label Health;
+        private PictureBox pictureBox1;
+        private Label healthbar;
+        private Label damagebar;
+        private Panel HealthSpeed;
+        private Panel healthbar1;
+        private Panel DamageDamage;
+        private Panel damagebar1;
     }
 }
