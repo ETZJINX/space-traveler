@@ -19,11 +19,12 @@ namespace WinFormsApp1.Managers
     internal class Sound : Idispose
     {
         public static List<Sound> sounds = new List<Sound>();
+        public static bool IsAllMuted = false;
         private Audiotype type;
-        private bool loop = true;
+        private bool loop ;
         public Audiotype Type { get { return type; } }
         private string path;
-        internal AudioFileReader reader;
+        internal AudioFileReader reader1;
         internal WaveOutEvent sound;
         public WaveOutEvent Sound1 { get { return sound; } }
         public Sound(string path)
@@ -31,14 +32,14 @@ namespace WinFormsApp1.Managers
             type = Audiotype.sound;
             loop = false;
             this.path = path;
-            reader = new AudioFileReader(path);
+            reader1 = new AudioFileReader(path);
             sound = new WaveOutEvent();
-            sound.Init(reader); 
+            sound.Init(reader1); 
             sound.PlaybackStopped += (s, e) =>
             {
                 if (loop)
                 {
-                    reader.CurrentTime = TimeSpan.Zero;
+                    reader1.CurrentTime = TimeSpan.Zero;
                     sound.Play();
                 }
             };
@@ -48,7 +49,7 @@ namespace WinFormsApp1.Managers
         {
             loop = false;
             sound.Dispose();
-            reader.Dispose();
+            reader1.Dispose();
             return true;
         }
         public void loopsituation(bool sit)
@@ -57,7 +58,7 @@ namespace WinFormsApp1.Managers
         }
         public void Play()
         {
-            reader.CurrentTime = TimeSpan.Zero;
+            reader1.CurrentTime = TimeSpan.Zero;
             sound.Play();
         }
         public void Stop()
@@ -70,8 +71,9 @@ namespace WinFormsApp1.Managers
     internal class Music : Idispose
     {
         public static List<Music> musics = new List<Music>();
+        public static bool IsAllMuted = false;
         private Audiotype type;
-        bool loop = true;
+        private bool loop ;
         public Audiotype Type { get { return type; } }
         private string path;
         internal AudioFileReader reader;
@@ -80,6 +82,7 @@ namespace WinFormsApp1.Managers
         public Music(string path)
         {
             type = Audiotype.audio;
+            loop = true;
             this.path = path;
             reader = new AudioFileReader(path);
             audio = new WaveOutEvent();
@@ -129,8 +132,8 @@ namespace WinFormsApp1.Managers
                 
                 if (volume <= 1 && volume >= 0)
                 {
-                    player.sound.Volume = volume;
-                    player.reader.Volume = volume;
+                    //player.sound.Volume = volume;
+                    player.reader1.Volume = volume;
                     
                     return true;
                 }
@@ -161,7 +164,7 @@ namespace WinFormsApp1.Managers
             
             if (volume <= 1 && volume >= 0)
             {
-                music.audio.Volume = volume;
+                //music.audio.Volume = volume;
                 music.reader.Volume = volume;
                
                 return true;

@@ -12,14 +12,25 @@ namespace WinFormsApp1.Forms
 {
     public partial class Option : Form
     {
-        float Output1;
-        float Output2;
+        float Output1 = 0;
+        float Output2 = 0;
 
         public Option()
         {
             InitializeComponent();
-            label3.Text = music.Value.ToString() + "%";
-            label2.Text = soundeffect.Value.ToString() + "%";
+            Showlables();
+            showmute();
+
+           
+        }
+        private void Showlables()
+        {
+            int s1 = (int)(Music.musics[0].reader.Volume * 100);
+            label3.Text = s1.ToString() + "%";
+            int s2 = (int)(Sound.sounds[0].reader1.Volume * 100);
+            label2.Text = s2.ToString() + "%";
+            soundeffect.Value = s2;
+            music.Value = s1;
         }
 
         private void soundeffect_Scroll(object sender, EventArgs e)
@@ -35,11 +46,22 @@ namespace WinFormsApp1.Forms
             Output2 /= 100f;
             label3.Text = music.Value.ToString() + "%";
         }
-
+        private void showmute()
+        {
+            if (Sound.IsAllMuted)
+            {
+                checkBox2.Checked = true;
+            }
+            if (Music.IsAllMuted)
+            {
+                MuteMusic.Checked = true;
+            }
+        }
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox2.Checked)
             {
+                Sound.IsAllMuted = true;
                 foreach (var item in Sound.sounds)
                 {
                     Audio.Volumesound(item, 0f);
@@ -49,6 +71,7 @@ namespace WinFormsApp1.Forms
             }
             else
             {
+                Sound.IsAllMuted = false;
                 Output1 = (float)soundeffect.Value;
                 Output1 /= 100f;
                 foreach (var item in Sound.sounds)
@@ -64,6 +87,7 @@ namespace WinFormsApp1.Forms
         {
             if (MuteMusic.Checked)
             {
+                Music.IsAllMuted = true;
                 foreach (var item in Music.musics)
                 {
                     Audio.Volumemusic(item, 0f);
@@ -73,6 +97,7 @@ namespace WinFormsApp1.Forms
             }
             else
             {
+                Music.IsAllMuted = false;
                 Output2 = (float)music.Value;
                 Output2 /= 100f;
                 foreach (var item in Music.musics)

@@ -12,7 +12,7 @@ namespace WinFormsApp1
             clicksound = new Sound("Assets/Audio/click3.wav");
             backmusic = new Music("Assets/Audio/music/backmusic.mp3");
             backmusic.reader.Volume = 0.2f;
-            clicksound.reader.Volume = 1f;
+            clicksound.reader1.Volume = 1f;
             Audio.Playmusic(backmusic);
 
         }
