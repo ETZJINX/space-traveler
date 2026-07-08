@@ -4,20 +4,24 @@ using System.Text;
 using WinFormsApp1.Logics.interfaces;
 namespace WinFormsApp1.Logics
 {
-    internal class Bullet : IDamagable,IMoveable,IActive
+    public class Bullet : IDamagable,IMoveable,IActive,ISizeVolum
     {
-        private MoveType moveType;
+        private int width;
+        private int height;
+        public int Width {  get { return width; } }
+        public int Height { get { return height; } }
+        private BulletMoveType moveType;
         private int x, y;
         private float damage;
         private int speed;
         private bool active;
         public bool Active { get { return active; } set { active = value; } }
-        public MoveType Movetype { get { return moveType; } set { moveType = value; } }
+        public BulletMoveType Movetype { get { return moveType; } set { moveType = value; } }
         public int X { get { return x; } set { x = value ; } }
         public int Y { get { return y; } set { y = value ; } }
         public float Damage { get { return damage; } set { damage = value; } }
         public int Speed { get { return speed; } set { speed = value; } }
-        public Bullet(MoveType moveType,int x,int y,float damage,int speed)
+        public Bullet(BulletMoveType moveType,int x,int y,float damage,int speed)
         {
             Movetype = moveType;
             X = x;
@@ -28,11 +32,11 @@ namespace WinFormsApp1.Logics
         }
         public bool BaresiharekatX(int andaze)
         {
-            return (X + (andaze * Speed) + 10 <= GameWorld.Width && X + (andaze * Speed) - 10 >= 0) ;
+            return (X + (andaze * Speed) + Width <= GameWorld.Width && X + (andaze * Speed) - Width >= 0) ;
         }
         public bool BaresiharekatY(int andaze)
         {
-            return (Y + (andaze * Speed) + 10 <= GameWorld.Height && Y + (andaze * Speed) - 10 >= 0);
+            return (Y + (andaze * Speed) + Height <= GameWorld.Height && Y + (andaze * Speed) - Height >= 0);
         }
         public void MoveX(int andaze)
         {
@@ -60,6 +64,11 @@ namespace WinFormsApp1.Logics
                 Active = false;
                 return;
             }
+        }
+        public Bullet santes(int x1 , int y1)
+        {
+            Bullet sample = new Bullet(this.Movetype,x1,y1,this.Damage,this.Speed);
+            return sample;    
         }
     }
 }

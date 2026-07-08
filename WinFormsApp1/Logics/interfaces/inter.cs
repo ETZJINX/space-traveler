@@ -4,7 +4,7 @@ using System.Text;
 
 namespace WinFormsApp1.Logics.interfaces
 {
-    public enum MoveType
+    public enum BulletMoveType
     {
         straghit = 1,
         zigzag = 2,
@@ -15,7 +15,7 @@ namespace WinFormsApp1.Logics.interfaces
     {
         int X { get; set; }
         int Y { get; set; }
-        MoveType Movetype {  get; set; }
+        //MoveType Movetype {  get; set; }
 
         void MoveX(int andaze);
         void MoveY(int andaze);
@@ -33,5 +33,21 @@ namespace WinFormsApp1.Logics.interfaces
     public interface IActive
     {
         bool Active { get; set; }
+    }
+    public interface IAchivments
+    {
+        int Coin { get; set; }
+        int Xp { get; set; }
+    }
+    internal interface IWeaponDamage
+    {
+        Bullet Weapon { get; }
+        BulletMoveType BulletMoveType { get; }
+        void Shoot();
+    }
+    public interface ISizeVolum
+    {
+        int Width { get; }
+        int Height { get; }
     }
 }
