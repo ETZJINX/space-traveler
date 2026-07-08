@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "E:\\university.classes\\advanced.programing\\project\\WinFormsApp1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BC150CE2-BC7F-BB20-899B-A29BED553BB8}|WinFormsApp1\\WinFormsApp1.csproj|e:\\university.classes\\advanced.programing\\project\\winformsapp1\\winformsapp1\\logics\\interfaces\\inter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BC150CE2-BC7F-BB20-899B-A29BED553BB8}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\logics\\interfaces\\inter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{BC150CE2-BC7F-BB20-899B-A29BED553BB8}|WinFormsApp1\\WinFormsApp1.csproj|e:\\university.classes\\advanced.programing\\project\\winformsapp1\\winformsapp1\\logics\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BC150CE2-BC7F-BB20-899B-A29BED553BB8}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\logics\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BC150CE2-BC7F-BB20-899B-A29BED553BB8}|WinFormsApp1\\WinFormsApp1.csproj|e:\\university.classes\\advanced.programing\\project\\winformsapp1\\winformsapp1\\logics\\interfaces\\inter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BC150CE2-BC7F-BB20-899B-A29BED553BB8}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\logics\\interfaces\\inter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BC150CE2-BC7F-BB20-899B-A29BED553BB8}|WinFormsApp1\\WinFormsApp1.csproj|e:\\university.classes\\advanced.programing\\project\\winformsapp1\\winformsapp1\\logics\\bullet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -50,7 +50,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -84,12 +84,12 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "inter.cs",
               "DocumentMoniker": "E:\\university.classes\\advanced.programing\\project\\WinFormsApp1\\WinFormsApp1\\Logics\\interfaces\\inter.cs",
               "RelativeDocumentMoniker": "WinFormsApp1\\Logics\\interfaces\\inter.cs",
-              "ToolTip": "E:\\university.classes\\advanced.programing\\project\\WinFormsApp1\\WinFormsApp1\\Logics\\interfaces\\inter.cs*",
-              "RelativeToolTip": "WinFormsApp1\\Logics\\interfaces\\inter.cs*",
+              "ToolTip": "E:\\university.classes\\advanced.programing\\project\\WinFormsApp1\\WinFormsApp1\\Logics\\interfaces\\inter.cs",
+              "RelativeToolTip": "WinFormsApp1\\Logics\\interfaces\\inter.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAAC0AAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-07-07T17:41:22.231Z",
@@ -97,13 +97,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "player.cs",
               "DocumentMoniker": "E:\\university.classes\\advanced.programing\\project\\WinFormsApp1\\WinFormsApp1\\Logics\\player.cs",
               "RelativeDocumentMoniker": "WinFormsApp1\\Logics\\player.cs",
-              "ToolTip": "E:\\university.classes\\advanced.programing\\project\\WinFormsApp1\\WinFormsApp1\\Logics\\player.cs*",
-              "RelativeToolTip": "WinFormsApp1\\Logics\\player.cs*",
-              "ViewState": "AgIAACMAAAAAAAAAAAArwDYAAAAlAAAAAAAAAA==",
+              "ToolTip": "E:\\university.classes\\advanced.programing\\project\\WinFormsApp1\\WinFormsApp1\\Logics\\player.cs",
+              "RelativeToolTip": "WinFormsApp1\\Logics\\player.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAArwDwAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-07-07T13:08:52.426Z",
               "EditorCaption": ""

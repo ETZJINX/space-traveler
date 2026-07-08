@@ -4,7 +4,7 @@ using System.Text;
 using WinFormsApp1.Logics.interfaces;
 namespace WinFormsApp1.Logics
 {
-    public class Bullet : IDamagable,IMoveable,IActive,ISizeVolum
+    public class Bullet : IDamagable,IMoveable,IActive,ISizeVolum,IUpdate
     {
         private int width;
         private int height;
@@ -30,19 +30,19 @@ namespace WinFormsApp1.Logics
             Speed = speed;
             Active = true;
         }
-        public bool BaresiharekatX(int andaze)
+        public bool BaresiharekatX(float andaze)
         {
             return (X + (andaze * Speed) + Width <= GameWorld.Width && X + (andaze * Speed) - Width >= 0) ;
         }
-        public bool BaresiharekatY(int andaze)
+        public bool BaresiharekatY(float andaze)
         {
             return (Y + (andaze * Speed) + Height <= GameWorld.Height && Y + (andaze * Speed) - Height >= 0);
         }
-        public void MoveX(int andaze)
+        public void MoveX(float andaze)
         {
             if (BaresiharekatX(andaze))
             {
-                X += andaze * Speed;
+                X += (int)(andaze * Speed);
                 return;
             }
             else
@@ -52,11 +52,11 @@ namespace WinFormsApp1.Logics
             }
 
         }
-        public void MoveY(int andaze)
+        public void MoveY(float andaze)
         {
             if (BaresiharekatY(andaze))
             {
-                Y += andaze * Speed;
+                Y +=(int) (andaze * Speed);
                 return;
             }
             else
@@ -69,6 +69,11 @@ namespace WinFormsApp1.Logics
         {
             Bullet sample = new Bullet(this.Movetype,x1,y1,this.Damage,this.Speed);
             return sample;    
+        }
+        public void Update(float x,float y)
+        {
+            MoveX(x);
+            MoveY(y);
         }
     }
 }

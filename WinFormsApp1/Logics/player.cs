@@ -27,13 +27,13 @@ namespace WinFormsApp1.Logics
         public bool Active { get { return active; } set { active = value; } }
         public int Coin { get {return coin;  }set { coin = value; } }
         public int Xp { get { return xp; } set { xp = value; } }
-        public abstract void MoveX(int andaze);
-        public abstract void MoveY(int andaze);
-        public bool BaresiharekatX(int andaze)
+        public abstract void MoveX(float andaze);
+        public abstract void MoveY(float andaze);
+        public bool BaresiharekatX(float andaze)
         {
             return (X + (andaze * Speed) + Width <= GameWorld.Width && X + (andaze * Speed) - Width >= 0);
         }
-        public bool BaresiharekatY(int andaze)
+        public bool BaresiharekatY(float andaze)
         {
             return (Y + (andaze * Speed) + Height <= GameWorld.Height && Y + (andaze * Speed) - Height >= 0);
         }
@@ -50,7 +50,7 @@ namespace WinFormsApp1.Logics
             this.coin = coin;
             Xp = xp;
         }
-        public void DamageTaken(float megdar)
+        public virtual void DamageTaken(float megdar)
         {
             if (Health <= megdar)
             {
@@ -62,23 +62,36 @@ namespace WinFormsApp1.Logics
                 Health -= (int)megdar;
             }
         }
+
     }
-    public class player : template , IWeaponDamage
+    public class player : template , IWeaponDamage, IUpdate
     {
         private Bullet MainBullet;
+        private int timeshoot;
+        public int Timeshoot { get { return timeshoot; } set { timeshoot = value; }  }
         private BulletMoveType movetypebullet;
         public Bullet Weapon {  get { return MainBullet; } }
         public BulletMoveType BulletMoveType { get { return movetypebullet; } }
-        public void Shoot()
+        public Bullet Shoot()
         {
             Bullet sample;
-            sample = Weapon.santes(X, Y + Height / 2);
+            if (Timeshoot >= 1500)
+            {
+                sample = Weapon.santes(X, Y + Height / 2);
+                Timeshoot = 0;
+                return sample;
+            }
+            else
+            {
+                return null;
+            }
+
         }
-        public override void MoveX(int andaze)
+        public override void MoveX(float andaze)
         {
             if (BaresiharekatX(andaze))
             {
-                X += andaze * Speed;
+                X += (int)(andaze * Speed);
                 return;
             }
             else
@@ -86,11 +99,11 @@ namespace WinFormsApp1.Logics
                 return;
             }
         }
-        public override void MoveY(int andaze)
+        public override void MoveY(float andaze)
         {
             if (BaresiharekatY(andaze))
             {
-                Y += andaze * Speed;
+                Y += (int)(andaze * Speed);
                 return;
             }
             else
@@ -102,6 +115,7 @@ namespace WinFormsApp1.Logics
         {
             this.MainBullet = mainbullet;
             this.movetypebullet = move;
+            timeshoot = 1500;
         }
         public void Cointaken(int megdar)
         {
@@ -110,6 +124,15 @@ namespace WinFormsApp1.Logics
         public void XpTaken(int megdar)
         {
             Xp += megdar; 
+        }
+        public  void Update(float x,float y)
+        {
+            MoveX(x);
+            MoveY(y);
+            Bullet sample;
+            sample = Shoot();
+            sample.MoveX(0);
+            sample.MoveY(1);
         }
     }
 }

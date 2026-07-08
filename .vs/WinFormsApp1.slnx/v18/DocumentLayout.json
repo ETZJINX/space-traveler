@@ -3,16 +3,24 @@
   "WorkspaceRootPath": "E:\\university.classes\\advanced.programing\\project\\WinFormsApp1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BC150CE2-BC7F-BB20-899B-A29BED553BB8}|WinFormsApp1\\WinFormsApp1.csproj|e:\\university.classes\\advanced.programing\\project\\winformsapp1\\winformsapp1\\logics\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BC150CE2-BC7F-BB20-899B-A29BED553BB8}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\logics\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BC150CE2-BC7F-BB20-899B-A29BED553BB8}|WinFormsApp1\\WinFormsApp1.csproj|e:\\university.classes\\advanced.programing\\project\\winformsapp1\\winformsapp1\\logics\\bullet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BC150CE2-BC7F-BB20-899B-A29BED553BB8}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\logics\\bullet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BC150CE2-BC7F-BB20-899B-A29BED553BB8}|WinFormsApp1\\WinFormsApp1.csproj|e:\\university.classes\\advanced.programing\\project\\winformsapp1\\winformsapp1\\logics\\interfaces\\inter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BC150CE2-BC7F-BB20-899B-A29BED553BB8}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\logics\\interfaces\\inter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BC150CE2-BC7F-BB20-899B-A29BED553BB8}|WinFormsApp1\\WinFormsApp1.csproj|e:\\university.classes\\advanced.programing\\project\\winformsapp1\\winformsapp1\\logics\\bullet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BC150CE2-BC7F-BB20-899B-A29BED553BB8}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\logics\\bullet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BC150CE2-BC7F-BB20-899B-A29BED553BB8}|WinFormsApp1\\WinFormsApp1.csproj|e:\\university.classes\\advanced.programing\\project\\winformsapp1\\winformsapp1\\logics\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BC150CE2-BC7F-BB20-899B-A29BED553BB8}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\logics\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BC150CE2-BC7F-BB20-899B-A29BED553BB8}|WinFormsApp1\\WinFormsApp1.csproj|e:\\university.classes\\advanced.programing\\project\\winformsapp1\\winformsapp1\\logics\\enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BC150CE2-BC7F-BB20-899B-A29BED553BB8}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\logics\\enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BC150CE2-BC7F-BB20-899B-A29BED553BB8}|WinFormsApp1\\WinFormsApp1.csproj|e:\\university.classes\\advanced.programing\\project\\winformsapp1\\winformsapp1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BC150CE2-BC7F-BB20-899B-A29BED553BB8}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BC150CE2-BC7F-BB20-899B-A29BED553BB8}|WinFormsApp1\\WinFormsApp1.csproj|e:\\university.classes\\advanced.programing\\project\\winformsapp1\\winformsapp1\\logics\\gameworld.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -31,10 +39,6 @@
       "RelativeMoniker": "D:0:0:{BC150CE2-BC7F-BB20-899B-A29BED553BB8}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BC150CE2-BC7F-BB20-899B-A29BED553BB8}|WinFormsApp1\\WinFormsApp1.csproj|e:\\university.classes\\advanced.programing\\project\\winformsapp1\\winformsapp1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BC150CE2-BC7F-BB20-899B-A29BED553BB8}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{BC150CE2-BC7F-BB20-899B-A29BED553BB8}|WinFormsApp1\\WinFormsApp1.csproj|e:\\university.classes\\advanced.programing\\project\\winformsapp1\\winformsapp1\\form1.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}",
       "RelativeMoniker": "D:0:0:{BC150CE2-BC7F-BB20-899B-A29BED553BB8}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\form1.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}"
     },
@@ -50,15 +54,28 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Enemy.cs",
+              "DocumentMoniker": "E:\\university.classes\\advanced.programing\\project\\WinFormsApp1\\WinFormsApp1\\Logics\\Enemy.cs",
+              "RelativeDocumentMoniker": "WinFormsApp1\\Logics\\Enemy.cs",
+              "ToolTip": "E:\\university.classes\\advanced.programing\\project\\WinFormsApp1\\WinFormsApp1\\Logics\\Enemy.cs",
+              "RelativeToolTip": "WinFormsApp1\\Logics\\Enemy.cs",
+              "ViewState": "AgIAAEoAAAAAAAAAAAA3wE4AAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-08T12:40:55.094Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "GameWorld.cs",
               "DocumentMoniker": "E:\\university.classes\\advanced.programing\\project\\WinFormsApp1\\WinFormsApp1\\Logics\\GameWorld.cs",
               "RelativeDocumentMoniker": "WinFormsApp1\\Logics\\GameWorld.cs",
@@ -71,13 +88,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "Bullet.cs",
               "DocumentMoniker": "E:\\university.classes\\advanced.programing\\project\\WinFormsApp1\\WinFormsApp1\\Logics\\Bullet.cs",
               "RelativeDocumentMoniker": "WinFormsApp1\\Logics\\Bullet.cs",
-              "ToolTip": "E:\\university.classes\\advanced.programing\\project\\WinFormsApp1\\WinFormsApp1\\Logics\\Bullet.cs",
-              "RelativeToolTip": "WinFormsApp1\\Logics\\Bullet.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAKAAAAAAAAAA==",
+              "ToolTip": "E:\\university.classes\\advanced.programing\\project\\WinFormsApp1\\WinFormsApp1\\Logics\\Bullet.cs*",
+              "RelativeToolTip": "WinFormsApp1\\Logics\\Bullet.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAYAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-07-08T10:01:21.56Z",
               "EditorCaption": ""
@@ -88,29 +105,29 @@
               "Title": "inter.cs",
               "DocumentMoniker": "E:\\university.classes\\advanced.programing\\project\\WinFormsApp1\\WinFormsApp1\\Logics\\interfaces\\inter.cs",
               "RelativeDocumentMoniker": "WinFormsApp1\\Logics\\interfaces\\inter.cs",
-              "ToolTip": "E:\\university.classes\\advanced.programing\\project\\WinFormsApp1\\WinFormsApp1\\Logics\\interfaces\\inter.cs",
-              "RelativeToolTip": "WinFormsApp1\\Logics\\interfaces\\inter.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAC0AAAAMAAAAAAAAAA==",
+              "ToolTip": "E:\\university.classes\\advanced.programing\\project\\WinFormsApp1\\WinFormsApp1\\Logics\\interfaces\\inter.cs*",
+              "RelativeToolTip": "WinFormsApp1\\Logics\\interfaces\\inter.cs*",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA0AAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-07-07T17:41:22.231Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "player.cs",
               "DocumentMoniker": "E:\\university.classes\\advanced.programing\\project\\WinFormsApp1\\WinFormsApp1\\Logics\\player.cs",
               "RelativeDocumentMoniker": "WinFormsApp1\\Logics\\player.cs",
-              "ToolTip": "E:\\university.classes\\advanced.programing\\project\\WinFormsApp1\\WinFormsApp1\\Logics\\player.cs",
-              "RelativeToolTip": "WinFormsApp1\\Logics\\player.cs",
-              "ViewState": "AgIAACMAAAAAAAAAAAArwDwAAAAbAAAAAAAAAA==",
+              "ToolTip": "E:\\university.classes\\advanced.programing\\project\\WinFormsApp1\\WinFormsApp1\\Logics\\player.cs*",
+              "RelativeToolTip": "WinFormsApp1\\Logics\\player.cs*",
+              "ViewState": "AgIAABUAAAAAAAAAAAAYwCMAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-07-07T13:08:52.426Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 4,
               "Title": "Program.cs",
               "DocumentMoniker": "E:\\university.classes\\advanced.programing\\project\\WinFormsApp1\\WinFormsApp1\\Program.cs",
               "RelativeDocumentMoniker": "WinFormsApp1\\Program.cs",
@@ -118,11 +135,12 @@
               "RelativeToolTip": "WinFormsApp1\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-25T14:28:37.956Z"
+              "WhenOpened": "2026-06-25T14:28:37.956Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "Form1.resx",
               "DocumentMoniker": "E:\\university.classes\\advanced.programing\\project\\WinFormsApp1\\WinFormsApp1\\Form1.resx",
               "RelativeDocumentMoniker": "WinFormsApp1\\Form1.resx",
@@ -133,7 +151,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "Form1.cs",
               "DocumentMoniker": "E:\\university.classes\\advanced.programing\\project\\WinFormsApp1\\WinFormsApp1\\Form1.cs",
               "RelativeDocumentMoniker": "WinFormsApp1\\Form1.cs",
@@ -146,7 +164,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "Form1.cs [Design]",
               "DocumentMoniker": "E:\\university.classes\\advanced.programing\\project\\WinFormsApp1\\WinFormsApp1\\Form1.cs",
               "RelativeDocumentMoniker": "WinFormsApp1\\Form1.cs",
@@ -157,7 +175,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "Form1.Designer.cs",
               "DocumentMoniker": "E:\\university.classes\\advanced.programing\\project\\WinFormsApp1\\WinFormsApp1\\Form1.Designer.cs",
               "RelativeDocumentMoniker": "WinFormsApp1\\Form1.Designer.cs",
@@ -169,7 +187,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "Form1.cs [Design]",
               "DocumentMoniker": "E:\\university.classes\\advanced.programing\\project\\WinFormsApp1\\WinFormsApp1\\Form1.cs",
               "RelativeDocumentMoniker": "WinFormsApp1\\Form1.cs",

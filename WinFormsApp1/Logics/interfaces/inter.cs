@@ -17,8 +17,8 @@ namespace WinFormsApp1.Logics.interfaces
         int Y { get; set; }
         //MoveType Movetype {  get; set; }
 
-        void MoveX(int andaze);
-        void MoveY(int andaze);
+        void MoveX(float andaze);
+        void MoveY(float andaze);
     }
     public interface IDamagable
     {
@@ -43,11 +43,20 @@ namespace WinFormsApp1.Logics.interfaces
     {
         Bullet Weapon { get; }
         BulletMoveType BulletMoveType { get; }
-        void Shoot();
+        int Timeshoot {  get; set; }
+        Bullet Shoot();
     }
     public interface ISizeVolum
     {
         int Width { get; }
         int Height { get; }
+    }
+    public interface IUpdate
+    {
+        void Update(float x,float y);
+    }
+    public interface IEnemyUpdate
+    {
+        void Update();
     }
 }
