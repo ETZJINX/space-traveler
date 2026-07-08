@@ -6,6 +6,8 @@ namespace WinFormsApp1.Logics
 {
     public class Bullet : IDamagable,IMoveable,IActive,ISizeVolum,IUpdate
     {
+        public float Xvector;
+        public float Yvector;
         private int width;
         private int height;
         public int Width {  get { return width; } }
@@ -72,8 +74,15 @@ namespace WinFormsApp1.Logics
         }
         public void Update(float x,float y)
         {
-            MoveX(x);
-            MoveY(y);
+            if (active == true)
+            {
+                MoveX(x);
+                MoveY(y);
+            }
+            else
+            {
+                GameWorld.Bullets.Remove(this);
+            }
         }
     }
 }

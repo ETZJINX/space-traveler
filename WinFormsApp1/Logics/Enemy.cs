@@ -96,8 +96,10 @@ namespace WinFormsApp1.Logics
             Bullet sample;
             if (Timeshoot >= 1500)
             {
-                sample = Weapon.santes(X, Y + Height / 2);
+                sample = Weapon.santes(X, Y - Height / 2);
                 Timeshoot = 0;
+                sample.Xvector = 0;
+                sample.Yvector = -1;
                 return sample;
             }
             else
@@ -145,8 +147,7 @@ namespace WinFormsApp1.Logics
             if (Shoot() != null)
             {
                 sample = Shoot();
-                sample.MoveX(0);
-                sample.MoveY(-1);
+                GameWorld.Bullets.Add(sample);
 
             }
         }
@@ -162,12 +163,45 @@ namespace WinFormsApp1.Logics
         public BulletMoveType BulletMoveType { get { return movetypebullet; } }
         public Bullet Shoot()
         {
-            Bullet sample;
+            Bullet sample1;
             if (Timeshoot >= 1500)
             {
-                sample = Weapon.santes(X, Y + Height / 2);
+                sample1 = Weapon.santes(X, Y - Height / 2);
                 Timeshoot = 0;
-                return sample;
+                Bullet sample2 = sample1.santes(sample1.X, sample1.Y);
+
+                Bullet sample3 = sample1.santes(sample1.X, sample1.Y);
+                Bullet sample4 = sample1.santes(sample1.X, sample1.Y);
+                Bullet sample5 = sample1.santes(sample1.X, sample1.Y);
+                Bullet sample6 = sample1.santes(sample1.X, sample1.Y);
+                Bullet sample7 = sample1.santes(sample1.X, sample1.Y);
+                Bullet sample8 = sample1.santes(sample1.X, sample1.Y);
+                sample1.Xvector = 1;
+                sample1.Yvector = 0;
+                sample2.Xvector = -1;
+                sample2.Yvector = 0;
+                sample3.Xvector = 0;
+                sample3.Yvector = 1;
+                sample4.Xvector = 0;
+                sample4.Yvector = -1;
+                sample5.Xvector = (float)Math.Sqrt(2) / 2;
+                sample5.Yvector = (float)Math.Sqrt(2) / 2;
+                sample6.Xvector = -(float)Math.Sqrt(2) / 2;
+                sample6.Yvector = (float)Math.Sqrt(2) / 2;
+                sample7.Xvector = (float)Math.Sqrt(2) / 2;
+                sample7.Yvector = -(float)Math.Sqrt(2) / 2;
+                sample8.Xvector = -(float)Math.Sqrt(2) / 2;
+                sample8.Yvector = -(float)Math.Sqrt(2) / 2;
+                GameWorld.Bullets.Add(sample1);
+                GameWorld.Bullets.Add(sample2);
+                GameWorld.Bullets.Add(sample3);
+                GameWorld.Bullets.Add(sample4);
+                GameWorld.Bullets.Add(sample5);
+                GameWorld.Bullets.Add(sample6);
+                GameWorld.Bullets.Add(sample7);
+                GameWorld.Bullets.Add(sample8);
+
+                return sample1;
             }
             else
             {
@@ -210,25 +244,11 @@ namespace WinFormsApp1.Logics
         {
             MoveX(0);
             MoveY(-1);
-            Bullet sample1, sample2, sample3, sample4, sample5, sample6, sample7, sample8;
+            Bullet sample1;
             if (Shoot() != null)
             {
                 sample1 = Shoot();
-                sample2 = sample1.santes(sample1.X,sample1.Y);
-                sample3 = sample1.santes(sample1.X, sample1.Y);
-                sample4 = sample1.santes(sample1.X, sample1.Y);
-                sample5 = sample1.santes(sample1.X, sample1.Y);
-                sample6 = sample1.santes(sample1.X, sample1.Y);
-                sample7 = sample1.santes(sample1.X, sample1.Y);
-                sample8 = sample1.santes(sample1.X, sample1.Y);
-                sample1.Update(1, 0);
-                sample2.Update(-1,0);
-                sample3.Update(0, 1);
-                sample4.Update(0, -1);
-                sample5.Update((float)Math.Sqrt(2) / 2, (float)Math.Sqrt(2) / 2);
-                sample6.Update(-(float)Math.Sqrt(2) / 2, (float)Math.Sqrt(2) / 2);
-                sample7.Update((float)Math.Sqrt(2) / 2, -(float)Math.Sqrt(2) / 2);
-                sample8.Update(-(float)Math.Sqrt(2) / 2, -(float)Math.Sqrt(2) / 2);              
+              
             }
         }
     }

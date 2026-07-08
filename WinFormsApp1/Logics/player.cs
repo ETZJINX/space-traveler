@@ -78,6 +78,8 @@ namespace WinFormsApp1.Logics
             if (Timeshoot >= 1500)
             {
                 sample = Weapon.santes(X, Y + Height / 2);
+                sample.Xvector = 0;
+                sample.Yvector = 1;
                 Timeshoot = 0;
                 return sample;
             }
@@ -115,7 +117,7 @@ namespace WinFormsApp1.Logics
         {
             this.MainBullet = mainbullet;
             this.movetypebullet = move;
-            timeshoot = 1500;
+            timeshoot = 500;
         }
         public void Cointaken(int megdar)
         {
@@ -129,10 +131,6 @@ namespace WinFormsApp1.Logics
         {
             MoveX(x);
             MoveY(y);
-            Bullet sample;
-            sample = Shoot();
-            sample.MoveX(0);
-            sample.MoveY(1);
         }
     }
 }
