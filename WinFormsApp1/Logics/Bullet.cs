@@ -6,6 +6,7 @@ namespace WinFormsApp1.Logics
 {
     public class Bullet : IDamagable,IMoveable,IActive,ISizeVolum,IUpdate
     {
+        public static List<Bullet> bulletswholegame = new List<Bullet>();
         public float Xvector;
         public float Yvector;
         private int width;
@@ -31,6 +32,7 @@ namespace WinFormsApp1.Logics
             Damage = damage;
             Speed = speed;
             Active = true;
+            bulletswholegame.Add(this);
         }
         public bool BaresiharekatX(float andaze)
         {

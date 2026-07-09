@@ -43,6 +43,12 @@ namespace WinFormsApp1.Logics
             MoveX(0);
             MoveY(-1);
         }
+        public StandardEnemy santens()
+        {
+            StandardEnemy sample;
+            sample = new StandardEnemy(this.Width, Height, X, Y, Damage, Speed, Health, Coin, Xp);
+            return sample;
+        }
     }
     public class ScoutEnemy : template , IEnemyUpdate
     {
@@ -81,6 +87,12 @@ namespace WinFormsApp1.Logics
             MoveX((float)Math.Sqrt(2) / 2);
             MoveY(-(float)Math.Sqrt(2) / 2);
             MoveX(-(float)Math.Sqrt(2) / 2);
+        }
+        public ScoutEnemy santens()
+        {
+            ScoutEnemy sample;
+            sample = new ScoutEnemy(this.Width, Height, X, Y, Damage, Speed, Health, Coin, Xp);
+            return sample;
         }
     }
     public class ShooterEnemy : template , IWeaponDamage,IEnemyUpdate
@@ -150,6 +162,12 @@ namespace WinFormsApp1.Logics
                 GameWorld.Bullets.Add(sample);
 
             }
+        }
+        public ShooterEnemy santens()
+        {
+            ShooterEnemy sample;
+            sample = new ShooterEnemy(this.Width, Height, X, Y, Damage, Speed, Health, Coin, Xp,MainBullet,movetypebullet);
+            return sample;
         }
 
     }
@@ -251,6 +269,12 @@ namespace WinFormsApp1.Logics
               
             }
         }
+        public HeavyTankEnemy santens()
+        {
+            HeavyTankEnemy sample;
+            sample = new HeavyTankEnemy(this.Width, Height, X, Y, Damage, Speed, Health, Coin, Xp, MainBullet, movetypebullet);
+            return sample;
+        }
     }
     public class TerroristEnemy : template,IEnemyUpdate
     {
@@ -292,6 +316,12 @@ namespace WinFormsApp1.Logics
         public void Update()
         {
             MoveY(-1);
+        }
+        public TerroristEnemy santens()
+        {
+            TerroristEnemy sample;
+            sample = new TerroristEnemy(this.Width, Height, X, Y, Damage, Speed, Health, Coin, Xp);
+            return sample;
         }
     }
 }

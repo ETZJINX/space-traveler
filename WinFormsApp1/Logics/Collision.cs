@@ -39,5 +39,17 @@ namespace WinFormsApp1.Logics
                 return false;
             }
         }
+        public static bool playercoincolision(player player,Coindrop coin)
+        {
+            if (coin.X < player.X + player.Width/2 && coin.X >player.X - player.Width/2 && coin.Y > player.Y - player.Height/2 && coin.Y < player.Y + player.Height / 2)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
     }
 }
