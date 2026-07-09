@@ -16,3 +16,4 @@ E:\university.classes\advanced.programing\project\WinFormsApp1\WinFormsApp1\obj\
 E:\university.classes\advanced.programing\project\WinFormsApp1\WinFormsApp1\obj\Debug\net10.0-windows\WinFormsApp1.pdb
 E:\university.classes\advanced.programing\project\WinFormsApp1\WinFormsApp1\obj\Debug\net10.0-windows\WinFormsApp1.genruntimeconfig.cache
 E:\university.classes\advanced.programing\project\WinFormsApp1\WinFormsApp1\obj\Debug\net10.0-windows\ref\WinFormsApp1.dll
+E:\university.classes\advanced.programing\project\WinFormsApp1\WinFormsApp1\obj\Debug\net10.0-windows\WinFormsApp1.Playform.resources

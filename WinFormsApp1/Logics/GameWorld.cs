@@ -7,8 +7,9 @@ namespace WinFormsApp1.Logics
 {
     public class Wavemanager
     {
+        public static bool showmessage = false;
         private static Random random = new Random();
-        private static int currentwave = 1;
+        public static int currentwave = 1;
         private static int EnemyRemainingToSpawn = 10;
         private static int spawndelay = 0;
         private static int Wavedelay = 0;//ثانیه 
@@ -212,7 +213,7 @@ namespace WinFormsApp1.Logics
             if (activewave.Count != 0)
             {
                 spawndelay++;
-                if (spawndelay > 4)
+                if (spawndelay >= 5000)
                 {
                     spawnenemy(activewave);
                     activewave.RemoveAt(0);
@@ -226,8 +227,9 @@ namespace WinFormsApp1.Logics
                 {
                     if (currentwave != 10)
                     {
+                        showmessage = true;
                         Wavedelay++;
-                        if (Wavedelay > 14)
+                        if (Wavedelay > 8000)
                         {
                             currentwave++;
                             sakhty(allwave[currentwave - 1]);
@@ -536,13 +538,42 @@ namespace WinFormsApp1.Logics
         public static Random Random = new Random();
         public static int stagelevel = 1;
 
-        public static int Width = 720;
-        public static int Height = 1000;
+        public static int Width = 1033; 
+        public static int Height = 540;
         public int xplayervector = 0;
         public int yplayervector = 0;
-        public void playerupdate()
+        public void playerupdate(bool left,bool right,bool up,bool down)
         {
-            player1.Update(xplayervector, yplayervector);
+            if (left)
+            {
+                yplayervector = 0;
+                xplayervector = -1;
+                player1.Update(xplayervector, yplayervector);
+            }
+            else if (right)
+            {
+                yplayervector = 0;
+                xplayervector = 1;
+                player1.Update(xplayervector, yplayervector);
+            }
+            else if (up)
+            {
+                xplayervector = 0;
+                yplayervector = -1;
+                player1.Update(xplayervector, yplayervector);
+            }
+            else if (down)
+            {
+                xplayervector = 0;
+                yplayervector = 1;
+                player1.Update(xplayervector, yplayervector);
+            }
+            else
+            {
+                xplayervector = 0;
+                yplayervector = 0;
+                player1.Update(xplayervector, yplayervector);
+            }
         }
         public void enemyupdate()
         {
@@ -612,7 +643,6 @@ namespace WinFormsApp1.Logics
             {
                 Bullet sample;
                 sample =  player1.Shoot();
-                Bullets.Add(sample);
                 Input.shoot = false;
             }
         }
@@ -620,9 +650,14 @@ namespace WinFormsApp1.Logics
         {
             if (Bullets.Count != 0)
             {
-                foreach (var item in Bullets)
+                //foreach (var item in Bullets)
+                //{
+                //     item.Update(item.Xvector, item.Yvector);
+                //}
+                for (int i = Bullets.Count - 1; i >= 0; i--)
                 {
-                    item.Update(item.Xvector, item.Yvector);
+                    Bullets[i].Update(Bullets[i].Xvector, Bullets[i].Yvector);
+                    //تغییر دادم 
                 }
             }
         }
@@ -840,12 +875,10 @@ namespace WinFormsApp1.Logics
         {
             if (Bullets.Count != 0)
             {
-                foreach (var item in Bullets)
+                for (int i = Bullets.Count - 1; i >= 0; i--)
                 {
-                    if (item.Active == false)
-                    {
-                        Bullets.Remove(item);
-                    }
+                    if (!Bullets[i].Active)
+                        Bullets.RemoveAt(i);
                 }
             }
         }
@@ -895,15 +928,18 @@ namespace WinFormsApp1.Logics
         }
         public bool Update()
         {
+            //MessageBox.Show("Update");
             Wavemanager.Update();
-            playerupdate();
+
             enemyupdate();
-            playershoot();
+            //playershoot();
             bulletsupdate();
             bulletenemycolision();
             bulletplayer();
             enemyplayer();
             playercoincolision1();
+            //MessageBox.Show(Bullets[0].Active.ToString());
+            //تغییر دادم 
             removebullets();
             removeenemy();
             removecoin();

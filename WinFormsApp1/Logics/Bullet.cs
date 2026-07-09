@@ -36,11 +36,11 @@ namespace WinFormsApp1.Logics
         }
         public bool BaresiharekatX(float andaze)
         {
-            return (X + (andaze * Speed) + Width <= GameWorld.Width && X + (andaze * Speed) - Width >= 0) ;
+            return (X + (andaze * Speed) + Width / 2 <= GameWorld.Width && X + (andaze * Speed) - Width /2 >= 0) ;
         }
         public bool BaresiharekatY(float andaze)
         {
-            return (Y + (andaze * Speed) + Height <= GameWorld.Height && Y + (andaze * Speed) - Height >= 0);
+            return (Y + (andaze * Speed) + Height / 2 <= GameWorld.Height && Y + (andaze * Speed) - Height / 2 <= 0);
         }
         public void MoveX(float andaze)
         {
@@ -76,15 +76,21 @@ namespace WinFormsApp1.Logics
         }
         public void Update(float x,float y)
         {
+            if (!Active)
+            {
+                MessageBox.Show("Inactive");
+            }
+            //تغییر دادم کد بالایی رو 
             if (active == true)
             {
                 MoveX(x);
                 MoveY(y);
             }
-            else
-            {
-                GameWorld.Bullets.Remove(this);
-            }
+            //else
+            //{
+            //    GameWorld.Bullets.Remove(this);
+            //}
+            //تغییرش دادم 
         }
     }
 }

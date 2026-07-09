@@ -31,11 +31,12 @@ namespace WinFormsApp1.Logics
         public abstract void MoveY(float andaze);
         public bool BaresiharekatX(float andaze)
         {
-            return (X + (andaze * Speed) + Width <= GameWorld.Width && X + (andaze * Speed) - Width >= 0);
+            return (X + (andaze * Speed) + Width/2 <= GameWorld.Width && X + (andaze * Speed) - Width/2 >= 0);
         }
         public bool BaresiharekatY(float andaze)
         {
-            return (Y + (andaze * Speed) + Height <= GameWorld.Height && Y + (andaze * Speed) - Height >= 0);
+            return (Y + (andaze * Speed) + Height/2 <= GameWorld.Height && Y + (andaze * Speed) - Height/2 >= 0);
+            
         }
         public template(int width,int height,int x,int y,float damage,int speed,int health,int coin,int xp)
         {
@@ -77,10 +78,14 @@ namespace WinFormsApp1.Logics
             Bullet sample;
             if (Timeshoot >= 1500)
             {
-                sample = Weapon.santes(X, Y + Height / 2);
+                sample = Weapon.santes(X, Y - (Height / 2) -5);
                 sample.Xvector = 0;
-                sample.Yvector = 1;
+                sample.Yvector = -1;
                 Timeshoot = 0;
+                if (sample != null)
+                {
+                    GameWorld.Bullets.Add(sample);
+                }
                 return sample;
             }
             else

@@ -108,10 +108,11 @@ namespace WinFormsApp1.Logics
             Bullet sample;
             if (Timeshoot >= 1500)
             {
-                sample = Weapon.santes(X, Y - Height / 2);
+                sample = Weapon.santes(X, Y + Height / 2);
                 Timeshoot = 0;
                 sample.Xvector = 0;
-                sample.Yvector = -1;
+                sample.Yvector = 1;
+                GameWorld.Bullets.Add(sample);
                 return sample;
             }
             else
@@ -155,13 +156,14 @@ namespace WinFormsApp1.Logics
         {
             MoveX(0);
             MoveY(-1);
-            Bullet sample;
-            if (Shoot() != null)
-            {
-                sample = Shoot();
-                GameWorld.Bullets.Add(sample);
+            Bullet sample = Shoot();
+            //if (sample != null)
+            //{
+                
+            //    GameWorld.Bullets.Add(sample);
 
-            }
+            //}
+            //تغییر دادم 
         }
         public ShooterEnemy santens()
         {
@@ -184,7 +186,7 @@ namespace WinFormsApp1.Logics
             Bullet sample1;
             if (Timeshoot >= 1500)
             {
-                sample1 = Weapon.santes(X, Y - Height / 2);
+                sample1 = Weapon.santes(X, Y + Height / 2);
                 Timeshoot = 0;
                 Bullet sample2 = sample1.santes(sample1.X, sample1.Y);
 
@@ -262,12 +264,13 @@ namespace WinFormsApp1.Logics
         {
             MoveX(0);
             MoveY(-1);
-            Bullet sample1;
-            if (Shoot() != null)
-            {
-                sample1 = Shoot();
+            Bullet sample1 = Shoot();
+            //if (sample1 != null)
+            //{
+            //    GameWorld.Bullets.Add(sample1);
               
-            }
+            //}
+            //تغییر دادم 
         }
         public HeavyTankEnemy santens()
         {
