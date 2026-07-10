@@ -281,6 +281,7 @@ namespace WinFormsApp1.Logics
                 GameWorld.Bullets.Add(sample);
 
             }
+            Timeshoot += 16;
             //تغییر دادم 
         }
         public ShooterEnemy santens()
@@ -418,6 +419,7 @@ namespace WinFormsApp1.Logics
                 GameWorld.Bullets.Add(sample1);
 
             }
+            Timeshoot += 16;
             //تغییر دادم 
         }
         public HeavyTankEnemy santens()

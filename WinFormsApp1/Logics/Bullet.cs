@@ -35,7 +35,7 @@ namespace WinFormsApp1.Logics
             Speed = speed;
             Active = true;
             this.width = width;
-            this.height = height;
+            this.height = heghit;
             //bulletswholegame.Add(this);
             //MessageBox.Show("bullet succesfull added");
         }

@@ -176,9 +176,10 @@ namespace WinFormsApp1.Logics
                 {
                     templates[index].X = random.Next(templates[index].Width / 2, GameWorld.Width - templates[index].Width / 2);
                     templates[index].Y = templates[index].Height / 2;
-                    
+
                     //خط مهم و مشتی 
-                    if (templates[index] is StandardEnemy && random.Next(100) < 5)
+                    //&& random.Next(100) < 5
+                    if (templates[index] is StandardEnemy )
                     {
                         templates[index].Coin = 10;
                     }
@@ -229,7 +230,7 @@ namespace WinFormsApp1.Logics
             {
                 
                 spawndelay += 16;
-                if (spawndelay >= 5000)
+                if (spawndelay >= 1000)
                 {
                     spawnenemy(activewave,index);
                     //activewave.RemoveAt(0);
@@ -250,7 +251,7 @@ namespace WinFormsApp1.Logics
                     {
                         showmessage = true;
                         Wavedelay += 16;
-                        if (Wavedelay > 8000)
+                        if (Wavedelay > 4000)
                         {
                             currentwave++;
                             index = 0;
@@ -759,7 +760,22 @@ namespace WinFormsApp1.Logics
                             {
                                 //MessageBox.Show("counting inactive bullets");
                                 item1.DamageTaken(item.Damage);
-                                GameWorld.player1.XpTaken(item1.Xp);
+    //                            MessageBox.Show(
+    //$"Health={item1.Health}\nActive={item1.Active}\nCoin={item1.Coin}");
+                                //GameWorld.player1.XpTaken(item1.Xp);
+                                if (!item1.Active )
+                                {
+                                    GameWorld.player1.XpTaken(item1.Xp);
+                                    if (item1.Coin != 0)
+                                    {
+                                        //MessageBox.Show("Coin Created");
+                                        Coindrop coin4 = new Coindrop(item1.X, item1.Y, item1.Coin);
+                                        //MessageBox.Show(coinsdrops.Count.ToString());
+                                        coinsdrops.Add(coin4);
+                                    }
+
+                                }
+                                //اضافه کردم بالا رو به اینجا 
                                 //MessageBox.Show("from bulletenemy it has been touched");
                                 item.Active = false;
                                 break;
@@ -846,7 +862,7 @@ namespace WinFormsApp1.Logics
                         player1.DamageTaken(item.Damage);
                         player1.XpTaken(50);
                         player1.Cointaken(1);
-                        MessageBox.Show("from bulletplayerw it has been touched");
+                        //MessageBox.Show("from bulletplayerw it has been touched");
                         item.Active = false;
                         break;
                     }

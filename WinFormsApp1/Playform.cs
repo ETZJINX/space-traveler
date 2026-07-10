@@ -21,13 +21,13 @@ namespace WinFormsApp1
             
             gameWorld = new GameWorld();
             //gameWorld.initbullet();
-            Bullet bullet = new Bullet(BulletMoveType.straghit, 360, 150, 1000, 5, 100, 100);
+            Bullet bullet = new Bullet(BulletMoveType.straghit, 360, 150, 75,25, 5, 5);
             //bullet.jahatx = Xvextor.right;
             //bullet.jahaty = Yvector.down;
             //GameWorld.Bullets.Add(bullet);
             //GameWorld.Bullets.Add(bullet);
             //bullet.Update(0, 1);
-            player player = new player(25, 25, 100, 515, 50, 2,140, 700, 0, Xvextor.sabet, Yvector.sabet, bullet);
+            player player = new player(25, 25, 100, 515, 50,15,140, 700, 0, Xvextor.sabet, Yvector.sabet, bullet);
             GameWorld.player1 = player;
             Wavemanager.init();
             //this.Size = new Size(1075, 633);
@@ -100,9 +100,11 @@ namespace WinFormsApp1
 
         private void PlayPanl_Paint(object sender, PaintEventArgs e)
         {
+            //MessageBox.Show("Paint Start");
             //MessageBox.Show("Paint");
             //MessageBox.Show(GameWorld.enemies.Count.ToString());
             Graphics g = e.Graphics;
+            //g.FillEllipse(Brushes.Gold, 200, 200, 10, 10);
 
 
             if (GameWorld.player1.Active)
@@ -116,27 +118,33 @@ namespace WinFormsApp1
                 if (enemy.Active)
                 {
                     Render.drawenemy(g, enemy);
+
                 }
             }
 
 
             foreach (var bullet in GameWorld.Bullets)
             {
-                //if (bullet.Active)
-                //{
+                if (bullet.Active)
+                {
                     Render.drawbullet(g, bullet);
-                //}
-            }
+                }
+        }
 
             //g.DrawRectangle(Pens.Pink, 250, 600, 15, 15);
             //هیچی داخل بالتس نیستش 
-
+            //MessageBox.Show(GameWorld.coinsdrops.Count.ToString());
+            //MessageBox.Show(GameWorld.coinsdrops.Count.ToString());
             if (GameWorld.coinsdrops.Count != 0)
             {
+                //MessageBox.Show("Has Coins");
                 foreach (var coin in GameWorld.coinsdrops)
                 {
+                    //MessageBox.Show(GameWorld.coinsdrops.Count.ToString());
+                    //MessageBox.Show(coin.active.ToString());
                     if (coin.active)
                     {
+                        //MessageBox.Show("Calling DrawCoin");
                         Render.drawcoin(g, coin);
                     }
                 }
@@ -145,11 +153,11 @@ namespace WinFormsApp1
             if (Wavemanager.showmessage)
             {
                 g.DrawString(
-                $"Wave{Wavemanager.currentwave}",
+                $"Wave{Wavemanager.currentwave + 1}",
                 new Font("Arial", 30),
-                Brushes.Pink,
-                250,
-                200);
+                Brushes.Black,
+                GameWorld.Width / 2,
+                GameWorld.Height / 2);
             }
             if (GameWorld.gameover)
             {

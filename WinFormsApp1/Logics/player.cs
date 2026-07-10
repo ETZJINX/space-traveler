@@ -90,7 +90,7 @@ namespace WinFormsApp1.Logics
             //Debug.WriteLine(Timeshoot);
             //MessageBox.Show(Timeshoot.ToString());
             //تغییر دادم
-            if (Timeshoot >= 1500)
+            if (Timeshoot >= 500)
             {
                 
                 sample = Weapon.santes(X, Y - (Height / 2) - Weapon.Height / 2 - 1 );
