@@ -4,15 +4,17 @@ using System.Text;
 using WinFormsApp1.Logics.interfaces;
 namespace WinFormsApp1.Logics
 {
-    public class Bullet : IDamagable,IMoveable,IActive,ISizeVolum,IUpdate
+    public class Bullet : IDamagable,IMoveable,IActive,ISizeVolum,IUpdate,ISpeed
     {
-        public static List<Bullet> bulletswholegame = new List<Bullet>();
-        public float Xvector;
-        public float Yvector;
+        //public static List<Bullet> bulletswholegame = new List<Bullet>();
+        private Xvextor JAHATX;
+        private Yvector JAHATY;
         private int width;
         private int height;
         public int Width {  get { return width; } }
         public int Height { get { return height; } }
+        public Xvextor jahatx{  get { return JAHATX; } set { JAHATX = value; } }
+        public Yvector jahaty { get { return JAHATY; }set { JAHATY = value; } }
         private BulletMoveType moveType;
         private int x, y;
         private float damage;
@@ -24,7 +26,7 @@ namespace WinFormsApp1.Logics
         public int Y { get { return y; } set { y = value ; } }
         public float Damage { get { return damage; } set { damage = value; } }
         public int Speed { get { return speed; } set { speed = value; } }
-        public Bullet(BulletMoveType moveType,int x,int y,float damage,int speed)
+        public Bullet(BulletMoveType moveType,int x,int y,float damage,int speed,int width,int heghit)
         {
             Movetype = moveType;
             X = x;
@@ -32,59 +34,85 @@ namespace WinFormsApp1.Logics
             Damage = damage;
             Speed = speed;
             Active = true;
-            bulletswholegame.Add(this);
+            this.width = width;
+            this.height = height;
+            //bulletswholegame.Add(this);
+            //MessageBox.Show("bullet succesfull added");
         }
-        public bool BaresiharekatX(float andaze)
+        public bool BaresiharekatX()
         {
-            return (X + (andaze * Speed) + Width / 2 <= GameWorld.Width && X + (andaze * Speed) - Width /2 >= 0) ;
+            return (X + (((int)jahatx) * Speed) + this.Width / 2 <= GameWorld.Width && X + (((int)jahatx) * Speed) - this.Width /2 >= 0) ;
         }
-        public bool BaresiharekatY(float andaze)
+        public bool BaresiharekatY()
         {
-            return (Y + (andaze * Speed) + Height / 2 <= GameWorld.Height && Y + (andaze * Speed) - Height / 2 <= 0);
+            return (Y + (((int)jahaty) * Speed) + Height / 2 <= GameWorld.Height && Y + (((int)jahaty) * Speed) - Height / 2 >= 0) ;
         }
-        public void MoveX(float andaze)
+        public void MoveX()
         {
-            if (BaresiharekatX(andaze))
-            {
-                X += (int)(andaze * Speed);
-                return;
-            }
-            else
-            {
-                Active = false;
-                return;
-            }
+            //if (BaresiharekatX())
+            //{
+            //    X += (int)(((int)jahatx) * Speed);
+            //    return;
+            //}
+            //else
+            //{
+            //    //Active = false;
+            //    //تغییر دادم
+            //    return;
+            //}
+            X += (int)(((int)jahatx) * Speed);
 
         }
-        public void MoveY(float andaze)
+        public void MoveY()
         {
-            if (BaresiharekatY(andaze))
-            {
-                Y +=(int) (andaze * Speed);
-                return;
-            }
-            else
-            {
-                Active = false;
-                return;
-            }
+            //if (BaresiharekatY())
+            //{
+            //    Y +=(int) (((int)jahaty) * Speed);
+            //    return;
+            //}
+            //else
+            //{
+            //    //Active = false;
+            //    //تغیییردادم
+            //    return;
+            //}
+            Y += (int)(((int)jahaty) * Speed);
         }
         public Bullet santes(int x1 , int y1)
         {
-            Bullet sample = new Bullet(this.Movetype,x1,y1,this.Damage,this.Speed);
+            Bullet sample = new Bullet(this.Movetype,x1,y1,this.Damage,this.Speed,Width,Height);
             return sample;    
         }
-        public void Update(float x,float y)
+        public bool outofrange()
         {
-            if (!Active)
+            if (!BaresiharekatX() || !BaresiharekatY())
             {
-                MessageBox.Show("Inactive");
+                return true;
             }
-            //تغییر دادم کد بالایی رو 
-            if (active == true)
+            else
             {
-                MoveX(x);
-                MoveY(y);
+                return false;
+            }
+        }
+        public void Update()
+        {
+            //MessageBox.Show($"{X} , {Y}");
+            //تغییر دادم
+            //if (!Active)
+            //{
+            //    MessageBox.Show("Inactive");
+            //}
+            //تغییر دادم کد بالایی رو 
+            //if (active == true)
+            //{
+            //    MoveX();
+            //    MoveY();
+            //}
+            MoveX();
+            MoveY();
+            if (outofrange())
+            {
+                Active = false;
             }
             //else
             //{

@@ -36,6 +36,7 @@
             health = new Label();
             coinamount = new Label();
             scoreamount = new Label();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // coin
@@ -43,7 +44,7 @@
             coin.Anchor = AnchorStyles.Top;
             coin.AutoSize = true;
             coin.Font = new Font("Sylfaen", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            coin.Location = new Point(332, 8);
+            coin.Location = new Point(373, 8);
             coin.Name = "coin";
             coin.Size = new Size(63, 19);
             coin.TabIndex = 0;
@@ -62,16 +63,17 @@
             // panel1
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            panel1.Location = new Point(881, 9);
+            panel1.Controls.Add(healthbar);
+            panel1.Location = new Point(845, 9);
             panel1.Name = "panel1";
-            panel1.Size = new Size(193, 19);
+            panel1.Size = new Size(200, 20);
             panel1.TabIndex = 2;
             // 
             // healthbar
             // 
-            healthbar.Location = new Point(881, 9);
+            healthbar.Location = new Point(0, 0);
             healthbar.Name = "healthbar";
-            healthbar.Size = new Size(191, 19);
+            healthbar.Size = new Size(150, 20);
             healthbar.TabIndex = 3;
             // 
             // PlayPanl
@@ -87,7 +89,7 @@
             health.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             health.AutoSize = true;
             health.Font = new Font("Sylfaen", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            health.Location = new Point(724, 8);
+            health.Location = new Point(706, 8);
             health.Name = "health";
             health.Size = new Size(136, 19);
             health.TabIndex = 5;
@@ -97,7 +99,7 @@
             // 
             coinamount.Anchor = AnchorStyles.Top;
             coinamount.AutoSize = true;
-            coinamount.Location = new Point(401, 8);
+            coinamount.Location = new Point(455, 8);
             coinamount.Name = "coinamount";
             coinamount.Size = new Size(51, 19);
             coinamount.TabIndex = 6;
@@ -119,7 +121,6 @@
             ClientSize = new Size(1072, 597);
             Controls.Add(scoreamount);
             Controls.Add(coinamount);
-            Controls.Add(healthbar);
             Controls.Add(panel1);
             Controls.Add(health);
             Controls.Add(PlayPanl);
@@ -130,6 +131,7 @@
             Text = "Playform";
             KeyDown += Playform_KeyDown;
             KeyUp += Playform_KeyUp;
+            panel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }

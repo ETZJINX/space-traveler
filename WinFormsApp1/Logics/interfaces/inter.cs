@@ -4,27 +4,44 @@ using System.Text;
 
 namespace WinFormsApp1.Logics.interfaces
 {
+    public enum Xvextor
+    {
+        sabet = 0,
+        right = 1,
+        left = -1,
+    }
+    public enum Yvector
+    {
+        sabet = 0,
+        up = -1,
+        down = 1
+    }
     public enum BulletMoveType
     {
         straghit = 1,
         zigzag = 2,
         vazirshatrang = 3,
-        balestic = 4
+        //balestic = 4
     }
     public interface IMoveable
     {
         int X { get; set; }
         int Y { get; set; }
+        Xvextor jahatx {  get; set; }
+        Yvector jahaty { get; set; }
+
         //MoveType Movetype {  get; set; }
 
-        void MoveX(float andaze);
-        void MoveY(float andaze);
+        void MoveX();
+        void MoveY();
     }
     public interface IDamagable
     {
         float Damage { get; set; }
+    }
+    public interface ISpeed
+    {
         int Speed { get; set; }
-
     }
     public interface IHealth
     {
@@ -42,7 +59,7 @@ namespace WinFormsApp1.Logics.interfaces
     internal interface IWeaponDamage
     {
         Bullet Weapon { get; }
-        BulletMoveType BulletMoveType { get; }
+        //BulletMoveType BulletMoveType { get; }
         int Timeshoot {  get; set; }
         Bullet Shoot();
     }
@@ -53,10 +70,10 @@ namespace WinFormsApp1.Logics.interfaces
     }
     public interface IUpdate
     {
-        void Update(float x,float y);
-    }
-    public interface IEnemyUpdate
-    {
         void Update();
     }
+    //public interface IEnemyUpdate
+    //{
+    //    void Update();
+    //}
 }

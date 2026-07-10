@@ -1,14 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using WinFormsApp1.Logics.interfaces;
 
 namespace WinFormsApp1.Logics
 {
-    public abstract class template : IMoveable,IDamagable,IHealth,IActive,IAchivments,ISizeVolum
+    public abstract class template : IMoveable,IDamagable,IHealth,IActive,IAchivments,ISizeVolum,ISpeed
     {
         private int width;
         private int height;
+        private Xvextor JAHATX;
+        private Yvector JAHATY;
+        public Xvextor jahatx { get { return JAHATX; } set { JAHATX = value; } }
+        public Yvector jahaty { get { return JAHATY; } set { JAHATY = value; } }
+
         public int Width { get { return width; } }
         public int Height { get { return height; } }
         private int x;
@@ -27,18 +33,18 @@ namespace WinFormsApp1.Logics
         public bool Active { get { return active; } set { active = value; } }
         public int Coin { get {return coin;  }set { coin = value; } }
         public int Xp { get { return xp; } set { xp = value; } }
-        public abstract void MoveX(float andaze);
-        public abstract void MoveY(float andaze);
-        public bool BaresiharekatX(float andaze)
+        public abstract void MoveX();
+        public abstract void MoveY();
+        public bool BaresiharekatX()
         {
-            return (X + (andaze * Speed) + Width/2 <= GameWorld.Width && X + (andaze * Speed) - Width/2 >= 0);
+            return (X + (((int)jahatx) * Speed) + this.Width / 2 <= GameWorld.Width && X + (((int)jahatx) * Speed) - this.Width /2 >= 0) ;
         }
-        public bool BaresiharekatY(float andaze)
+        public bool BaresiharekatY()
         {
-            return (Y + (andaze * Speed) + Height/2 <= GameWorld.Height && Y + (andaze * Speed) - Height/2 >= 0);
-            
+            return (Y + (((int)jahaty) * Speed) + Height / 2 <= GameWorld.Height && Y + (((int)jahaty) * Speed) - Height / 2 >= 0) ;
         }
-        public template(int width,int height,int x,int y,float damage,int speed,int health,int coin,int xp)
+        
+        public template(int width,int height,int x,int y,float damage,int speed,int health,int coin,int xp,Xvextor jahatx,Yvector jahaty)
         {
             this.width= width;
             this.height= height;
@@ -50,6 +56,8 @@ namespace WinFormsApp1.Logics
             Active = true;
             this.coin = coin;
             Xp = xp;
+            this.jahatx = jahatx;
+            this.jahaty = jahaty;
         }
         public virtual void DamageTaken(float megdar)
         {
@@ -70,59 +78,69 @@ namespace WinFormsApp1.Logics
         private Bullet MainBullet;
         private int timeshoot;
         public int Timeshoot { get { return timeshoot; } set { timeshoot = value; }  }
-        private BulletMoveType movetypebullet;
+        //private BulletMoveType movetypebullet;
         public Bullet Weapon {  get { return MainBullet; } }
-        public BulletMoveType BulletMoveType { get { return movetypebullet; } }
+        //public BulletMoveType BulletMoveType { get { return movetypebullet; } }
         public Bullet Shoot()
         {
-            Bullet sample;
+            Bullet sample = null;
+            //Debug.WriteLine($"Shoot: {GetHashCode()}  Timeshoot={Timeshoot}");
+            //MessageBox.Show($"Shoot: {GetHashCode()}  Timeshoot={Timeshoot}");
+            //تغییر دادم
+            //Debug.WriteLine(Timeshoot);
+            //MessageBox.Show(Timeshoot.ToString());
+            //تغییر دادم
             if (Timeshoot >= 1500)
             {
-                sample = Weapon.santes(X, Y - (Height / 2) -5);
-                sample.Xvector = 0;
-                sample.Yvector = -1;
+                
+                sample = Weapon.santes(X, Y - (Height / 2) - Weapon.Height / 2 - 1 );
+                sample.jahatx = Xvextor.sabet;
+                sample.jahaty = Yvector.up;
                 Timeshoot = 0;
-                if (sample != null)
-                {
-                    GameWorld.Bullets.Add(sample);
-                }
+                //if (sample != null)
+                //{
+                //    GameWorld.Bullets.Add(sample);
+                //}
+                //تغییر دادمن 
                 return sample;
             }
             else
             {
-                return null;
+                return sample;
             }
 
         }
-        public override void MoveX(float andaze)
+        public override void MoveX()
         {
-            if (BaresiharekatX(andaze))
+            if (BaresiharekatX())
             {
-                X += (int)(andaze * Speed);
+                X += (int)(((int)jahatx) * Speed);
                 return;
             }
             else
             {
                 return;
             }
+            //X += (int)(((int)jahatx) * Speed);
         }
-        public override void MoveY(float andaze)
+        public override void MoveY()
         {
-            if (BaresiharekatY(andaze))
+            if (BaresiharekatY())
             {
-                Y += (int)(andaze * Speed);
+                Y += (int)(((int)jahaty) * Speed);
                 return;
             }
             else
             {
                 return;
             }
+            //Y += (int)(((int)jahaty) * Speed);
         }
-        public player(int width, int height, int x, int y, float damage, int speed, int health, int coin, int xp,Bullet mainbullet,BulletMoveType move) : base(width, height, x, y, damage, speed, health, coin, xp)
+        public player(int width, int height, int x, int y, float damage, int speed, int health, int coin, int xp,Xvextor jahatx,Yvector jahaty,Bullet mainbullet) : base(width, height, x, y, damage, speed, health, coin, xp,jahatx,jahaty)
         {
             this.MainBullet = mainbullet;
-            this.movetypebullet = move;
-            timeshoot = 500;
+            //this.movetypebullet = move;
+            timeshoot = 1500;
         }
         public void Cointaken(int megdar)
         {
@@ -132,10 +150,41 @@ namespace WinFormsApp1.Logics
         {
             Xp += megdar; 
         }
-        public  void Update(float x,float y)
+        public bool outofrange()
         {
-            MoveX(x);
-            MoveY(y);
+            if (!BaresiharekatX() || !BaresiharekatY())
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public void Update()
+        {
+            //Debug.WriteLine($"Update: {GetHashCode()}  Timeshoot={Timeshoot}");
+            //MessageBox.Show($"Update: {GetHashCode()}  Timeshoot={Timeshoot}");
+            //تغییر دادم
+            timeshoot += 16;
+            if (outofrange())
+            {
+                
+            }
+            else
+            {
+                MoveX();
+                MoveY();
+            }
+        }
+        public void tagirjahatx(Xvextor jahatx)
+        {
+            this.jahatx = jahatx;
+        }
+        public void tagirjahaty(Yvector jahaty)
+        {
+            this.jahaty = jahaty;
         }
     }
 }

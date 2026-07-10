@@ -10,6 +10,7 @@ namespace WinFormsApp1.Logics
         {
             if (bullet.X + bullet.Width / 2 >= x - width/2 && bullet.X - bullet.Width/2 <= x + width/2 && (bullet.Y - bullet.Height /2 <= y + height / 2 && bullet.Y + bullet.Height / 2 >= y - height / 2 ))
             {
+                
                 return true;
             }
             else

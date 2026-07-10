@@ -13,6 +13,7 @@ namespace WinFormsApp1.Logics
         private static int EnemyRemainingToSpawn = 10;
         private static int spawndelay = 0;
         private static int Wavedelay = 0;//ثانیه 
+        private static int index = 0;
         private static List<template> wave1 = new List<template>();
         private static List<template> wave2 = new List<template>();
         private static List<template> wave3 = new List<template>();
@@ -26,15 +27,18 @@ namespace WinFormsApp1.Logics
         private static List<List<template>> allwave = new List<List<template>>();
         public static void init()
         {
-            StandardEnemy sample = new StandardEnemy(60, 80, 250, GameWorld.Height - 20, 40, 5, 100, 0, 150);
-            ScoutEnemy sample1 = new ScoutEnemy(60, 80, 250, GameWorld.Height - 20, 45, 15, 100, 0, 250);
-            ShooterEnemy sample2 = new ShooterEnemy(40, 60, 250, GameWorld.Height - 20, 20, 5, 150, 0, 350, GameWorld.player1.Weapon, BulletMoveType.straghit);
-            HeavyTankEnemy sample3 = new HeavyTankEnemy(120, 100, 250, GameWorld.Height - 20, 150, 3, 700, 0, 550, GameWorld.player1.Weapon, BulletMoveType.vazirshatrang);
-            TerroristEnemy sample4 = new TerroristEnemy(20, 40, 250, GameWorld.Height - 20, 280, 8, 500, 0, 800);
+            StandardEnemy sample = new StandardEnemy(60, 80, 250, GameWorld.Height - 20, 40, 5, 100, 0, 150,Xvextor.sabet,Yvector.down);
+            ScoutEnemy sample1 = new ScoutEnemy(60, 80, 250, GameWorld.Height - 20, 45, 15, 100, 0, 250,Xvextor.right,Yvector.down);
+            ShooterEnemy sample2 = new ShooterEnemy(40, 60, 250, GameWorld.Height - 20, 20, 5, 150, 0, 350,Xvextor.sabet,Yvector.down, GameWorld.player1.Weapon);
+            HeavyTankEnemy sample3 = new HeavyTankEnemy(120, 100, 250, GameWorld.Height - 20, 150, 3, 700, 0, 550,Xvextor.sabet,Yvector.down, GameWorld.player1.Weapon);
+            TerroristEnemy sample4 = new TerroristEnemy(20, 40, 250, GameWorld.Height - 20, 280, 8, 500, 0, 800,Xvextor.sabet,Yvector.down);
             //wave1
             for (int i = 0; i < 10; i++)
             {
                 wave1.Add(sample.santens());
+                //MessageBox.Show(sample.santens().Active.ToString());
+                //بررسی میکنمش 
+            
             }
             allwave.Add(wave1);
             //wave2
@@ -159,7 +163,8 @@ namespace WinFormsApp1.Logics
             allwave.Add(wave10);
             
         }
-        public static void spawnenemy(List<template> templates)
+        //اسپان انمی هنوز مشکوکه
+        public static void spawnenemy(List<template> templates,int index)
         {
             if (templates.Count == 0)
             {
@@ -167,29 +172,39 @@ namespace WinFormsApp1.Logics
             }
             else
             {
-                templates[0].X = random.Next(templates[0].Width / 2, GameWorld.Width - templates[0].Width / 2);
-                if (templates[0] is StandardEnemy && random.Next(100) < 5)
+                if (templates.Count != 0)
                 {
-                    templates[0].Coin = 10;
-                }
-                else if (templates[0] is ScoutEnemy && random.Next(100) < 10)
-                {
-                    templates[0].Coin = 20;
-                }
-                else if (templates[0] is ShooterEnemy && random.Next(100) < 30)
-                {
-                    templates[0].Coin = 50;
-                }
-                else if (templates[0] is HeavyTankEnemy && random.Next(100) < 60 && templates[0].Coin != 2000)
-                {
-                    templates[0].Coin = 100;
-                }
-                else if (templates[0] is TerroristEnemy && random.Next(100) < 100)
-                {
-                    templates[0].Coin = 200;
-                }
-                GameWorld.enemies.Add(templates[0]);
+                    templates[index].X = random.Next(templates[index].Width / 2, GameWorld.Width - templates[index].Width / 2);
+                    templates[index].Y = templates[index].Height / 2;
+                    
+                    //خط مهم و مشتی 
+                    if (templates[index] is StandardEnemy && random.Next(100) < 5)
+                    {
+                        templates[index].Coin = 10;
+                    }
+                    else if (templates[index] is ScoutEnemy && random.Next(100) < 10)
+                    {
+                        templates[index].Coin = 20;
+                    }
+                    else if (templates[index] is ShooterEnemy && random.Next(100) < 30)
+                    {
+                        templates[index].Coin = 50;
+                    }
+                    else if (templates[index] is HeavyTankEnemy && random.Next(100) < 60 && templates[index].Coin != 2000)
+                    {
+                        templates[index].Coin = 100;
+                    }
+                    else if (templates[index] is TerroristEnemy && random.Next(100) < 100)
+                    {
+                        templates[index].Coin = 200;
+                    }
+                    GameWorld.enemies.Add(templates[index]);
 
+                    //templates.RemoveAt(index);
+                    //MessageBox.Show(GameWorld.enemies[GameWorld.enemies.Count - 1].Active.ToString());
+                    //تغییر دادم 
+
+                }
             }
         }
         public static void sakhty(List<template> templates)
@@ -210,28 +225,36 @@ namespace WinFormsApp1.Logics
         public static void Update()
         {
             List<template> activewave = allwave[currentwave - 1];
-            if (activewave.Count != 0)
+            if (activewave.Count != 0 && index < activewave.Count)
             {
-                spawndelay++;
+                
+                spawndelay += 16;
                 if (spawndelay >= 5000)
                 {
-                    spawnenemy(activewave);
-                    activewave.RemoveAt(0);
+                    spawnenemy(activewave,index);
+                    //activewave.RemoveAt(0);
+                    //activewave[0].Active = false;
+                    //MessageBox.Show(GameWorld.enemies[GameWorld.enemies.Count - 1].Active.ToString());
+                    //تغییر دادم
+
                     //EnemyRemainingToSpawn--;
                     spawndelay = 0;
+                    index++;
                 }
             }
             else
             {
-                if (GameWorld.enemies.Count == 0)
+                if (GameWorld.baresiinactiveenemy())
                 {
                     if (currentwave != 10)
                     {
                         showmessage = true;
-                        Wavedelay++;
+                        Wavedelay += 16;
                         if (Wavedelay > 8000)
                         {
                             currentwave++;
+                            index = 0;
+                            showmessage = false;
                             sakhty(allwave[currentwave - 1]);
                             Wavedelay = 0;
                         }
@@ -498,7 +521,7 @@ namespace WinFormsApp1.Logics
         //        }
         //    }
         }
-    
+        //اپدیتم شک دارم 
     
     }
     public class Coindrop
@@ -535,76 +558,110 @@ namespace WinFormsApp1.Logics
         //private static List<TerroristEnemy> terroristEnemies = new List<TerroristEnemy>();
         public static List<template> enemies = new List<template>();
         public static bool gameover = false;
-        public static Random Random = new Random();
-        public static int stagelevel = 1;
+        //public static Random Random = new Random();
+        //public static int stagelevel = 1;
 
         public static int Width = 1033; 
         public static int Height = 540;
-        public int xplayervector = 0;
-        public int yplayervector = 0;
+        //public int xplayervector = 0;
+        //public int yplayervector = 0;
+        public static bool baresiinactiveenemy()
+        {
+            if (enemies.Count != 0)
+            {
+                foreach (var item in enemies)
+                {
+                    if (item.Active)
+                    {
+                        return false;
+                    }
+                }
+                return true;
+            }
+            return true;
+        }
         public void playerupdate(bool left,bool right,bool up,bool down)
         {
             if (left)
             {
-                yplayervector = 0;
-                xplayervector = -1;
-                player1.Update(xplayervector, yplayervector);
+                //yplayervector = 0;
+                //xplayervector = -1;
+                player1.tagirjahatx(Xvextor.left);
+                player1.tagirjahaty(Yvector.sabet);
+                player1.Update();
             }
             else if (right)
             {
-                yplayervector = 0;
-                xplayervector = 1;
-                player1.Update(xplayervector, yplayervector);
+                player1.tagirjahatx(Xvextor.right);
+                player1.tagirjahaty(Yvector.sabet);
+                player1.Update();
             }
             else if (up)
             {
-                xplayervector = 0;
-                yplayervector = -1;
-                player1.Update(xplayervector, yplayervector);
+                player1.tagirjahatx(Xvextor.sabet);
+                player1.tagirjahaty(Yvector.up);
+                player1.Update();
             }
             else if (down)
             {
-                xplayervector = 0;
-                yplayervector = 1;
-                player1.Update(xplayervector, yplayervector);
+                player1.tagirjahatx(Xvextor.sabet);
+                player1.tagirjahaty(Yvector.down);
+                player1.Update();
             }
             else
             {
-                xplayervector = 0;
-                yplayervector = 0;
-                player1.Update(xplayervector, yplayervector);
+                player1.tagirjahatx(Xvextor.sabet);
+                player1.tagirjahaty(Yvector.sabet);
+                player1.Update();
             }
         }
         public void enemyupdate()
         {
+            //MessageBox.Show(enemies.Count.ToString());
             if (enemies.Count != 0)
             {
                 foreach (var item in enemies)
                 {
                     if (item is StandardEnemy)
                     {
-                        StandardEnemy sample = item as StandardEnemy;
-                        sample.Update();
+                        if (item != null)
+                        {
+                            StandardEnemy sample = item as StandardEnemy;
+                            sample.Update();
+                        }
                     }
                     if (item is ScoutEnemy)
                     {
-                        ScoutEnemy sample = item as ScoutEnemy;
-                        sample.Update();
+                        if (item != null)
+                        {
+                            ScoutEnemy sample = item as ScoutEnemy;
+                            sample.Update();
+                        }
+                        
                     }
                     if (item is ShooterEnemy)
                     {
-                        ShooterEnemy sample = item as ShooterEnemy;
-                        sample.Update();
+                        if (item != null)
+                        {
+                            ShooterEnemy sample = item as ShooterEnemy;
+                            sample.Update();
+                        }
                     }
                     if (item is HeavyTankEnemy)
                     {
-                        HeavyTankEnemy sample = item as HeavyTankEnemy;
-                        sample.Update();
+                        if (item != null)
+                        {
+                            HeavyTankEnemy sample = item as HeavyTankEnemy;
+                            sample.Update();
+                        }
                     }
                     if (item is TerroristEnemy)
                     {
-                        TerroristEnemy sample = item as TerroristEnemy;
-                        sample.Update();
+                        if (item != null)
+                        {
+                            TerroristEnemy sample = item as TerroristEnemy;
+                            sample.Update();
+                        }
                     }
                 }
             }
@@ -637,12 +694,28 @@ namespace WinFormsApp1.Logics
             //    }
             //}
         }
-        public void playershoot()
+        public void playershoot(bool shoot)
         {
-            if (Input.shoot)
+            if (shoot)
             {
-                Bullet sample;
-                sample =  player1.Shoot();
+                //Input.shoot = false;
+                //MessageBox.Show("theplayershoot is working");
+                Bullet sample =  player1.Shoot();
+                //MessageBox.Show(sample == null ? "NULL" : "NOT NULL");
+
+                if (sample != null)
+                {
+                    //MessageBox.Show(GameWorld.Bullets.Count.ToString() + " tedad bullet ha ");
+                    for (int i = 0; i < GameWorld.Bullets.Count; i++)
+                    {
+                        //MessageBox.Show(GameWorld.Bullets[i].Active.ToString() + $"{i}");
+                    }
+                    //MessageBox.Show("bullet is not null from playershoot");
+                    //MessageBox.Show("theplayershoot is working");
+                    //MessageBox.Show(Bullets.Count.ToString());
+                    //تغییر دادم
+                    Bullets.Add(sample);
+                }
                 Input.shoot = false;
             }
         }
@@ -654,10 +727,20 @@ namespace WinFormsApp1.Logics
                 //{
                 //     item.Update(item.Xvector, item.Yvector);
                 //}
-                for (int i = Bullets.Count - 1; i >= 0; i--)
+                //for (int i = Bullets.Count - 1; i >= 0; i--)
+                //{
+                //    //MessageBox.Show("Bullet Update");
+                //    //تغییر دادم
+                //    Bullets[i].Update(Bullets[i].Xvector, Bullets[i].Yvector);
+                //    //تغییر دادم 
+                //}
+                foreach (var item in Bullets)
                 {
-                    Bullets[i].Update(Bullets[i].Xvector, Bullets[i].Yvector);
-                    //تغییر دادم 
+                    if (item.Active)
+                    {
+                        //MessageBox.Show("from bulletupdate");
+                        item.Update();
+                    }
                 }
             }
         }
@@ -667,20 +750,24 @@ namespace WinFormsApp1.Logics
             {
                 foreach (var item in Bullets)
                 {
-                    if (enemies.Count != 0)
+                    if (enemies.Count != 0 && item.Active)
                     {
                         foreach (var item1 in enemies)
                         {
-                            if (Collision.BulletEnemy(item,item1.X,item1.Y,item1.Width,item1.Height) && item.Active == true && item1.Active == true)
+                            //MessageBox.Show("counting inactive bullets");
+                            if (Collision.BulletEnemy(item,item1.X,item1.Y,item1.Width,item1.Height) && item1.Active)
                             {
-                                item.Active = false;
+                                //MessageBox.Show("counting inactive bullets");
                                 item1.DamageTaken(item.Damage);
+                                GameWorld.player1.XpTaken(item1.Xp);
+                                //MessageBox.Show("from bulletenemy it has been touched");
+                                item.Active = false;
                                 break;
                             }
-                            else
-                            {
-                                continue;
-                            }
+                            //else
+                            //{
+                            //    continue;
+                            //}
                         }
                     }
                     //if (scoutEnemies.Count != 0)
@@ -752,18 +839,21 @@ namespace WinFormsApp1.Logics
             {
                 foreach (var item in Bullets)
                 {
-                    if (Collision.Bulletplayer(item, player1) && item.Active == true)
+                    if (Collision.Bulletplayer(item, player1) && item.Active)
                     {
-                        item.Active = false;
+                        //MessageBox.Show("counting inactive bullets2");
+                        //تغییر دادم          
                         player1.DamageTaken(item.Damage);
                         player1.XpTaken(50);
                         player1.Cointaken(1);
+                        MessageBox.Show("from bulletplayerw it has been touched");
+                        item.Active = false;
                         break;
                     }
-                    else
-                    {
-                        continue ;
-                    }
+                    //else
+                    //{
+                    //    continue ;
+                    //}
                 }
             }
         }
@@ -773,7 +863,7 @@ namespace WinFormsApp1.Logics
             {
                 foreach (var item1 in enemies)
                 {
-                    if (Collision.playerenemy(player1, item1.X, item1.Y, item1.Width, item1.Height) && item1.Active == true)
+                    if (Collision.playerenemy(player1, item1.X, item1.Y, item1.Width, item1.Height) && item1.Active)
                     {
                         player1.DamageTaken(item1.Damage);
                         player1.XpTaken(50);
@@ -781,10 +871,10 @@ namespace WinFormsApp1.Logics
                         item1.DamageTaken(player1.Damage);
                         break;
                     }
-                    else
-                    {
-                        continue;
-                    }
+                    //else
+                    //{
+                    //    continue;
+                    //}
                 }
             }
             //if (scoutEnemies.Count != 0)
@@ -863,7 +953,7 @@ namespace WinFormsApp1.Logics
             {
                 foreach (var item in coinsdrops)
                 {
-                    if (Collision.playercoincolision(player1,item))
+                    if (Collision.playercoincolision(player1,item) && item.active)
                     {
                         player1.Cointaken(item.coin);
                         item.active = false;
@@ -871,36 +961,58 @@ namespace WinFormsApp1.Logics
                 }
             }
         }
-        public void removebullets()
-        {
-            if (Bullets.Count != 0)
-            {
-                for (int i = Bullets.Count - 1; i >= 0; i--)
-                {
-                    if (!Bullets[i].Active)
-                        Bullets.RemoveAt(i);
-                }
-            }
-        }
-        public void removeenemy()
-        {
-            if (enemies.Count != 0)
-            {
-                foreach (var item in enemies)
-                {
-                    if (item.Active == false)
-                    {
-                        if (item.Coin != 0)
-                        {
-                            Coindrop coin1 = new Coindrop(item.X, item.Y, item.Coin);
-                            coinsdrops.Add(coin1);
-                        }
-                        enemies.Remove(item);
+        //public void removebullets()
+        //{
+        //    if (Bullets.Count != 0)
+        //    {
+        //        //for (int i = Bullets.Count - 1; i >= 0; i--)
+        //        //{
+        //        //    if (!Bullets[i].Active)
+        //        //        //Bullets[i].Active = false;
+        //        //    //تغییر دادم 
+        //        //        Bullets.RemoveAt(i);
 
-                    }
-                }
-            }
-        }
+        //        //}
+        //        foreach (var item in Bullets)
+        //        {
+
+        //        }
+        //    }
+        //}
+        //public void removeenemy()
+        //{
+        //    if (enemies.Count != 0)
+        //    {
+        //        //foreach (var item in enemies)
+        //        //{
+        //        //    if (item.Active == false)
+        //        //    {
+        //        //        if (item.Coin != 0)
+        //        //        {
+        //        //            Coindrop coin1 = new Coindrop(item.X, item.Y, item.Coin);
+        //        //            coinsdrops.Add(coin1);
+        //        //        }
+        //        //        enemies.Remove(item);
+
+        //        //    }
+        //        //}
+        //        for (int i = enemies.Count - 1; i >= 0; i--)
+        //        {
+        //            var item = enemies[i];
+        //            if (item.Active == false)
+        //            {
+        //                if (item.Coin != 0)
+        //                {
+        //                    Coindrop coin1 = new Coindrop(item.X, item.Y, item.Coin);
+        //                    coinsdrops.Add(coin1);
+        //                }
+        //                //enemies.Remove(item);
+        //                item.Active = false;
+
+        //            }
+        //        }
+        //    }
+        //}
         public bool gameover1()
         {
             if (player1.Active == false)
@@ -913,36 +1025,45 @@ namespace WinFormsApp1.Logics
                 return gameover;
             }
         }
-        public void removecoin()
-        {
-            if (coinsdrops.Count != 0)
-            {
-                foreach (var item in coinsdrops)
-                {
-                    if (!item.active)
-                    {
-                        coinsdrops.Remove(item);
-                    }
-                }
-            }
-        }
+        //public void removecoin()
+        //{
+        //    if (coinsdrops.Count != 0)
+        //    {
+        //        //foreach (var item in coinsdrops)
+        //        //{
+        //        //    if (!item.active)
+        //        //    {
+        //        //        coinsdrops.Remove(item);
+        //        //    }
+        //        //}
+        //        for (int i = coinsdrops.Count - 1; i >= 0; i--)
+        //        {
+        //            var item = coinsdrops[i];
+        //            if (!item.active)
+        //            {
+        //                //coinsdrops.Remove(item);
+        //                item.active = false;
+        //            }
+        //        }
+        //    }
+        //}
         public bool Update()
         {
             //MessageBox.Show("Update");
-            Wavemanager.Update();
+            //Wavemanager.Update();
 
-            enemyupdate();
-            //playershoot();
-            bulletsupdate();
-            bulletenemycolision();
-            bulletplayer();
-            enemyplayer();
-            playercoincolision1();
-            //MessageBox.Show(Bullets[0].Active.ToString());
-            //تغییر دادم 
-            removebullets();
-            removeenemy();
-            removecoin();
+            //enemyupdate();
+            ////playershoot();
+            //bulletsupdate();
+            //bulletenemycolision();
+            //bulletplayer();
+            //enemyplayer();
+            //playercoincolision1();
+            ////MessageBox.Show(Bullets[0].Active.ToString());
+            ////تغییر دادم 
+            ////removebullets();
+            ////removeenemy();
+            ////removecoin();
             if (gameover1())
             {
                 return false;
@@ -952,5 +1073,21 @@ namespace WinFormsApp1.Logics
                 return true;
             }
         }
+        //برای دیباگ ساختم 
+        //public void initbullet()
+        //{
+        //    Bullet bullet1 = new Bullet(BulletMoveType.straghit, 300, 300, 160, 8, 20, 20);
+        //    bullet1.jahatx = Xvextor.right;
+        //    bullet1.jahaty = Yvector.sabet;
+        //    Bullets.Add(bullet1);
+        //    Bullet bullet2 = new Bullet(BulletMoveType.straghit, 400, 400, 160, 8, 20, 20);
+        //    bullet2.jahatx = Xvextor.left;
+        //    bullet2.jahaty = Yvector.sabet;
+        //    Bullets.Add(bullet2);
+        //    Bullet bullet3 = new Bullet(BulletMoveType.straghit, 300, 100, 160, 8, 20, 20);
+        //    bullet3.jahatx = Xvextor.sabet;
+        //    bullet3.jahaty = Yvector.down;
+        //    Bullets.Add(bullet3);
+        //}
     }
 }
