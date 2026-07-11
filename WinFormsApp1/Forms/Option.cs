@@ -30,10 +30,15 @@ namespace WinFormsApp1.Forms
                 shootbox.Items.Add((Keys)item);
             }
             forwardbox.SelectedItem = (Keys)Inputmanager.Moveforward;
+            Moveforwardkey.Text = forwardbox.SelectedItem.ToString();
             backwardbox.SelectedItem = (Keys)Inputmanager.Movebackward;
+            Movebackwardkey.Text = backwardbox.SelectedItem.ToString();
             leftbox.SelectedItem = (Keys)Inputmanager.Moveleft;
+            Moveleftkey.Text = leftbox.SelectedItem.ToString();
             rightbox.SelectedItem = (Keys)Inputmanager.Moveright;
+            Moverightkey.Text = leftbox.SelectedItem.ToString();
             shootbox.SelectedItem = (Keys)Inputmanager.Shoot;
+            Shootkey.Text = rightbox.SelectedItem.ToString();
         }
         private void Showlables()
         {
@@ -142,26 +147,31 @@ namespace WinFormsApp1.Forms
         private void forwardbox_SelectedIndexChanged(object sender, EventArgs e)
         {
             Inputmanager.Moveforward = (Keys)forwardbox.SelectedItem;
+            Moveforwardkey.Text = forwardbox.SelectedItem.ToString();
         }
 
         private void backwardbox_SelectedIndexChanged(object sender, EventArgs e)
         {
             Inputmanager.Movebackward = (Keys)backwardbox.SelectedItem;
+            Movebackwardkey.Text = backwardbox.SelectedItem.ToString();
         }
 
         private void rightbox_SelectedIndexChanged(object sender, EventArgs e)
         {
             Inputmanager.Moveright = (Keys)rightbox.SelectedItem;
+            Moverightkey.Text = rightbox.SelectedItem.ToString();
         }
 
         private void leftbox_SelectedIndexChanged(object sender, EventArgs e)
         {
             Inputmanager.Moveleft = (Keys)leftbox.SelectedItem;
+            Moveleftkey.Text = leftbox.SelectedItem.ToString();
         }
 
         private void shootbox_SelectedIndexChanged(object sender, EventArgs e)
         {
             Inputmanager.Shoot = (Keys)shootbox.SelectedItem;
+            Shootkey.Text = shootbox.SelectedItem.ToString();
         }
     }
 }
