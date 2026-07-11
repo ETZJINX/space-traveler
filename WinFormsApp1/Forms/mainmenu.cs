@@ -44,5 +44,11 @@ namespace WinFormsApp1
             clicksound.dispose();
             backmusic.dispose();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            FORMMANAGER.handleform(this, new Shop11());
+
+        }
     }
 }

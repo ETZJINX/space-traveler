@@ -35,3 +35,4 @@ E:\university.classes\advanced.programing\project\WinFormsApp1\WinFormsApp1\obj\
 E:\university.classes\advanced.programing\project\WinFormsApp1\WinFormsApp1\bin\Debug\net10.0-windows\Assets\Audio\click3.ogg
 E:\university.classes\advanced.programing\project\WinFormsApp1\WinFormsApp1\bin\Debug\net10.0-windows\Assets\Audio\click3.wav
 E:\university.classes\advanced.programing\project\WinFormsApp1\WinFormsApp1\bin\Debug\net10.0-windows\Assets\Audio\music\backmusic.mp3
+E:\university.classes\advanced.programing\project\WinFormsApp1\WinFormsApp1\obj\Debug\net10.0-windows\WinFormsApp1.Forms.Shop11.resources
