@@ -291,6 +291,7 @@ namespace WinFormsApp1.Forms
             pictureBox1.Location = new Point(223, 35);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(300, 212);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 6;
             pictureBox1.TabStop = false;
             // 

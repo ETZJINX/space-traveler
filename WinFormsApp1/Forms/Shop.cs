@@ -73,11 +73,14 @@ namespace WinFormsApp1.Forms
             info();
         }
 
+       
+                    //لود تصاویر هستن
         private void info()
         {
             switch (itemType)
             {
                 case ItemType.Ship:
+                    pictureBox1.Image = sample.item.img;
                     DamageDamage.Visible = true;
                     DamageDamage.BackColor = Color.DarkGray;
                     HealthSpeed.Visible = true;
@@ -132,6 +135,7 @@ namespace WinFormsApp1.Forms
                     }
                     break;
                 case ItemType.BackGroundImage:
+                    pictureBox1.Image = sample1.item.img;
                     DamageDamage.Visible = false;
                     HealthSpeed.Visible = false;
                     damagebar.Visible = false;
@@ -175,6 +179,7 @@ namespace WinFormsApp1.Forms
                     }
                     break;
                 case ItemType.Bullet:
+                    pictureBox1.Image = sample2.item.img;
                     DamageDamage.Visible = true;
                     DamageDamage.BackColor = Color.DarkGray;
                     HealthSpeed.Visible = true;
@@ -394,5 +399,6 @@ namespace WinFormsApp1.Forms
             }
         }
 
+        
     }
 }
