@@ -20,8 +20,20 @@ namespace WinFormsApp1.Forms
             InitializeComponent();
             Showlables();
             showmute();
-
-           
+            Inputmanager.init();
+            foreach (var item in Inputmanager.keys)
+            {
+                forwardbox.Items.Add((Keys)item);
+                backwardbox.Items.Add((Keys)item);
+                leftbox.Items.Add((Keys)item);
+                rightbox.Items.Add((Keys)item);
+                shootbox.Items.Add((Keys)item);
+            }
+            forwardbox.SelectedItem = (Keys)Inputmanager.Moveforward;
+            backwardbox.SelectedItem = (Keys)Inputmanager.Movebackward;
+            leftbox.SelectedItem = (Keys)Inputmanager.Moveleft;
+            rightbox.SelectedItem = (Keys)Inputmanager.Moveright;
+            shootbox.SelectedItem = (Keys)Inputmanager.Shoot;
         }
         private void Showlables()
         {
@@ -125,6 +137,31 @@ namespace WinFormsApp1.Forms
 
                 Audio.Volumemusic(item, Output2);
             }
+        }
+
+        private void forwardbox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Inputmanager.Moveforward = (Keys)forwardbox.SelectedItem;
+        }
+
+        private void backwardbox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Inputmanager.Movebackward = (Keys)backwardbox.SelectedItem;
+        }
+
+        private void rightbox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Inputmanager.Moveright = (Keys)rightbox.SelectedItem;
+        }
+
+        private void leftbox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Inputmanager.Moveleft = (Keys)leftbox.SelectedItem;
+        }
+
+        private void shootbox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Inputmanager.Shoot = (Keys)shootbox.SelectedItem;
         }
     }
 }
