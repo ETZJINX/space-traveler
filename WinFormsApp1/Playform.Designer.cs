@@ -36,6 +36,8 @@
             health = new Label();
             coinamount = new Label();
             scoreamount = new Label();
+            playerhealth = new Label();
+            enemyremain = new Label();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -44,7 +46,7 @@
             coin.Anchor = AnchorStyles.Top;
             coin.AutoSize = true;
             coin.Font = new Font("Sylfaen", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            coin.Location = new Point(373, 8);
+            coin.Location = new Point(274, 8);
             coin.Name = "coin";
             coin.Size = new Size(63, 19);
             coin.TabIndex = 0;
@@ -80,7 +82,7 @@
             // 
             PlayPanl.Location = new Point(12, 34);
             PlayPanl.Name = "PlayPanl";
-            PlayPanl.Size = new Size(1033, 540);
+            PlayPanl.Size = new Size(1033, 788);
             PlayPanl.TabIndex = 4;
             PlayPanl.Paint += PlayPanl_Paint;
             // 
@@ -89,7 +91,7 @@
             health.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             health.AutoSize = true;
             health.Font = new Font("Sylfaen", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            health.Location = new Point(706, 8);
+            health.Location = new Point(646, 8);
             health.Name = "health";
             health.Size = new Size(136, 19);
             health.TabIndex = 5;
@@ -99,7 +101,7 @@
             // 
             coinamount.Anchor = AnchorStyles.Top;
             coinamount.AutoSize = true;
-            coinamount.Location = new Point(455, 8);
+            coinamount.Location = new Point(343, 8);
             coinamount.Name = "coinamount";
             coinamount.Size = new Size(51, 19);
             coinamount.TabIndex = 6;
@@ -114,11 +116,31 @@
             scoreamount.TabIndex = 7;
             scoreamount.Text = "label2";
             // 
+            // playerhealth
+            // 
+            playerhealth.AutoSize = true;
+            playerhealth.Location = new Point(788, 8);
+            playerhealth.Name = "playerhealth";
+            playerhealth.Size = new Size(51, 19);
+            playerhealth.TabIndex = 8;
+            playerhealth.Text = "label1";
+            // 
+            // enemyremain
+            // 
+            enemyremain.AutoSize = true;
+            enemyremain.Location = new Point(466, 8);
+            enemyremain.Name = "enemyremain";
+            enemyremain.Size = new Size(51, 19);
+            enemyremain.TabIndex = 9;
+            enemyremain.Text = "label1";
+            // 
             // Playform
             // 
             AutoScaleDimensions = new SizeF(9F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1072, 597);
+            ClientSize = new Size(1072, 834);
+            Controls.Add(enemyremain);
+            Controls.Add(playerhealth);
             Controls.Add(scoreamount);
             Controls.Add(coinamount);
             Controls.Add(panel1);
@@ -129,6 +151,7 @@
             Font = new Font("Sylfaen", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Name = "Playform";
             Text = "Playform";
+            FormClosed += Playform_FormClosed;
             KeyDown += Playform_KeyDown;
             KeyUp += Playform_KeyUp;
             panel1.ResumeLayout(false);
@@ -146,5 +169,7 @@
         private Label health;
         private Label coinamount;
         private Label scoreamount;
+        private Label playerhealth;
+        private Label enemyremain;
     }
 }

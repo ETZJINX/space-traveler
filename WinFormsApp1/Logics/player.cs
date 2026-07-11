@@ -22,6 +22,8 @@ namespace WinFormsApp1.Logics
         private float damage;
         private int speed;
         private int health;
+        public int maxhealth;
+        //خودم اضافه کردم 
         private bool active;
         private int coin;
         private int xp;
@@ -58,6 +60,7 @@ namespace WinFormsApp1.Logics
             Xp = xp;
             this.jahatx = jahatx;
             this.jahaty = jahaty;
+            this.maxhealth = health;
         }
         public virtual void DamageTaken(float megdar)
         {

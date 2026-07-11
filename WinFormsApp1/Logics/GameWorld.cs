@@ -10,7 +10,7 @@ namespace WinFormsApp1.Logics
         public static bool showmessage = false;
         private static Random random = new Random();
         public static int currentwave = 1;
-        private static int EnemyRemainingToSpawn = 10;
+        public static int EnemyRemainingToSpawn = 10;
         private static int spawndelay = 0;
         private static int Wavedelay = 0;//ثانیه 
         private static int index = 0;
@@ -24,14 +24,14 @@ namespace WinFormsApp1.Logics
         private static List<template> wave8 = new List<template>();
         private static List<template> wave9 = new List<template>();
         private static List<template> wave10 = new List<template>();
-        private static List<List<template>> allwave = new List<List<template>>();
+        public static List<List<template>> allwave = new List<List<template>>();
         public static void init()
         {
             StandardEnemy sample = new StandardEnemy(60, 80, 250, GameWorld.Height - 20, 40, 5, 100, 0, 150,Xvextor.sabet,Yvector.down);
             ScoutEnemy sample1 = new ScoutEnemy(60, 80, 250, GameWorld.Height - 20, 45, 15, 100, 0, 250,Xvextor.right,Yvector.down);
             ShooterEnemy sample2 = new ShooterEnemy(40, 60, 250, GameWorld.Height - 20, 20, 5, 150, 0, 350,Xvextor.sabet,Yvector.down, GameWorld.player1.Weapon);
             HeavyTankEnemy sample3 = new HeavyTankEnemy(120, 100, 250, GameWorld.Height - 20, 150, 3, 700, 0, 550,Xvextor.sabet,Yvector.down, GameWorld.player1.Weapon);
-            TerroristEnemy sample4 = new TerroristEnemy(20, 40, 250, GameWorld.Height - 20, 280, 8, 500, 0, 800,Xvextor.sabet,Yvector.down);
+            TerroristEnemy sample4 = new TerroristEnemy(40, 40, 250, GameWorld.Height - 20, 280, 8, 500, 0, 800,Xvextor.sabet,Yvector.down);
             //wave1
             for (int i = 0; i < 10; i++)
             {
@@ -108,6 +108,10 @@ namespace WinFormsApp1.Logics
             }
             allwave.Add(wave6);
             //wave7
+            for (int i = 0; i < 1; i++)
+            {
+                wave7.Add(sample4.santens());
+            }
             for (int i = 0; i < 8; i++)
             {
                 wave7.Add(sample2.santens());
@@ -120,10 +124,7 @@ namespace WinFormsApp1.Logics
             {
                 wave7.Add(sample1.santens());
             }
-            for (int i = 0; i < 1; i++)
-            {
-                wave7.Add(sample4.santens());
-            }
+            
             allwave.Add(wave7);
             //wave8
             for (int i = 0; i < 10; i++)
@@ -178,20 +179,20 @@ namespace WinFormsApp1.Logics
                     templates[index].Y = templates[index].Height / 2;
 
                     //خط مهم و مشتی 
-                    //&& random.Next(100) < 5
-                    if (templates[index] is StandardEnemy )
+                    
+                    if (templates[index] is StandardEnemy && random.Next(100) < 20)
                     {
                         templates[index].Coin = 10;
                     }
-                    else if (templates[index] is ScoutEnemy && random.Next(100) < 10)
+                    else if (templates[index] is ScoutEnemy && random.Next(100) < 45)
                     {
                         templates[index].Coin = 20;
                     }
-                    else if (templates[index] is ShooterEnemy && random.Next(100) < 30)
+                    else if (templates[index] is ShooterEnemy && random.Next(100) < 60)
                     {
                         templates[index].Coin = 50;
                     }
-                    else if (templates[index] is HeavyTankEnemy && random.Next(100) < 60 && templates[index].Coin != 2000)
+                    else if (templates[index] is HeavyTankEnemy && random.Next(100) < 80 && templates[index].Coin != 2000)
                     {
                         templates[index].Coin = 100;
                     }
@@ -219,6 +220,7 @@ namespace WinFormsApp1.Logics
                 foreach (var item in templates)
                 {
                     item.Health += 5 * currentwave;
+                    item.maxhealth += 5 * currentwave;
                     //nothing for speed
                 }
             }
@@ -233,6 +235,7 @@ namespace WinFormsApp1.Logics
                 if (spawndelay >= 1000)
                 {
                     spawnenemy(activewave,index);
+                    EnemyRemainingToSpawn--;
                     //activewave.RemoveAt(0);
                     //activewave[0].Active = false;
                     //MessageBox.Show(GameWorld.enemies[GameWorld.enemies.Count - 1].Active.ToString());
@@ -254,6 +257,7 @@ namespace WinFormsApp1.Logics
                         if (Wavedelay > 4000)
                         {
                             currentwave++;
+                            EnemyRemainingToSpawn = allwave[currentwave - 1].Count;
                             index = 0;
                             showmessage = false;
                             sakhty(allwave[currentwave - 1]);
@@ -524,6 +528,16 @@ namespace WinFormsApp1.Logics
         }
         //اپدیتم شک دارم 
     
+        public static void resettheworls()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                for (int j = 0; j < allwave[i].Count; j++)
+                {
+                    allwave[i].RemoveAt(j);
+                }
+            }
+        }
     }
     public class Coindrop
     {
@@ -563,7 +577,7 @@ namespace WinFormsApp1.Logics
         //public static int stagelevel = 1;
 
         public static int Width = 1033; 
-        public static int Height = 540;
+        public static int Height = 788;
         //public int xplayervector = 0;
         //public int yplayervector = 0;
         public static bool baresiinactiveenemy()

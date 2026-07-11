@@ -18,26 +18,32 @@ namespace WinFormsApp1.Logics
             if (template is StandardEnemy)
             {
                 g.FillRectangle(Brushes.Blue, template.X - template.Width / 2, template.Y - template.Height / 2, template.Width , template.Height );
+                g.FillRectangle(Brushes.Red, template.X - template.Width / 2, template.Y - template.Height / 2 , template.Health * template.Width / template.maxhealth, 5);
                 g.DrawString( $"Health{template.Health}",new Font("Arial", 9),Brushes.Black,template.X - template.Width / 2,template.Y - template.Height / 2);
+                
             }
             if (template is ScoutEnemy)
             {
                 g.FillRectangle(Brushes.Green, template.X - template.Width / 2, template.Y - template.Height / 2, template.Width, template.Height);
+                g.FillRectangle(Brushes.Red, template.X - template.Width / 2, template.Y - template.Height / 2, template.Health * template.Width / template.maxhealth, 5);
                 g.DrawString($"Health{template.Health}", new Font("Arial", 9), Brushes.Black, template.X - template.Width / 2, template.Y - template.Height / 2);
             }
             if (template is ShooterEnemy)
             {
                 g.FillRectangle(Brushes.Yellow, template.X - template.Width / 2, template.Y - template.Height / 2, template.Width, template.Height);
+                g.FillRectangle(Brushes.Red, template.X - template.Width / 2, template.Y - template.Height / 2, template.Health * template.Width / template.maxhealth, 5);
                 g.DrawString($"Health{template.Health}", new Font("Arial", 9), Brushes.Black, template.X - template.Width / 2, template.Y - template.Height / 2);
             }
             if (template is HeavyTankEnemy)
             {
                 g.FillRectangle(Brushes.Orange, template.X - template.Width / 2, template.Y - template.Height / 2, template.Width, template.Height);
+                g.FillRectangle(Brushes.Red, template.X - template.Width / 2, template.Y - template.Height / 2, template.Health * template.Width / template.maxhealth, 5);
                 g.DrawString($"Health{template.Health}", new Font("Arial", 9), Brushes.Black, template.X - template.Width / 2, template.Y - template.Height / 2);
             }
             if (template is TerroristEnemy)
             {
                 g.FillRectangle(Brushes.Brown, template.X - template.Width / 2, template.Y - template.Height / 2, template.Width, template.Height);
+                g.FillRectangle(Brushes.Red, template.X - template.Width / 2, template.Y - template.Height / 2, template.Health * template.Width / template.maxhealth, 5);
                 g.DrawString($"Health{template.Health}", new Font("Arial", 9), Brushes.Black, template.X - template.Width / 2, template.Y - template.Height / 2);
             }
         }

@@ -18,16 +18,16 @@ namespace WinFormsApp1
         public Playform()
         {
             InitializeComponent();
-            
+
             gameWorld = new GameWorld();
             //gameWorld.initbullet();
-            Bullet bullet = new Bullet(BulletMoveType.straghit, 360, 150, 75,25, 5, 5);
+            Bullet bullet = new Bullet(BulletMoveType.straghit, 360, 150, 75, 25, 5, 5);
             //bullet.jahatx = Xvextor.right;
             //bullet.jahaty = Yvector.down;
             //GameWorld.Bullets.Add(bullet);
             //GameWorld.Bullets.Add(bullet);
             //bullet.Update(0, 1);
-            player player = new player(25, 25, 100, 515, 50,15,140, 700, 0, Xvextor.sabet, Yvector.sabet, bullet);
+            player player = new player(25, 25, 100, 515, 50, 15, 140, 700, 0, Xvextor.sabet, Yvector.sabet, bullet);
             GameWorld.player1 = player;
             Wavemanager.init();
             //this.Size = new Size(1075, 633);
@@ -51,12 +51,14 @@ namespace WinFormsApp1
         private void Timer_Tick(object sender, EventArgs e)
         {
             panel1.BackColor = Color.Red;
+            enemyremain.Text = "enemyremain : " + Wavemanager.EnemyRemainingToSpawn.ToString();
+            playerhealth.Text = GameWorld.player1.Health.ToString();
             panel1.Size = new Size(140, 20);
             healthbar.BackColor = Color.Green;
             healthbar.Size = new Size(GameWorld.player1.Health, 20);
             coinamount.Text = GameWorld.player1.Coin.ToString();
             scoreamount.Text = GameWorld.player1.Xp.ToString();
-            
+
             gameWorld.playerupdate(left, right, up, down);
             //if (Input.shoot)
             //{
@@ -129,7 +131,7 @@ namespace WinFormsApp1
                 {
                     Render.drawbullet(g, bullet);
                 }
-        }
+            }
 
             //g.DrawRectangle(Pens.Pink, 250, 600, 15, 15);
             //هیچی داخل بالتس نیستش 
@@ -202,6 +204,14 @@ namespace WinFormsApp1
                 Input.shoot = false;
             }
 
+
+        }
+
+        private void Playform_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            GameWorld.gameover = false;
+            Wavemanager.currentwave = 1;
+            Wavemanager.resettheworls();
 
         }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text;
 using WinFormsApp1.Logics;
 using WinFormsApp1.Logics.interfaces;
@@ -8,6 +9,8 @@ namespace WinFormsApp1.Logics
 {
     public class StandardEnemy : template ,IUpdate
     {
+        Random random1 = new Random();
+        //برای اسپان تصادفی در هنگام برخورد با دیوار 
         public int xfirst;
         public int yfirst;
         public override void MoveX()
@@ -53,6 +56,7 @@ namespace WinFormsApp1.Logics
                 if (Y + Height / 2 > GameWorld.Width)
                 {
                     Y = Height / 2;
+                    X = random1.Next(Width / 2, GameWorld.Width - Width / 2);
                 }
             }
             MoveX();
@@ -159,6 +163,8 @@ namespace WinFormsApp1.Logics
     }
     public class ShooterEnemy : template , IWeaponDamage,IUpdate
     {
+        private  Random random1 = new Random();
+        private int shootdelay;
         public int xfirst;
         public int yfirst;
         private Bullet MainBullet;
@@ -170,7 +176,7 @@ namespace WinFormsApp1.Logics
         public Bullet Shoot()
         {
             Bullet sample = null;
-            if (Timeshoot >= 1500)
+            if (Timeshoot >= shootdelay)
             {
                 sample = Weapon.santes(X, Y + Height / 2 + 5);
                 Timeshoot = 0;
@@ -247,7 +253,8 @@ namespace WinFormsApp1.Logics
         {
             this.MainBullet = mainbullet;
             //this.movetypebullet = move;
-            timeshoot = 1500;
+            timeshoot = 800;
+            shootdelay = 800;
             xfirst = x;
             yfirst = y;
         }
@@ -267,12 +274,17 @@ namespace WinFormsApp1.Logics
 
             MoveX();
             MoveY();
-            Bullet sample = Shoot();
+            Bullet sample = null;
+            if (Active)
+            {
+                sample = Shoot();
+            }
             if (outofrange())
             {
                 if (Y + Height / 2 > GameWorld.Width)
                 {
-                    Y = Height / 2;
+                    Y = Height / 2;   
+                    X = random1.Next(Width / 2, GameWorld.Width - Width / 2);
                 }
             }
             if (sample != null)
@@ -294,6 +306,8 @@ namespace WinFormsApp1.Logics
     }
     public class HeavyTankEnemy : template , IWeaponDamage,IUpdate
     {
+        private Random random1 = new Random();
+        private int shootdelay;
         public int xfirst;
         public int yfirst;
         private Bullet MainBullet;
@@ -305,7 +319,7 @@ namespace WinFormsApp1.Logics
         public Bullet Shoot()
         {
             Bullet sample1;
-            if (Timeshoot >= 1500)
+            if (Timeshoot >= shootdelay)
             {
                 sample1 = Weapon.santes(X, Y + (Height / 2) + 5 );
                 Timeshoot = 0;
@@ -388,7 +402,8 @@ namespace WinFormsApp1.Logics
             //this.movetypebullet = move;
             xfirst = x;
             yfirst = y;
-            timeshoot = 1500;
+            timeshoot = 800;
+            shootdelay = 800;
         }
         public bool outofrange()
         {
@@ -406,12 +421,17 @@ namespace WinFormsApp1.Logics
         {
             MoveX();
             MoveY();
-            Bullet sample1 = Shoot();
+            Bullet sample1 = null;
+            if (Active)
+            {
+                sample1 = Shoot();
+            }
             if (outofrange())
             {
                 if (Y + Height / 2 > GameWorld.Width)
                 {
                     Y = Height / 2;
+                    X = random1.Next(Width / 2, GameWorld.Width - Width / 2);
                 }
             }
             if (sample1 != null)
