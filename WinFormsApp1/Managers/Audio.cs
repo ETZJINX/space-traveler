@@ -76,6 +76,8 @@ namespace WinFormsApp1.Managers
         private bool loop ;
         public Audiotype Type { get { return type; } }
         private string path;
+        
+            
         internal AudioFileReader reader;
         internal WaveOutEvent audio;
         public WaveOutEvent Audio1 { get { return audio; } }
@@ -84,6 +86,8 @@ namespace WinFormsApp1.Managers
             type = Audiotype.audio;
             loop = true;
             this.path = path;
+            //MessageBox.Show(File.Exists(path).ToString() + "\n" + path);
+            //jyddv nhnl
             reader = new AudioFileReader(path);
             audio = new WaveOutEvent();
             audio.Init(reader);
@@ -107,11 +111,13 @@ namespace WinFormsApp1.Managers
         }
         public void Play()
         {
+            loop = true;
             reader.CurrentTime = TimeSpan.Zero;
             audio.Play();
         }
         public void Stop()
         {
+            loop = false;
             audio.Stop();
         }
 
@@ -120,6 +126,15 @@ namespace WinFormsApp1.Managers
 
     internal class Audio
     {
+        public static Sound clicksound = new Sound("Assets/Audio/click3.wav");
+        public static Sound buy = new Sound("Assets/Audio/buy.wav");
+        public static Sound sell = new Sound("Assets/Audio/sell.wav");
+        public static Sound explosion = new Sound("Assets/Audio/explosion.wav");
+        public static Sound shoot = new Sound("Assets/Audio/shoot.wav");
+        public static Sound destruction = new Sound("Assets/Audio/destruction.wav");
+        public static Music backmusic = new Music("Assets/Audio/music/backmusic.mp3");
+        public static Music theme = new Music("Assets/Audio/music/playmusic.mp3");
+        public static Music boss = new Music("Assets/Audio/music/bossmusic.mp3");
         public static bool Playsound(Sound player)
         {
             player.Play();
@@ -175,7 +190,18 @@ namespace WinFormsApp1.Managers
                 return false;
             }
         }
-        
+        public static void disposeall()
+        {
+            clicksound.dispose();
+            buy.dispose();
+            sell.dispose();
+            explosion.dispose();
+            shoot.dispose();
+            destruction.dispose();
+            backmusic.dispose();
+            theme.dispose();
+            boss.dispose();
+        }
     }
 
 }

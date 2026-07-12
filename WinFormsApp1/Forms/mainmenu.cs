@@ -9,18 +9,19 @@ namespace WinFormsApp1
         public MAINMENU()
         {
             InitializeComponent();
-            clicksound = new Sound("Assets/Audio/click3.wav");
-            backmusic = new Music("Assets/Audio/music/backmusic.mp3");
-            backmusic.reader.Volume = 0.2f;
-            clicksound.reader1.Volume = 1f;
-            Audio.Playmusic(backmusic);
+            ShopManager.init();
+            FORMMANAGER.setbackground(this);
+
+            Audio.backmusic.reader.Volume = 0.2f;
+            Audio.clicksound.reader1.Volume = 1f;
+            //Audio.Playmusic(Audio.backmusic);
+            Audio.backmusic.Play();
 
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            clicksound.dispose();
-            backmusic.dispose();
+            Audio.disposeall();
             System.Windows.Forms.Application.Exit();
            
             // for exiting
@@ -28,25 +29,25 @@ namespace WinFormsApp1
 
         private void button4_Click(object sender, EventArgs e)
         {
-            clicksound.Play();
+            Audio.clicksound.Play();
             FORMMANAGER.handleform(this, new aboutus());
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            clicksound.Play();
+            Audio.clicksound.Play();
             Option option = new Option();
             FORMMANAGER.handleform(this, option);
         }
 
         private void MAINMENU_FormClosing(object sender, FormClosingEventArgs e)
         {
-            clicksound.dispose();
-            backmusic.dispose();
+            Audio.disposeall();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            Audio.clicksound.Play();
             FORMMANAGER.handleform(this, new Shop11());
 
         }

@@ -18,6 +18,7 @@ namespace WinFormsApp1.Forms
         public Option()
         {
             InitializeComponent();
+            FORMMANAGER.setbackground(this);
             Showlables();
             showmute();
             Inputmanager.init();

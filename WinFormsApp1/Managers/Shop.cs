@@ -167,6 +167,7 @@ internal class ItemShop<T> : IShopattitude where T : Item
 }
 internal class ShopManager
 {
+    private static bool initialized = false;
     public static List<ItemShop<ItemShip>> ships = new List<ItemShop<ItemShip>>();
     public static List<ItemShop<ItemBackGround>> backGrounds = new List<ItemShop<ItemBackGround>>();
     public static List<ItemShop<ItemBullet>> bullets = new List<ItemShop<ItemBullet>>();
@@ -331,23 +332,85 @@ internal class ShopManager
     }
     public static void init()
     {
+        if (initialized)
+        {
+            return;
+        }
+        initialized = true;
         // ===================== Ships =====================
         ShopManager.AddShip("Falcon", "Balanced starter ship", 250, 20f, 10, 200,Properties.Resources.ship1,1);
+        foreach (var item in ships)
+        {
+            if (item.Id == 1)
+            {
+                item.Equiped = true;
+                item.Selled = true;
+            }
+        }
         ShopManager.AddShip("Phoenix", "Fast attack ship", 500, 35f, 18, 150,Properties.Resources.ship2,2);
         ShopManager.AddShip("Destroyer", "Heavy armored ship", 800, 60f, 7, 100, Properties.Resources.ship3, 3);
         ShopManager.AddShip("Titan", "Ultimate battle ship", 1500, 90f, 5, 300, Properties.Resources.ship4, 4);
 
         // ===================== Bullets =====================
         ShopManager.AddBullet("Normal Bullet", "Standard bullet", 100, 75f, 20, Properties.Resources.playerbullet1, 101);
+        foreach (var item in bullets)
+        {
+            if (item.Id == 101)
+            {
+                item.Equiped = true;
+                item.Selled = true;
+            }
+        }
         ShopManager.AddBullet("Laser Beam", "High speed laser", 300, 100f, 35, Properties.Resources.playerbullet2, 102);
         ShopManager.AddBullet("Plasma Shot", "Powerful plasma bullet", 600, 160f, 25, Properties.Resources.playerbullet3, 103);
         ShopManager.AddBullet("Dark Matter", "Legendary projectile", 1200, 200f, 40, Properties.Resources.playerbullet4, 104);
 
         // ===================== Backgrounds =====================
         ShopManager.AddBackGround("Earth Orbit", "Beautiful space view", 150, Properties.Resources.background1, 201);
+        foreach (var item in backGrounds)
+        {
+            if (item.Id == 201)
+            {
+                item.Equiped = true;
+                item.Selled = true;
+            }
+        }
         ShopManager.AddBackGround("Nebula", "Colorful nebula background", 300, Properties.Resources.background2, 202);
         ShopManager.AddBackGround("Galaxy Core", "Epic galaxy center", 600, Properties.Resources.background3, 203);
         ShopManager.AddBackGround("Black Hole", "Dark mysterious background", 1000, Properties.Resources.background4, 204);
     }
-
+    //اینارو برای کارای خودم اضافه کردم 
+    public static Image getequipedbackground()
+    {
+        foreach (var item in backGrounds)
+        {
+            if (item.Equiped)
+            {
+                return item.item.img;
+            }
+        }
+        return null;
+    }
+    public static ItemShip getequipedship()
+    {
+        foreach (var item in ships)
+        {
+            if (item.Equiped)
+            {
+                return item.item;
+            }
+        }
+        return null;
+    }
+    public static ItemBullet getequipedbullet()
+    {
+        foreach (var item in bullets)
+        {
+            if (item.Equiped)
+            {
+                return item.item;
+            }
+        }
+        return null;
+    }
 }

@@ -6,6 +6,11 @@ namespace WinFormsApp1.Managers
 {
     public static class FORMMANAGER
     {
+        public static void setbackground(Form current)
+        {
+            current.BackgroundImage = ShopManager.getequipedbackground();
+            current.BackgroundImageLayout = ImageLayout.Stretch;
+        }
         public static void handleform(Form current , Form next)
         {
             current.Hide();
@@ -16,6 +21,7 @@ namespace WinFormsApp1.Managers
             finally
             {
                 next.Dispose();
+                setbackground(current);
                 current.Show();
             }
             

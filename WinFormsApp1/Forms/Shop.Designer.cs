@@ -368,6 +368,7 @@ namespace WinFormsApp1.Forms
             Controls.Add(panel1);
             Name = "Shop11";
             Text = "Shop";
+            FormClosing += Shop11_FormClosing;
             Load += Shop11_Load;
             panel1.ResumeLayout(false);
             panel4.ResumeLayout(false);

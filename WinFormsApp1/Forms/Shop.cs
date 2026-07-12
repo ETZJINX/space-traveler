@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using WinFormsApp1.Managers;
+using WinFormsApp1;
 
 namespace WinFormsApp1.Forms
 {
@@ -19,13 +20,15 @@ namespace WinFormsApp1.Forms
         public Shop11()
         {
             InitializeComponent();
+            
+            
             itemType = ItemType.Ship;
             //sample = new ItemShop1(ShopManager.ships[0]);
             Index1 = 0;
             sample = null;
             sample1 = null;
             sample2 = null;
-            ShopManager.init();
+            //ShopManager.init();
         }
         internal void LoadItem()
         {
@@ -54,6 +57,7 @@ namespace WinFormsApp1.Forms
 
         private void Shipslist_Click(object sender, EventArgs e)
         {
+            Audio.clicksound.Play();
             itemType = ItemType.Ship;
             LoadItem();
             info();
@@ -61,6 +65,7 @@ namespace WinFormsApp1.Forms
 
         private void Backgroundlist_Click(object sender, EventArgs e)
         {
+            Audio.clicksound.Play();
             itemType = ItemType.BackGroundImage;
             LoadItem();
             info();
@@ -68,13 +73,14 @@ namespace WinFormsApp1.Forms
 
         private void Bulletlist_Click(object sender, EventArgs e)
         {
+            Audio.clicksound.Play();
             itemType = ItemType.Bullet;
             LoadItem();
             info();
         }
 
-       
-                    //لود تصاویر هستن
+
+        //لود تصاویر هستن
         private void info()
         {
             switch (itemType)
@@ -241,14 +247,26 @@ namespace WinFormsApp1.Forms
             switch (itemType)
             {
                 case ItemType.Ship:
+                    if (sample.BuyItem(sample.item.Price))
+                    {
+                        Audio.buy.Play();
+                    }
                     sample.BuyItem(sample.item.Price);
                     info();
                     break;
                 case ItemType.BackGroundImage:
+                    if (sample1.BuyItem(sample1.item.Price))
+                    {
+                        Audio.buy.Play();
+                    }
                     sample1.BuyItem(sample1.item.Price);
                     info();
                     break;
                 case ItemType.Bullet:
+                    if (sample2.BuyItem(sample2.item.Price))
+                    {
+                        Audio.buy.Play();
+                    }
                     sample2.BuyItem(sample2.item.Price);
                     info();
                     break;
@@ -257,6 +275,7 @@ namespace WinFormsApp1.Forms
 
         private void nextbutton_Click(object sender, EventArgs e)
         {
+            Audio.clicksound.Play();
             Index1++;
             switch (itemType)
             {
@@ -280,6 +299,7 @@ namespace WinFormsApp1.Forms
 
         private void prebutton_Click(object sender, EventArgs e)
         {
+            Audio.clicksound.Play();
             Index1--;
             switch (itemType)
             {
@@ -324,9 +344,10 @@ namespace WinFormsApp1.Forms
 
         private void Sellbutton_Click(object sender, EventArgs e)
         {
+            Audio.sell.Play();
             switch (itemType)
-            {
-                case ItemType.Ship:
+            {       
+                case ItemType.Ship:              
                     sample.SellItem();
                     info();
                     break;
@@ -359,7 +380,12 @@ namespace WinFormsApp1.Forms
                     {
                         sample4.UnEquipItem();
                     }
+                    
                     sample.EquipItem();
+                    if (sample.Equiped)
+                    {
+                        Audio.clicksound.Play();
+                    }
                     info();
                     break;
                 case ItemType.BackGroundImage:
@@ -376,7 +402,12 @@ namespace WinFormsApp1.Forms
                     {
                         sample5.UnEquipItem();
                     }
+                    
                     sample1.EquipItem();
+                    if (sample1.Equiped)
+                    {
+                        Audio.clicksound.Play();
+                    }
                     info();
                     break;
                 case ItemType.Bullet:
@@ -393,12 +424,19 @@ namespace WinFormsApp1.Forms
                     {
                         sample6.UnEquipItem();
                     }
+                    
                     sample2.EquipItem();
+                    if (sample2.Equiped)
+                    {
+                        Audio.clicksound.Play();
+                    }
                     info();
                     break;
             }
         }
 
-        
+        private void Shop11_FormClosing(object sender, FormClosingEventArgs e)
+        {
+        }
     }
 }
