@@ -8,6 +8,7 @@ namespace WinFormsApp1.Logics
 {
     public abstract class template : IMoveable,IDamagable,IHealth,IActive,IAchivments,ISizeVolum,ISpeed
     {
+        public Image img;
         private int width;
         private int height;
         private Xvextor JAHATX;
@@ -46,7 +47,7 @@ namespace WinFormsApp1.Logics
             return (Y + (((int)jahaty) * Speed) + Height / 2 <= GameWorld.Height && Y + (((int)jahaty) * Speed) - Height / 2 >= 0) ;
         }
         
-        public template(int width,int height,int x,int y,float damage,int speed,int health,int coin,int xp,Xvextor jahatx,Yvector jahaty)
+        public template(int width,int height,int x,int y,float damage,int speed,int health,int coin,int xp,Xvextor jahatx,Yvector jahaty,Image img)
         {
             this.width= width;
             this.height= height;
@@ -61,6 +62,7 @@ namespace WinFormsApp1.Logics
             this.jahatx = jahatx;
             this.jahaty = jahaty;
             this.maxhealth = health;
+            this.img = img;
         }
         public virtual void DamageTaken(float megdar)
         {
@@ -139,7 +141,7 @@ namespace WinFormsApp1.Logics
             }
             //Y += (int)(((int)jahaty) * Speed);
         }
-        public player(int width, int height, int x, int y, float damage, int speed, int health, int coin, int xp,Xvextor jahatx,Yvector jahaty,Bullet mainbullet) : base(width, height, x, y, damage, speed, health, coin, xp,jahatx,jahaty)
+        public player(int width, int height, int x, int y, float damage, int speed, int health, int coin, int xp,Xvextor jahatx,Yvector jahaty,Image img,Bullet mainbullet) : base(width, height, x, y, damage, speed, health, coin, xp,jahatx,jahaty,img)
         {
             this.MainBullet = mainbullet;
             //this.movetypebullet = move;

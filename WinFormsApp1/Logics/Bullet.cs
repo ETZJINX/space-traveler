@@ -7,6 +7,7 @@ namespace WinFormsApp1.Logics
     public class Bullet : IDamagable,IMoveable,IActive,ISizeVolum,IUpdate,ISpeed
     {
         //public static List<Bullet> bulletswholegame = new List<Bullet>();
+        public Image img;
         private Xvextor JAHATX;
         private Yvector JAHATY;
         private int width;
@@ -26,7 +27,7 @@ namespace WinFormsApp1.Logics
         public int Y { get { return y; } set { y = value ; } }
         public float Damage { get { return damage; } set { damage = value; } }
         public int Speed { get { return speed; } set { speed = value; } }
-        public Bullet(BulletMoveType moveType,int x,int y,float damage,int speed,int width,int heghit)
+        public Bullet(BulletMoveType moveType,int x,int y,float damage,int speed,int width,int heghit,Image img)
         {
             Movetype = moveType;
             X = x;
@@ -36,6 +37,7 @@ namespace WinFormsApp1.Logics
             Active = true;
             this.width = width;
             this.height = heghit;
+            this.img = img;
             //bulletswholegame.Add(this);
             //MessageBox.Show("bullet succesfull added");
         }
@@ -80,7 +82,7 @@ namespace WinFormsApp1.Logics
         }
         public Bullet santes(int x1 , int y1)
         {
-            Bullet sample = new Bullet(this.Movetype,x1,y1,this.Damage,this.Speed,Width,Height);
+            Bullet sample = new Bullet(this.Movetype,x1,y1,this.Damage,this.Speed,Width,Height,img);
             return sample;    
         }
         public bool outofrange()

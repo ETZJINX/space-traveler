@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using WinFormsApp1.Managers;
 using WinFormsApp1;
+using WinFormsApp1.Logics;
 
 namespace WinFormsApp1.Forms
 {
@@ -109,7 +110,7 @@ namespace WinFormsApp1.Forms
                     Itemprice.Text = "price: " + sample.item.Price.ToString() + "$";
                     Itemdamage.Text = "damage: " + sample.item.Damage.ToString();
                     Itemspeed.Text = "speed: " + sample.item.Speed.ToString();
-                    coin3.Text = player.coin.ToString() + "$";
+                    coin3.Text = GameWorld.player1.Coin.ToString() + "$";
                     if (sample.Selled)
                     {
 
@@ -154,7 +155,7 @@ namespace WinFormsApp1.Forms
                     Itemprice.Text = "price: " + sample1.item.Price.ToString() + "$";
                     Itemdamage.Visible = false;
                     Itemspeed.Visible = false;
-                    coin3.Text = player.coin.ToString() + "$";
+                    coin3.Text = GameWorld.player1.Coin.ToString() + "$";
                     if (sample1.Selled)
                     {
                         Buybutton.Enabled = false;
@@ -203,7 +204,7 @@ namespace WinFormsApp1.Forms
                     Health.Visible = false;
                     Itemdamage.Visible = true;
                     Itemspeed.Visible = true;
-                    coin3.Text = player.coin.ToString() + "$";
+                    coin3.Text = GameWorld.player1.Coin.ToString() + "$";
                     Itemtype12.Text = sample2.item.Description;
                     Itemname.Text = "name: " + sample2.item.Name;
                     Itemprice.Text = "price: " + sample2.item.Price.ToString() + "$";

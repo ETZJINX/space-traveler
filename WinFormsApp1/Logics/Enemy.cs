@@ -43,7 +43,7 @@ namespace WinFormsApp1.Logics
             //}
             Y += (int)(((int)jahaty) * Speed);
         }     
-        public StandardEnemy (int width, int height, int x, int y, float damage, int speed, int health, int coin, int xp,Xvextor jahatx,Yvector jahaty) : base(width, height, x, y, damage, speed, health, coin, xp,jahatx,jahaty)
+        public StandardEnemy (int width, int height, int x, int y, float damage, int speed, int health, int coin, int xp,Xvextor jahatx,Yvector jahaty,Image img) : base(width, height, x, y, damage, speed, health, coin, xp,jahatx,jahaty,img)
         {
             xfirst = x;
             yfirst = y;
@@ -65,7 +65,7 @@ namespace WinFormsApp1.Logics
         public StandardEnemy santens()
         {
             StandardEnemy sample;
-            sample = new StandardEnemy(Width, Height, X, Y, Damage, Speed, Health, Coin, Xp,jahatx,jahaty);
+            sample = new StandardEnemy(Width, Height, X, Y, Damage, Speed, Health, Coin, Xp,jahatx,jahaty,img);
             return sample;
         }
         public bool outofrange()
@@ -113,7 +113,7 @@ namespace WinFormsApp1.Logics
             //}
             Y += (int)(((int)jahaty * Math.Sqrt(2) / 2) * Speed);
         }
-        public ScoutEnemy(int width, int height, int x, int y, float damage, int speed, int health, int coin, int xp,Xvextor jahatx,Yvector jahaty) : base(width, height, x, y, damage, speed, health, coin, xp,jahatx,jahaty)
+        public ScoutEnemy(int width, int height, int x, int y, float damage, int speed, int health, int coin, int xp,Xvextor jahatx,Yvector jahaty,Image img) : base(width, height, x, y, damage, speed, health, coin, xp,jahatx,jahaty,img)
         {
 
         }
@@ -157,7 +157,7 @@ namespace WinFormsApp1.Logics
         public ScoutEnemy santens()
         {
             ScoutEnemy sample;
-            sample = new ScoutEnemy(this.Width, Height, X, Y, Damage, Speed, Health, Coin, Xp,jahatx,jahaty);
+            sample = new ScoutEnemy(this.Width, Height, X, Y, Damage, Speed, Health, Coin, Xp,jahatx,jahaty,img);
             return sample;
         }
     }
@@ -249,7 +249,7 @@ namespace WinFormsApp1.Logics
             //}
             Y += (int)(((int)jahaty) * Speed);
         }
-        public ShooterEnemy(int width, int height, int x, int y, float damage, int speed, int health, int coin, int xp,Xvextor jahatx,Yvector jahaty, Bullet mainbullet) : base(width, height, x, y, damage, speed, health, coin, xp,jahatx,jahaty)
+        public ShooterEnemy(int width, int height, int x, int y, float damage, int speed, int health, int coin, int xp,Xvextor jahatx,Yvector jahaty, Bullet mainbullet,Image img) : base(width, height, x, y, damage, speed, health, coin, xp,jahatx,jahaty,img)
         {
             this.MainBullet = mainbullet;
             //this.movetypebullet = move;
@@ -299,7 +299,7 @@ namespace WinFormsApp1.Logics
         public ShooterEnemy santens()
         {
             ShooterEnemy sample;
-            sample = new ShooterEnemy(this.Width, Height, X, Y, Damage, Speed, Health, Coin, Xp,jahatx,jahaty,MainBullet);
+            sample = new ShooterEnemy(this.Width, Height, X, Y, Damage, Speed, Health, Coin, Xp,jahatx,jahaty,MainBullet,img);
             return sample;
         }
 
@@ -396,7 +396,7 @@ namespace WinFormsApp1.Logics
             //}
             Y += (int)(((int)jahaty) * Speed);
         }
-        public HeavyTankEnemy(int width, int height, int x, int y, float damage, int speed, int health, int coin, int xp,Xvextor jahatx,Yvector jahaty, Bullet mainbullet) : base(width, height, x, y, damage, speed, health, coin, xp,jahatx,jahaty)
+        public HeavyTankEnemy(int width, int height, int x, int y, float damage, int speed, int health, int coin, int xp,Xvextor jahatx,Yvector jahaty, Bullet mainbullet,Image img) : base(width, height, x, y, damage, speed, health, coin, xp,jahatx,jahaty,img)
         {
             this.MainBullet = mainbullet;
             //this.movetypebullet = move;
@@ -445,7 +445,7 @@ namespace WinFormsApp1.Logics
         public HeavyTankEnemy santens()
         {
             HeavyTankEnemy sample;
-            sample = new HeavyTankEnemy(this.Width, Height, X, Y, Damage, Speed, Health, Coin, Xp,jahatx,jahaty, MainBullet);
+            sample = new HeavyTankEnemy(this.Width, Height, X, Y, Damage, Speed, Health, Coin, Xp,jahatx,jahaty, MainBullet,img);
             return sample;
         }
     }
@@ -485,7 +485,7 @@ namespace WinFormsApp1.Logics
             //}
             Y += (int)(((int)jahaty) * Speed);
         }
-        public TerroristEnemy(int width, int height, int x, int y, float damage, int speed, int health, int coin, int xp,Xvextor jahatx,Yvector jahaty) : base(width, height, x, y, damage, speed, health, coin, xp,jahatx,jahaty)
+        public TerroristEnemy(int width, int height, int x, int y, float damage, int speed, int health, int coin, int xp,Xvextor jahatx,Yvector jahaty,Image img) : base(width, height, x, y, damage, speed, health, coin, xp,jahatx,jahaty,img)
         {
             this.explosion = false;
             raduosDamage = 20;
@@ -515,7 +515,7 @@ namespace WinFormsApp1.Logics
         public TerroristEnemy santens()
         {
             TerroristEnemy sample;
-            sample = new TerroristEnemy(this.Width, Height, X, Y, Damage, Speed, Health, Coin, Xp,jahatx,jahaty);
+            sample = new TerroristEnemy(this.Width, Height, X, Y, Damage, Speed, Health, Coin, Xp,jahatx,jahaty,img);
             return sample;
         }
     }

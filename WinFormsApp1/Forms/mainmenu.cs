@@ -9,7 +9,9 @@ namespace WinFormsApp1
         public MAINMENU()
         {
             InitializeComponent();
+            GameWorldManager.init();
             ShopManager.init();
+            
             FORMMANAGER.setbackground(this);
 
             Audio.backmusic.reader.Volume = 0.2f;
@@ -23,7 +25,7 @@ namespace WinFormsApp1
         {
             Audio.disposeall();
             System.Windows.Forms.Application.Exit();
-           
+
             // for exiting
         }
 
@@ -50,6 +52,12 @@ namespace WinFormsApp1
             Audio.clicksound.Play();
             FORMMANAGER.handleform(this, new Shop11());
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FORMMANAGER.handleform(this, new ControlForm());
+            Audio.clicksound.Play();
         }
     }
 }

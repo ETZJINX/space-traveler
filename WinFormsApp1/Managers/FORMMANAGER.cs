@@ -11,6 +11,11 @@ namespace WinFormsApp1.Managers
             current.BackgroundImage = ShopManager.getequipedbackground();
             current.BackgroundImageLayout = ImageLayout.Stretch;
         }
+        public static void setbackground(Panel current)
+        {
+            current.BackgroundImage = ShopManager.getequipedbackground();
+            current.BackgroundImageLayout = ImageLayout.Stretch;
+        }
         public static void handleform(Form current , Form next)
         {
             current.Hide();

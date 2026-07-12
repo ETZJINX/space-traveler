@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using WinFormsApp1.Logics.interfaces;
+using WinFormsApp1.Managers;
 
 namespace WinFormsApp1.Logics
 {
@@ -27,11 +28,11 @@ namespace WinFormsApp1.Logics
         public static List<List<template>> allwave = new List<List<template>>();
         public static void init()
         {
-            StandardEnemy sample = new StandardEnemy(60, 80, 250, GameWorld.Height - 20, 40, 5, 100, 0, 150,Xvextor.sabet,Yvector.down);
-            ScoutEnemy sample1 = new ScoutEnemy(60, 80, 250, GameWorld.Height - 20, 45, 15, 100, 0, 250,Xvextor.right,Yvector.down);
-            ShooterEnemy sample2 = new ShooterEnemy(40, 60, 250, GameWorld.Height - 20, 20, 5, 150, 0, 350,Xvextor.sabet,Yvector.down, GameWorld.player1.Weapon);
-            HeavyTankEnemy sample3 = new HeavyTankEnemy(120, 100, 250, GameWorld.Height - 20, 150, 3, 700, 0, 550,Xvextor.sabet,Yvector.down, GameWorld.player1.Weapon);
-            TerroristEnemy sample4 = new TerroristEnemy(40, 40, 250, GameWorld.Height - 20, 280, 8, 500, 0, 800,Xvextor.sabet,Yvector.down);
+            StandardEnemy sample = new StandardEnemy(60, 80, 250, GameWorld.Height - 20, 40, 5, 100, 0, 150,Xvextor.sabet,Yvector.down,Properties.Resources.enemyship1);
+            ScoutEnemy sample1 = new ScoutEnemy(60, 80, 250, GameWorld.Height - 20, 45, 15, 100, 0, 250,Xvextor.right,Yvector.down, Properties.Resources.enemyship2);
+            ShooterEnemy sample2 = new ShooterEnemy(40, 60, 250, GameWorld.Height - 20, 20, 5, 150, 0, 350,Xvextor.sabet,Yvector.down, GameWorld.player1.Weapon, Properties.Resources.enemyship3);
+            HeavyTankEnemy sample3 = new HeavyTankEnemy(120, 100, 250, GameWorld.Height - 20, 150, 3, 700, 0, 550,Xvextor.sabet,Yvector.down, GameWorld.player1.Weapon, Properties.Resources.enemyship4);
+            TerroristEnemy sample4 = new TerroristEnemy(40, 40, 250, GameWorld.Height - 20, 280, 8, 500, 0, 800,Xvextor.sabet,Yvector.down, Properties.Resources.enemyship5);
             //wave1
             for (int i = 0; i < 10; i++)
             {
@@ -779,6 +780,7 @@ namespace WinFormsApp1.Logics
                                 //GameWorld.player1.XpTaken(item1.Xp);
                                 if (!item1.Active )
                                 {
+                                    Audio.destruction.Play();
                                     GameWorld.player1.XpTaken(item1.Xp);
                                     if (item1.Coin != 0)
                                     {
@@ -788,6 +790,11 @@ namespace WinFormsApp1.Logics
                                         coinsdrops.Add(coin4);
                                     }
 
+                                }
+                                else
+                                {
+                                    Audio.explosion.Play();
+                                    //نمیخواستم صدا رو اینجا پیاده سازی کنم میخواستم داخل کولایژن موقع برخورد بررسیشون کنم ولی دیگه اینجا گذاشتم 
                                 }
                                 //اضافه کردم بالا رو به اینجا 
                                 //MessageBox.Show("from bulletenemy it has been touched");
@@ -873,7 +880,12 @@ namespace WinFormsApp1.Logics
                     {
                         //MessageBox.Show("counting inactive bullets2");
                         //تغییر دادم          
+                        
                         player1.DamageTaken(item.Damage);
+                        if (player1.Active)
+                        {
+                            Audio.explosion.Play();
+                        }
                         player1.XpTaken(50);
                         player1.Cointaken(1);
                         //MessageBox.Show("from bulletplayerw it has been touched");
@@ -895,6 +907,7 @@ namespace WinFormsApp1.Logics
                 {
                     if (Collision.playerenemy(player1, item1.X, item1.Y, item1.Width, item1.Height) && item1.Active)
                     {
+                        Audio.explosion.Play();
                         player1.DamageTaken(item1.Damage);
                         player1.XpTaken(50);
                         player1.Cointaken(1);
@@ -986,6 +999,7 @@ namespace WinFormsApp1.Logics
                     if (Collision.playercoincolision(player1,item) && item.active)
                     {
                         player1.Cointaken(item.coin);
+                        Audio.buy.Play();
                         item.active = false;
                     }
                 }
@@ -1048,6 +1062,7 @@ namespace WinFormsApp1.Logics
             if (player1.Active == false)
             {
                 gameover = true;
+                Audio.destruction.Play();
                 return gameover;
             }
             else

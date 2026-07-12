@@ -2,32 +2,33 @@
 using System.Collections.Generic;
 using System.Text;
 using WinFormsApp1.Forms;
+using WinFormsApp1.Logics;
 
 namespace WinFormsApp1.Managers;
 
 //ببینید این پلیر الکیه فقط تا کارمو راه بندازه در اصل در پیاده سازی منطق بازی باید پیاده سازیش کنم و با دیتا بیس به سکه ها دسترسی داشته باشم 
-public class player
-{
-    public static int coin = 1000;
-}
-internal enum ItemType 
+//public class player
+//{
+//    public static int coin = 1000;
+//}
+public enum ItemType 
 {
     Ship = 1,
     BackGroundImage = 2,
     Bullet = 3
 }
-internal interface IItem
+public interface IItem
 {
     string Name { get; set; }
     string Description { get; set; }
     int Price {  get; set; }
 }
-internal interface IDynamic
+public interface IDynamic
 {
     float Damage { get; set; }
     int Speed {  get; set; }
 }
-internal interface IShopattitude
+public interface IShopattitude
 {
     bool Selled { get; set; }
     bool Equiped { get; set; }
@@ -37,7 +38,7 @@ internal interface IShopattitude
     bool EquipItem();
     bool UnEquipItem();
 }
-internal class Item : IItem
+public class Item : IItem
 {
     public Image img;
     private string name;
@@ -54,7 +55,7 @@ internal class Item : IItem
         this.img = img;
     }
 }
-internal class ItemShip : Item, IDynamic
+public class ItemShip : Item, IDynamic
 {
     private float damage;
     private int speed;
@@ -71,7 +72,7 @@ internal class ItemShip : Item, IDynamic
         itemtype = ItemType.Ship;
     }
 }
-internal class ItemBullet : Item, IDynamic
+public class ItemBullet : Item, IDynamic
 {
     private float damage;
     private int speed;
@@ -86,7 +87,7 @@ internal class ItemBullet : Item, IDynamic
     }
 
 }
-internal class ItemBackGround : Item
+public class ItemBackGround : Item
 {
     public ItemType itemtype;
     public ItemBackGround(string name, string description, int price,Image img) : base(name, description, price,img)
@@ -95,7 +96,7 @@ internal class ItemBackGround : Item
     }
 }
 
-internal class ItemShop<T> : IShopattitude where T : Item
+public class ItemShop<T> : IShopattitude where T : Item
 {
     private bool selled;
     private bool equiped;
@@ -113,7 +114,7 @@ internal class ItemShop<T> : IShopattitude where T : Item
     }
     public bool SellItem()
     {
-        player.coin += item.Price;  
+        GameWorld.player1.Coin += item.Price;  
         UnEquipItem();
         Selled = false;
         return true;
@@ -126,13 +127,13 @@ internal class ItemShop<T> : IShopattitude where T : Item
         }
         else
         {
-            if (player.coin < Price)
+            if (GameWorld.player1.Coin < Price)
             {
                 return false;
             }
             else
             {
-                player.coin -= Price;
+                GameWorld.player1.Coin -= Price;
                 Selled = true;
                 return true;
             }
@@ -165,7 +166,7 @@ internal class ItemShop<T> : IShopattitude where T : Item
     }
 
 }
-internal class ShopManager
+public class ShopManager
 {
     private static bool initialized = false;
     public static List<ItemShop<ItemShip>> ships = new List<ItemShop<ItemShip>>();
