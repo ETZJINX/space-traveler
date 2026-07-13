@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using WinFormsApp1.Logics;
 using WinFormsApp1.Managers;
+using WinFormsApp1;
 
 namespace WinFormsApp1
 {
@@ -14,6 +15,10 @@ namespace WinFormsApp1
     {
         public ControlForm()
         {
+            //if (Playform.music != null)
+            //{
+            //    Playform.music.Stop();
+            //}
             InitializeComponent();
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox1.Items.Add(1);
@@ -41,6 +46,11 @@ namespace WinFormsApp1
             comboBox1.SelectedItem = 1;
             //new Playform().Show();
             FORMMANAGER.handleform(this, new Playform());
+            if (Playform.music != null)
+            {
+                Playform.music.Stop();
+                Audio.backmusic.Play();
+            }
             Audio.clicksound.Play();
 
         }
@@ -49,6 +59,11 @@ namespace WinFormsApp1
         {
             //new Playform().Show();
             FORMMANAGER.handleform(this, new Playform());
+            if (Playform.music != null)
+            {
+                Playform.music.Stop();
+                Audio.backmusic.Play();
+            }
             Audio.clicksound.Play();
             //نیاز داره تا با دیتابیس مقدار کارنت ویو رو ست کنم 
         }
@@ -58,6 +73,12 @@ namespace WinFormsApp1
             //new Playform().Show();
             //Wavemanager.EnemyRemainingToSpawn = Wavemanager.allwave[Wavemanager.currentwave - 1].Count;
             FORMMANAGER.handleform(this, new Playform());
+            if (Playform.music != null)
+            {
+                Playform.music.Stop();
+                Audio.backmusic.Play();
+            }
+
             Audio.clicksound.Play();
         }
     }

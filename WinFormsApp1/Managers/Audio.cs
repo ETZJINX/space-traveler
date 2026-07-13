@@ -16,7 +16,7 @@ namespace WinFormsApp1.Managers
         sound = 1,
         audio = 2
     }
-    internal class Sound : Idispose
+    public class Sound : Idispose
     {
         public static List<Sound> sounds = new List<Sound>();
         public static bool IsAllMuted = false;
@@ -68,7 +68,7 @@ namespace WinFormsApp1.Managers
     
     
     }
-    internal class Music : Idispose
+    public class Music : Idispose
     {
         public static List<Music> musics = new List<Music>();
         public static bool IsAllMuted = false;
@@ -124,7 +124,7 @@ namespace WinFormsApp1.Managers
     }
 
 
-    internal class Audio
+    public class Audio
     {
         public static Sound clicksound = new Sound("Assets/Audio/click3.wav");
         public static Sound buy = new Sound("Assets/Audio/buy.wav");

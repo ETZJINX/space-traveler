@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Text;
 using WinFormsApp1.Logics.interfaces;
 using WinFormsApp1.Managers;
-
+using WinFormsApp1;
 namespace WinFormsApp1.Logics
 {
     public class Wavemanager
     {
+        private static bool yekbarmasraf = true;
         public static bool showmessage = false;
         private static Random random = new Random();
         public static int currentwave = 1;
@@ -28,6 +29,7 @@ namespace WinFormsApp1.Logics
         public static List<List<template>> allwave = new List<List<template>>();
         public static void init()
         {
+            GameWorld.gameover = false;
             StandardEnemy sample = new StandardEnemy(60, 80, 250, GameWorld.Height - 20, 40, 5, 100, 0, 150,Xvextor.sabet,Yvector.down,Properties.Resources.enemyship1);
             ScoutEnemy sample1 = new ScoutEnemy(60, 80, 250, GameWorld.Height - 20, 45, 15, 100, 0, 250,Xvextor.right,Yvector.down, Properties.Resources.enemyship2);
             ShooterEnemy sample2 = new ShooterEnemy(40, 60, 250, GameWorld.Height - 20, 20, 5, 150, 0, 350,Xvextor.sabet,Yvector.down, GameWorld.player1.Weapon, Properties.Resources.enemyship3);
@@ -166,6 +168,19 @@ namespace WinFormsApp1.Logics
             
         }
         //اسپان انمی هنوز مشکوکه
+        public static void Reset()
+        {
+            currentwave = 1;
+            EnemyRemainingToSpawn = 10;
+            spawndelay = 0;
+            Wavedelay = 0;
+            index = 0;
+            foreach (var item in allwave)
+            {
+                item.Clear();
+            }
+            allwave.Clear();
+        }
         public static void spawnenemy(List<template> templates,int index)
         {
             if (templates.Count == 0)
@@ -246,6 +261,13 @@ namespace WinFormsApp1.Logics
                     spawndelay = 0;
                     index++;
                 }
+                if (currentwave == 10 && yekbarmasraf)
+                {
+                    Playform.music.Stop();
+                    Playform.music = Audio.boss;
+                    Playform.music.Play();
+                }
+
             }
             else
             {
@@ -258,6 +280,7 @@ namespace WinFormsApp1.Logics
                         if (Wavedelay > 4000)
                         {
                             currentwave++;
+                            
                             EnemyRemainingToSpawn = allwave[currentwave - 1].Count;
                             index = 0;
                             showmessage = false;
@@ -529,16 +552,16 @@ namespace WinFormsApp1.Logics
         }
         //اپدیتم شک دارم 
     
-        public static void resettheworls()
-        {
-            for (int i = 0; i < 10; i++)
-            {
-                for (int j = 0; j < allwave[i].Count; j++)
-                {
-                    allwave[i].RemoveAt(j);
-                }
-            }
-        }
+        //public static void resettheworls()
+        //{
+        //    for (int i = 0; i < 10; i++)
+        //    {
+        //        for (int j = 0; j < allwave[i].Count; j++)
+        //        {
+        //            allwave[i].RemoveAt(j);
+        //        }
+        //    }
+        //}
     }
     public class Coindrop
     {
@@ -565,6 +588,7 @@ namespace WinFormsApp1.Logics
     public class GameWorld
     {
         public static player player1;
+        public static player player2 = player1;
         public static List<Bullet> Bullets = new List<Bullet>();
         public static List<Coindrop> coinsdrops = new List<Coindrop>();
         //private static List<StandardEnemy> standardEnemies = new List<StandardEnemy>();
@@ -581,6 +605,19 @@ namespace WinFormsApp1.Logics
         public static int Height = 788;
         //public int xplayervector = 0;
         //public int yplayervector = 0;
+        public static void Reset()
+        {
+            if (gameover)
+            {
+                player1 = player2;
+            }
+            //player1 = null;
+            Bullets.Clear();
+            coinsdrops.Clear();
+            enemies.Clear();
+            gameover = true;
+            
+        }
         public static bool baresiinactiveenemy()
         {
             if (enemies.Count != 0)

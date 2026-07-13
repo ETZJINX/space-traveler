@@ -13,12 +13,17 @@ namespace WinFormsApp1
 {
     public partial class Playform : Form
     {
-        GameWorld gameWorld;
+        public static Music music;
+         GameWorld gameWorld;
         bool up, down, left, right, shoot;
         private System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
         public Playform()
         {
             InitializeComponent();
+            Audio.backmusic.Stop();
+            music = Audio.theme;
+            music.Play();
+            //GameWorld.gameover = false;
             this.DoubleBuffered = true;
             gameWorld = new GameWorld();
             //gameWorld.initbullet();
@@ -218,9 +223,12 @@ namespace WinFormsApp1
 
         private void Playform_FormClosed(object sender, FormClosedEventArgs e)
         {
-            GameWorld.gameover = false;
-            Wavemanager.currentwave = 1;
-            Wavemanager.resettheworls();
+            //GameWorld.gameover = false;
+            //Wavemanager.currentwave = 1;
+            //Wavemanager.resettheworls();
+            Wavemanager.Reset();
+            GameWorld.Reset();
+
 
         }
 

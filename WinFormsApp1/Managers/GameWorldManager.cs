@@ -43,14 +43,41 @@ namespace WinFormsApp1.Managers
 
             itembullet = ShopManager.getequipedbullet();
             itemship = ShopManager.getequipedship();
-            bullet.Damage = itembullet.Damage;
-            bullet.Speed = itembullet.Speed;
-            bullet.img = itembullet.img;
-            player.Damage = itemship.Damage;
-            player.Speed = itemship.Speed;
-            player.Health = itemship.Health;
-            player.img = itemship.img;
-    }
+            if (GameWorld.player1 != null)
+            {
+                player.Damage = itemship.Damage;
+                player.Speed = itemship.Speed;
+                player.Health = itemship.Health;
+                player.img = itemship.img;
+                if (GameWorld.player1.Weapon != null)
+                {
+                    bullet.Damage = itembullet.Damage;
+                    bullet.Speed = itembullet.Speed;
+                    bullet.img = itembullet.img;
+                }
+                else
+                {
+                    bullet = new Bullet(BulletMoveType.straghit, 0, 0, 0, 0, 15, 15, Properties.Resources.playerbullet1);
+                    bullet.Damage = itembullet.Damage;
+                    bullet.Speed = itembullet.Speed;
+                    bullet.img = itembullet.img;
+                }
+            }
+            else
+            {
+                bullet = new Bullet(BulletMoveType.straghit, 0, 0, 0, 0, 15, 15, Properties.Resources.playerbullet1);
+                player = new player(40, 40, GameWorld.Width / 2, GameWorld.Height / 2, 0, 0, 0, 500, 0, Xvextor.sabet, Yvector.sabet, Properties.Resources.ship1, bullet);
+                init();
+                player.Damage = itemship.Damage;
+                player.Speed = itemship.Speed;
+                player.Health = itemship.Health;
+                player.img = itemship.img;
+                bullet.Damage = itembullet.Damage;
+                bullet.Speed = itembullet.Speed;
+                bullet.img = itembullet.img;
+
+            }
+        }
 
 }
 }

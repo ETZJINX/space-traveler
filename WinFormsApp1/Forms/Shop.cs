@@ -195,7 +195,7 @@ namespace WinFormsApp1.Forms
                     healthbar.Visible = true;
                     damagebar1.Visible = true;
                     healthbar1.Visible = true;
-                    damagebar1.Size = new Size((int)(sample2.item.Damage * 3), 50);
+                    damagebar1.Size = new Size((int)(sample2.item.Damage * 3) / 2, 50);
                     healthbar1.Size = new Size(sample2.item.Speed * 3, 50);
                     damagebar1.BackColor = Color.Red;
                     healthbar1.BackColor = Color.Yellow;
