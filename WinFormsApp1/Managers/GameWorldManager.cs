@@ -37,6 +37,8 @@ namespace WinFormsApp1.Managers
             //player.Weapon = bullet;
 
             GameWorld.player1 = player;
+            GameWorld.player2 = player;
+            //GameWorld.maxhealth = player.Health;
         }
         public static void update()
         {

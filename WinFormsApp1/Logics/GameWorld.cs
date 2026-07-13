@@ -587,8 +587,9 @@ namespace WinFormsApp1.Logics
     }
     public class GameWorld
     {
+        public static int maxhealth;
         public static player player1;
-        public static player player2 = player1;
+        public static player player2;
         public static List<Bullet> Bullets = new List<Bullet>();
         public static List<Coindrop> coinsdrops = new List<Coindrop>();
         //private static List<StandardEnemy> standardEnemies = new List<StandardEnemy>();
@@ -607,6 +608,9 @@ namespace WinFormsApp1.Logics
         //public int yplayervector = 0;
         public static void Reset()
         {
+            player2.Coin = player1.Coin;
+            player2.Active = true;
+            //player2.Health = maxhealth;
             if (gameover)
             {
                 player1 = player2;
@@ -635,6 +639,7 @@ namespace WinFormsApp1.Logics
         }
         public void playerupdate(bool left,bool right,bool up,bool down)
         {
+            
             if (left)
             {
                 //yplayervector = 0;
