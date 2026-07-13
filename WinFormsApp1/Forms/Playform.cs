@@ -13,6 +13,8 @@ namespace WinFormsApp1
 {
     public partial class Playform : Form
     {
+        private readonly Font waveFont = new Font("Arial", 30);
+        private readonly Font gameOverFont = new Font("Arial", 40);
         public static Music music;
          GameWorld gameWorld;
         bool up, down, left, right, shoot;
@@ -40,7 +42,7 @@ namespace WinFormsApp1
             //player player = new player(25, 25, 100, 515, 50, 15, 140, 700, 0, Xvextor.sabet, Yvector.sabet, bullet);
             //GameWorld.player1 = player;
 
-            //FORMMANAGER.setbackground(PlayPanl);
+            FORMMANAGER.setbackground(PlayPanl);
             GameWorldManager.update();
             Wavemanager.init();
             //this.Size = new Size(1075, 633);
@@ -170,7 +172,7 @@ namespace WinFormsApp1
             {
                 g.DrawString(
                 $"Wave{Wavemanager.currentwave + 1}",
-                new Font("Arial", 30),
+                waveFont,
                 Brushes.Black,
                 GameWorld.Width / 2,
                 GameWorld.Height / 2);
@@ -179,7 +181,7 @@ namespace WinFormsApp1
             {
                 g.DrawString(
                     "GAME OVER",
-                    new Font("Arial", 40),
+                    gameOverFont,
                     Brushes.Red,
                     180,
                     180);

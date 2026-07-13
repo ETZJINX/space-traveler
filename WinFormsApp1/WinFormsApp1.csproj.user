@@ -19,5 +19,8 @@
     <Compile Update="Forms\Playform.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Logics\GamePanl.cs">
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

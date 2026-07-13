@@ -1,4 +1,6 @@
-﻿namespace WinFormsApp1
+﻿using WinFormsApp1.Logics;
+
+namespace WinFormsApp1
 {
     partial class Playform
     {
@@ -32,7 +34,7 @@
             score = new Label();
             panel1 = new Panel();
             healthbar = new Panel();
-            PlayPanl = new Panel();
+            PlayPanl = new GamePanel();
             health = new Label();
             coinamount = new Label();
             scoreamount = new Label();

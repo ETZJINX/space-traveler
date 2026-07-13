@@ -4,6 +4,7 @@ using System.Text;
 
 namespace WinFormsApp1.Logics
 {
+    
     public class Render
     {
         public static void drawplayer(Graphics g,player player2)
