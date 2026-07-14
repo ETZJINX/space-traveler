@@ -82,6 +82,18 @@ namespace WinFormsApp1.Logics
             g.FillEllipse(Brushes.Gold, coin.X, coin.Y, 30, 30);
             //g.FillEllipse(Brushes.DarkGoldenrod, coin.X - 5, coin.Y - 5, 10, 10);
         }
-    
+        public static void drawdoubleshoot(Graphics g,DoubleShoot shot)
+        {
+            g.FillEllipse(Brushes.Red, shot.X, shot.Y, 30, 30);
+        }
+        public static void drawfastshoot(Graphics g, FastShoot fast)
+        {
+            g.FillEllipse(Brushes.Blue, fast.X, fast.Y, 30, 30);
+        }
+        public static void drawheal(Graphics g, Healinig heal)
+        {
+            g.FillEllipse(Brushes.Green, heal.X, heal.Y, 30, 30);
+        }
+
     }
 }

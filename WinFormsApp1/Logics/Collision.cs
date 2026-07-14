@@ -52,5 +52,60 @@ namespace WinFormsApp1.Logics
             }
 
         }
+        //اضافه کردن برخورد با ایتم خاص 
+        public static bool playerdoubleshoot(player player, SpecialItem doubleShoot)
+        {
+            if (doubleShoot is DoubleShoot)
+            {
+                if (player.X - player.Width / 2 < doubleShoot.X + 30 / 2 && player.X + player.Width / 2 > doubleShoot.X - 30 / 2 && player.Y + player.Height / 2 > doubleShoot.Y - 30 / 2 && player.Y - player.Height / 2 < doubleShoot.Y + 30 / 2)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public static bool playerfastshoot(player player, SpecialItem fastShoot)
+        {
+            if (fastShoot is FastShoot)
+            {
+                if (player.X - player.Width / 2 < fastShoot.X + 30 / 2 && player.X + player.Width / 2 > fastShoot.X - 30 / 2 && player.Y + player.Height / 2 > fastShoot.Y - 30 / 2 && player.Y - player.Height / 2 < fastShoot.Y + 30 / 2)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public static bool playerheal(player player, SpecialItem heal)
+        {
+            if (heal is Healinig)
+            {
+                if (player.X - player.Width / 2 < heal.X + 30 / 2 && player.X + player.Width / 2 > heal.X - 30 / 2 && player.Y + player.Height / 2 > heal.Y - 30 / 2 && player.Y - player.Height / 2 < heal.Y + 30 / 2)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

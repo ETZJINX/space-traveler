@@ -217,6 +217,24 @@ namespace WinFormsApp1.Logics
                         templates[index].Coin = 200;
                     }
                     GameWorld.enemies.Add(templates[index]);
+                    //اسپاون ایتم های خاص میدونم کارم اشتباهه ولی وقت نمیکنم ی کلاس جدا بنویسم براش توی ی متد جدا 
+                    SpecialItem samplespecial = new SpecialItem(random.Next(templates[index].Width / 2, GameWorld.Width - templates[index].Width / 2), random.Next(templates[index].Height / 2, GameWorld.Height - templates[index].Height / 2));
+                    if (random.Next(100) <= 40)
+                    {
+                        DoubleShoot sampledouble = new DoubleShoot(samplespecial.X,samplespecial.Y,5000);
+                        GameWorld.specialitems.Add(sampledouble);
+                    }
+                    else if (random.Next(100) <= 50)
+                    {
+                        FastShoot sampledouble = new FastShoot(samplespecial.X, samplespecial.Y, 5000);
+                        GameWorld.specialitems.Add(sampledouble);
+                    }
+                    else if (random.Next(100) <= 80)
+                    {
+                        Healinig sampledouble = new Healinig(samplespecial.X, samplespecial.Y,random.Next(75,150));
+                        GameWorld.specialitems.Add(sampledouble);
+                    }
+                    
 
                     //templates.RemoveAt(index);
                     //MessageBox.Show(GameWorld.enemies[GameWorld.enemies.Count - 1].Active.ToString());
@@ -587,9 +605,11 @@ namespace WinFormsApp1.Logics
     }
     public class GameWorld
     {
+
         public static int maxhealth;
         public static player player1;
         public static player player2;
+        public static List<SpecialItem> specialitems = new List<SpecialItem>();
         public static List<Bullet> Bullets = new List<Bullet>();
         public static List<Coindrop> coinsdrops = new List<Coindrop>();
         //private static List<StandardEnemy> standardEnemies = new List<StandardEnemy>();
@@ -756,25 +776,38 @@ namespace WinFormsApp1.Logics
         {
             if (shoot)
             {
-                //Input.shoot = false;
-                //MessageBox.Show("theplayershoot is working");
-                Bullet sample =  player1.Shoot();
-                //MessageBox.Show(sample == null ? "NULL" : "NOT NULL");
-
-                if (sample != null)
+                if (player1.doubleshoot)
                 {
-                    //MessageBox.Show(GameWorld.Bullets.Count.ToString() + " tedad bullet ha ");
-                    for (int i = 0; i < GameWorld.Bullets.Count; i++)
+                    Bullet sample11 = player1.Doubleshoooot(out Bullet Shot1);
+                    if (sample11 != null)
                     {
-                        //MessageBox.Show(GameWorld.Bullets[i].Active.ToString() + $"{i}");
+                        Bullets.Add(sample11);
+                        Bullets.Add(Shot1);
                     }
-                    //MessageBox.Show("bullet is not null from playershoot");
-                    //MessageBox.Show("theplayershoot is working");
-                    //MessageBox.Show(Bullets.Count.ToString());
-                    //تغییر دادم
-                    Bullets.Add(sample);
+                    Input.shoot = false;
                 }
-                Input.shoot = false;
+                else
+                {
+                    //Input.shoot = false;
+                    //MessageBox.Show("theplayershoot is working");
+                    Bullet sample = player1.Shoot();
+                    //MessageBox.Show(sample == null ? "NULL" : "NOT NULL");
+
+                    if (sample != null)
+                    {
+                        //MessageBox.Show(GameWorld.Bullets.Count.ToString() + " tedad bullet ha ");
+                        //for (int i = 0; i < GameWorld.Bullets.Count; i++)
+                        //{
+                        //    //MessageBox.Show(GameWorld.Bullets[i].Active.ToString() + $"{i}");
+                        //}
+                        //MessageBox.Show("bullet is not null from playershoot");
+                        //MessageBox.Show("theplayershoot is working");
+                        //MessageBox.Show(Bullets.Count.ToString());
+                        //تغییر دادم
+                        Bullets.Add(sample);
+                    }
+                    Input.shoot = false;
+                }
             }
         }
         public void bulletsupdate()
@@ -1099,6 +1132,64 @@ namespace WinFormsApp1.Logics
         //        }
         //    }
         //}
+        public void playerDoublecolision()
+        {
+            if (specialitems.Count != 0)
+            {
+                foreach (var item in specialitems)
+                {
+                    if (Collision.playerdoubleshoot(player1,item) && item.active )
+                    {
+                        //MessageBox.Show("Collision double");
+                        DoubleShoot sample = item as DoubleShoot;
+                        player1.doubleshoot = true;
+                        player1.itemtime = sample.time;
+                        item.active = false;
+                    }
+                }
+            }
+        }
+        public void playerfastshootcollision()
+        {
+            if(specialitems.Count != 0)
+            {
+                foreach (var item in specialitems)
+                {
+                    if (Collision.playerfastshoot(player1,item) && item.active)
+                    {
+                        //MessageBox.Show("Collision fastshoot");
+                        FastShoot sample = item as FastShoot;
+                        if (sample != null)
+                        {
+                            player1.fastshoot = true;
+                            player1.itemtime = sample.time;
+                            player1.fastShoot();
+                            
+                        }
+                        item.active = false;
+                    }
+                }
+            }
+        }
+        public void playerhealcollision()
+        {
+            
+            if (specialitems.Count != 0)
+            {
+                //MessageBox.Show(specialitems.Count.ToString() + " special amount");
+                foreach (var item in specialitems)
+                {
+                    if (Collision.playerheal(player1, item) && item.active)
+                    {
+                        //MessageBox.Show("Collision");
+                        Healinig sample = item as Healinig;
+                        player1.HEAL(sample.heal);
+                        item.active = false;
+                    }
+                }
+            }
+        }
+        
         public bool gameover1()
         {
             if (player1.Active == false)

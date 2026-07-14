@@ -50,6 +50,7 @@ namespace WinFormsApp1.Managers
                 player.Damage = itemship.Damage;
                 player.Speed = itemship.Speed;
                 player.Health = itemship.Health;
+                player.maxhealth = itemship.Health;
                 player.img = itemship.img;
                 if (GameWorld.player1.Weapon != null)
                 {
@@ -73,6 +74,7 @@ namespace WinFormsApp1.Managers
                 player.Damage = itemship.Damage;
                 player.Speed = itemship.Speed;
                 player.Health = itemship.Health;
+                player.maxhealth = itemship.Health;
                 player.img = itemship.img;
                 bullet.Damage = itembullet.Damage;
                 bullet.Speed = itembullet.Speed;

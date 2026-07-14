@@ -14,7 +14,8 @@ namespace WinFormsApp1.Logics.interfaces
     {
         sabet = 0,
         up = -1,
-        down = 1
+        down = 1,
+        doubleshot = -2
     }
     public enum BulletMoveType
     {

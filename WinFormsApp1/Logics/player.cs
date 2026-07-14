@@ -82,6 +82,9 @@ namespace WinFormsApp1.Logics
     {
         private Bullet MainBullet;
         private int timeshoot;
+        private int delayshoot;
+        private int delayshootsabet;
+        //private int maxhealth;
         public int Timeshoot { get { return timeshoot; } set { timeshoot = value; }  }
         //private BulletMoveType movetypebullet;
         public Bullet Weapon {  get { return MainBullet; } }
@@ -95,7 +98,7 @@ namespace WinFormsApp1.Logics
             //Debug.WriteLine(Timeshoot);
             //MessageBox.Show(Timeshoot.ToString());
             //تغییر دادم
-            if (Timeshoot >= 500)
+            if (Timeshoot >= delayshoot)
             {
                 
                 sample = Weapon.santes(X, Y - (Height / 2) - Weapon.Height / 2 - 1 );
@@ -146,6 +149,14 @@ namespace WinFormsApp1.Logics
             this.MainBullet = mainbullet;
             //this.movetypebullet = move;
             timeshoot = 1500;
+            delayshoot = 1500;
+            delayshootsabet = 1500;
+            doubleshoot = false;
+            maxhealth = health;
+            fastshoot = false;
+            itemtime = 0;
+//            MessageBox.Show(
+//$"Health={player1.Health}\nMaxHealth={player1.maxhealth}");
         }
         public void Cointaken(int megdar)
         {
@@ -173,6 +184,14 @@ namespace WinFormsApp1.Logics
             //MessageBox.Show($"Update: {GetHashCode()}  Timeshoot={Timeshoot}");
             //تغییر دادم
             timeshoot += 16;
+            if (doubleshoot || fastshoot)
+            {
+                itemtime -= 16;
+                if (fastshoot)
+                {
+                    fastShoot();
+                }
+            }
             if (outofrange())
             {
                 
@@ -182,6 +201,7 @@ namespace WinFormsApp1.Logics
                 MoveX();
                 MoveY();
             }
+            
         }
         public void tagirjahatx(Xvextor jahatx)
         {
@@ -190,6 +210,110 @@ namespace WinFormsApp1.Logics
         public void tagirjahaty(Yvector jahaty)
         {
             this.jahaty = jahaty;
+        }
+
+        //درست کردن رفتار های اسپشالاتم در پلیر 
+        public bool doubleshoot;
+        public bool fastshoot;
+        public int itemtime;
+        //public Bullet Doubleshoooot(out Bullet shot1)
+        //{
+
+        //    if (itemtime > 0)
+        //    {
+        //        if (timeshoot >= delayshoot)
+        //        {
+        //            Bullet shot2 = Shoot();
+        //            shot1 = shot2.santes(shot2.X, shot2.Y);
+        //            shot2.jahatx = Xvextor.left;
+        //            shot1.jahatx = Xvextor.right;
+        //            shot1.jahaty = Yvector.doubleshot;
+        //            shot2.jahaty = Yvector.doubleshot;
+        //            timeshoot = 0;
+        //            return shot2;
+        //        }
+        //        else
+        //        {
+        //            itemtime = 0;
+        //            doubleshoot = false;
+        //            shot1 = null;
+        //            return null;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        itemtime = 0;
+        //        doubleshoot = false;
+        //        shot1 = null;
+        //        return null;
+        //    }
+
+
+        //}
+        //این تابع بالایی رو خودم نوشتم و منطقشم درست بودش فقط گاهی اوقات نال برمیگردوند 
+        public Bullet Doubleshoooot(out Bullet shot1)
+        {
+
+            if (itemtime <= 0)
+            {
+                doubleshoot = false;
+                shot1 = null;
+                return null;
+            }
+
+
+            if (timeshoot < delayshoot)
+            {
+                shot1 = null;
+                return null;
+            }
+
+
+            Bullet shot2 = Shoot();
+
+            if (shot2 == null)
+            {
+                shot1 = null;
+                return null;
+            }
+
+            shot1 = shot2.santes(shot2.X, shot2.Y);
+
+            shot2.jahatx = Xvextor.left;
+            shot1.jahatx = Xvextor.right;
+
+            shot2.jahaty = Yvector.doubleshot;
+            shot1.jahaty = Yvector.doubleshot;
+
+            return shot2;
+        }
+        ////اینم درست و جدیدش هستش 
+        public void fastShoot()
+        {
+            if (itemtime > 0)
+            {
+                delayshoot = 160;
+            }
+            else
+            {
+                itemtime = 0;
+                delayshoot = delayshootsabet;
+                fastshoot = false;
+                return;
+            }
+        }
+
+        public void HEAL(int heal)
+        {
+    //        MessageBox.Show(
+    //$"Before Heal\nHealth={Health}\nMaxHealth={maxhealth}\nHeal={heal}");
+            Health += heal;
+            if (Health > maxhealth)
+            {
+                Health = maxhealth;
+            }
+            //MessageBox.Show(
+    //$"After Heal\nHealth={Health}\nMaxHealth={maxhealth}");
         }
     }
 }

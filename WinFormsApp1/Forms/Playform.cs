@@ -68,7 +68,7 @@ namespace WinFormsApp1
             panel1.BackColor = Color.Red;
             enemyremain.Text = "enemyremain : " + Wavemanager.EnemyRemainingToSpawn.ToString();
             playerhealth.Text = GameWorld.player1.Health.ToString();
-            panel1.Size = new Size(140, 20);
+            panel1.Size = new Size(GameWorld.player1.maxhealth, 20);
             healthbar.BackColor = Color.Green;
             healthbar.Size = new Size(GameWorld.player1.Health, 20);
             coinamount.Text = GameWorld.player1.Coin.ToString();
@@ -94,6 +94,9 @@ namespace WinFormsApp1
                     gameWorld.bulletplayer();
                     gameWorld.enemyplayer();
                     gameWorld.playercoincolision1();
+                    gameWorld.playerDoublecolision();
+                    gameWorld.playerfastshootcollision();
+                    gameWorld.playerhealcollision();
                     //MessageBox.Show(Bullets[0].Active.ToString());
                     //تغییر دادم 
                     //removebullets();
@@ -166,8 +169,42 @@ namespace WinFormsApp1
                         Render.drawcoin(g, coin);
                     }
                 }
-
             }
+            if (GameWorld.specialitems.Count != 0)
+            {
+                foreach (var item in GameWorld.specialitems)
+                {
+                    if (item.active && item is DoubleShoot)
+                    {
+                        DoubleShoot sample = item as DoubleShoot;
+                        Render.drawdoubleshoot(g, sample);
+                    }
+                }
+            }
+            if (GameWorld.specialitems.Count != 0)
+            {
+                foreach (var item in GameWorld.specialitems)
+                {
+                    if (item.active && item is FastShoot)
+                    {
+                        FastShoot sample1 = item as FastShoot;
+                        Render.drawfastshoot(g, sample1);
+                    }
+                }
+            }
+            if (GameWorld.specialitems.Count != 0)
+            {
+                foreach (var item in GameWorld.specialitems)
+                {
+                    if (item.active && item is Healinig)
+                    {
+                        Healinig sample = item as Healinig;
+                        Render.drawheal(g, sample);
+                    }
+                }
+            }
+
+
             if (Wavemanager.showmessage)
             {
                 g.DrawString(

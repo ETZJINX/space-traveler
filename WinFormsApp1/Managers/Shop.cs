@@ -349,8 +349,8 @@ public class ShopManager
             }
         }
         ShopManager.AddShip("Phoenix", "Fast attack ship", 500, 35f, 18, 150,Properties.Resources.ship2,2);
-        ShopManager.AddShip("Destroyer", "Heavy armored ship", 800, 60f, 7, 100, Properties.Resources.ship3, 3);
-        ShopManager.AddShip("Titan", "Ultimate battle ship", 1500, 90f, 5, 300, Properties.Resources.ship4, 4);
+        ShopManager.AddShip("Destroyer", "Heavy armored ship", 800, 60f, 25, 100, Properties.Resources.ship3, 3);
+        ShopManager.AddShip("Titan", "Ultimate battle ship", 1500, 90f, 15, 300, Properties.Resources.ship4, 4);
 
         // ===================== Bullets =====================
         ShopManager.AddBullet("Normal Bullet", "Standard bullet", 100, 75f, 20, Properties.Resources.playerbullet1, 101);
