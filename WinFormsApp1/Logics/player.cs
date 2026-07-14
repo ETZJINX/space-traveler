@@ -149,8 +149,8 @@ namespace WinFormsApp1.Logics
             this.MainBullet = mainbullet;
             //this.movetypebullet = move;
             timeshoot = 1500;
-            delayshoot = 1500;
-            delayshootsabet = 1500;
+            delayshoot = 600;
+            delayshootsabet = 600;
             doubleshoot = false;
             maxhealth = health;
             fastshoot = false;

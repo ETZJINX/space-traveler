@@ -79,20 +79,27 @@ namespace WinFormsApp1.Logics
         public static void drawcoin(Graphics g,Coindrop coin)
         {
             //MessageBox.Show($"{coin.X} {coin.Y}");
-            g.FillEllipse(Brushes.Gold, coin.X, coin.Y, 30, 30);
+            //g.FillEllipse(Brushes.Gold, coin.X, coin.Y, 30, 30);
+            g.DrawImage(Properties.Resources.coinpicture, coin.X, coin.Y, 30, 30);
             //g.FillEllipse(Brushes.DarkGoldenrod, coin.X - 5, coin.Y - 5, 10, 10);
         }
         public static void drawdoubleshoot(Graphics g,DoubleShoot shot)
         {
-            g.FillEllipse(Brushes.Red, shot.X, shot.Y, 30, 30);
+            //g.FillEllipse(Brushes.Red, shot.X, shot.Y, 30, 30);
+            g.DrawImage(Properties.Resources.doubleshootpicture,shot.X, shot.Y, 50, 50);
+
         }
         public static void drawfastshoot(Graphics g, FastShoot fast)
         {
-            g.FillEllipse(Brushes.Blue, fast.X, fast.Y, 30, 30);
+            //g.FillEllipse(Brushes.Blue, fast.X, fast.Y, 30, 30);
+
+            g.DrawImage(Properties.Resources.Fastshootpicture, fast.X, fast.Y, 50, 50);
         }
         public static void drawheal(Graphics g, Healinig heal)
         {
-            g.FillEllipse(Brushes.Green, heal.X, heal.Y, 30, 30);
+            //g.FillEllipse(Brushes.Green, heal.X, heal.Y, 30, 30);
+
+            g.DrawImage(Properties.Resources.Healingpicture, heal.X, heal.Y, 50, 50);
         }
 
     }

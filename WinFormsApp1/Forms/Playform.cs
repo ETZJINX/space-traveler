@@ -44,7 +44,7 @@ namespace WinFormsApp1
 
             FORMMANAGER.setbackground(PlayPanl);
             GameWorldManager.update();
-            Wavemanager.init();
+            
             //this.Size = new Size(1075, 633);
             PlayPanl.Size = new Size(GameWorld.Width, GameWorld.Height);
             

@@ -219,17 +219,17 @@ namespace WinFormsApp1.Logics
                     GameWorld.enemies.Add(templates[index]);
                     //اسپاون ایتم های خاص میدونم کارم اشتباهه ولی وقت نمیکنم ی کلاس جدا بنویسم براش توی ی متد جدا 
                     SpecialItem samplespecial = new SpecialItem(random.Next(templates[index].Width / 2, GameWorld.Width - templates[index].Width / 2), random.Next(templates[index].Height / 2, GameWorld.Height - templates[index].Height / 2));
-                    if (random.Next(100) <= 40)
+                    if (random.Next(100) <= 5)
                     {
                         DoubleShoot sampledouble = new DoubleShoot(samplespecial.X,samplespecial.Y,5000);
                         GameWorld.specialitems.Add(sampledouble);
                     }
-                    else if (random.Next(100) <= 50)
+                    else if (random.Next(100) <= 10)
                     {
                         FastShoot sampledouble = new FastShoot(samplespecial.X, samplespecial.Y, 5000);
                         GameWorld.specialitems.Add(sampledouble);
                     }
-                    else if (random.Next(100) <= 80)
+                    else if (random.Next(100) <= 15)
                     {
                         Healinig sampledouble = new Healinig(samplespecial.X, samplespecial.Y,random.Next(75,150));
                         GameWorld.specialitems.Add(sampledouble);
@@ -630,6 +630,13 @@ namespace WinFormsApp1.Logics
         {
             player2.Coin = player1.Coin;
             player2.Active = true;
+            //این بخش ها رو هم خودم اضافه کردم قسمتای پایین تا بخش کامنت هلث پایین 
+            player1.doubleshoot = false;
+            player1.itemtime = 0;
+            player2.itemtime = 0;
+            player1.fastshoot = false;
+            player2.doubleshoot = false;
+            player2.fastshoot = false;
             //player2.Health = maxhealth;
             if (gameover)
             {
@@ -639,6 +646,7 @@ namespace WinFormsApp1.Logics
             Bullets.Clear();
             coinsdrops.Clear();
             enemies.Clear();
+            specialitems.Clear();
             gameover = true;
             
         }

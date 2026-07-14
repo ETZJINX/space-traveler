@@ -130,6 +130,12 @@
   <data name="background4" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\gamesimage\background4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="coinpicture" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\gamesimage\icons8-coin-30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="doubleshootpicture" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\gamesimage\icons8-bullet-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="enemyship1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\gamesimage\enemyship1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -144,6 +150,12 @@
   </data>
   <data name="enemyship5" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\gamesimage\enemyship5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Fastshootpicture" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\gamesimage\icons8-speed-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Healingpicture" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\gamesimage\icons8-health-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="IMG_20260410_095028" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\IMG_20260410_095028.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

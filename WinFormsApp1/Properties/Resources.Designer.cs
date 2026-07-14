@@ -103,6 +103,26 @@ namespace WinFormsApp1.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap coinpicture {
+            get {
+                object obj = ResourceManager.GetObject("coinpicture", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap doubleshootpicture {
+            get {
+                object obj = ResourceManager.GetObject("doubleshootpicture", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap enemyship1 {
             get {
                 object obj = ResourceManager.GetObject("enemyship1", resourceCulture);
@@ -146,6 +166,26 @@ namespace WinFormsApp1.Properties {
         internal static System.Drawing.Bitmap enemyship5 {
             get {
                 object obj = ResourceManager.GetObject("enemyship5", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Fastshootpicture {
+            get {
+                object obj = ResourceManager.GetObject("Fastshootpicture", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Healingpicture {
+            get {
+                object obj = ResourceManager.GetObject("Healingpicture", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

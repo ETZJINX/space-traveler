@@ -42,6 +42,7 @@ namespace WinFormsApp1
 
         private void Newgame_Click(object sender, EventArgs e)
         {
+            Wavemanager.init();
             Wavemanager.currentwave = 1;
             comboBox1.SelectedItem = 1;
             //new Playform().Show();
@@ -57,6 +58,7 @@ namespace WinFormsApp1
 
         private void Play_Click(object sender, EventArgs e)
         {
+            Wavemanager.init();
             //new Playform().Show();
             FORMMANAGER.handleform(this, new Playform());
             if (Playform.music != null)
@@ -71,8 +73,16 @@ namespace WinFormsApp1
         private void WaveSelector_Click(object sender, EventArgs e)
         {
             //new Playform().Show();
-            //Wavemanager.EnemyRemainingToSpawn = Wavemanager.allwave[Wavemanager.currentwave - 1].Count;
+           
+            Wavemanager.init();
+            MessageBox.Show(
+$"Selected = {comboBox1.SelectedItem}\n" +
+$"Index = {(int)comboBox1.SelectedItem - 1}\n" +
+$"WaveCount = {Wavemanager.allwave.Count}");
+            Wavemanager.EnemyRemainingToSpawn = Wavemanager.allwave[Wavemanager.currentwave - 1].Count;
+            //Wavemanager.currentwave = (int)comboBox1.SelectedItem;
             FORMMANAGER.handleform(this, new Playform());
+            
             if (Playform.music != null)
             {
                 Playform.music.Stop();
