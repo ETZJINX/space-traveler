@@ -90,6 +90,7 @@
             button1.TabIndex = 3;
             button1.Text = "PLAY";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // button2
             // 
@@ -101,6 +102,7 @@
             button2.TabIndex = 4;
             button2.Text = "SHOP";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // button3
             // 
@@ -112,6 +114,7 @@
             button3.TabIndex = 5;
             button3.Text = "OPTIONS";
             button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // button4
             // 
@@ -170,6 +173,7 @@
             Controls.Add(label1);
             Name = "MAINMENU";
             Text = "MainMenu";
+            FormClosing += MAINMENU_FormClosing;
             tableLayoutPanel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
