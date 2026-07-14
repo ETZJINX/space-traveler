@@ -1,5 +1,4 @@
 ﻿using System.Data.SQLite;
-using SpaceShooter.Database;
 
 namespace SpaceShooter.Database
 {
@@ -55,7 +54,6 @@ namespace SpaceShooter.Database
                 }
 
                 SeedPlayerData(connection);
-
                 SeedShopItems(connection);
             }
         }
@@ -82,23 +80,57 @@ namespace SpaceShooter.Database
         private void SeedShopItems(SQLiteConnection connection)
         {
             const string query = @"
-                INSERT INTO ShopItems
-                    (Id, ItemName, IsPurchased, IsEquipped)
 
-                SELECT 1, 'Red Ship', 1, 1
-                WHERE NOT EXISTS (SELECT 1 FROM ShopItems WHERE Id = 1);
+            INSERT INTO ShopItems (Id, ItemName, IsPurchased, IsEquipped)
+            SELECT 1,'Falcon',1,1
+            WHERE NOT EXISTS(SELECT 1 FROM ShopItems WHERE Id=1);
 
-                INSERT INTO ShopItems
-                    (Id, ItemName, IsPurchased, IsEquipped)
+            INSERT INTO ShopItems (Id, ItemName, IsPurchased, IsEquipped)
+            SELECT 2,'Phoenix',0,0
+            WHERE NOT EXISTS(SELECT 1 FROM ShopItems WHERE Id=2);
 
-                SELECT 2, 'Blue Ship', 0, 0
-                WHERE NOT EXISTS (SELECT 1 FROM ShopItems WHERE Id = 2);
+            INSERT INTO ShopItems (Id, ItemName, IsPurchased, IsEquipped)
+            SELECT 3,'Destroyer',0,0
+            WHERE NOT EXISTS(SELECT 1 FROM ShopItems WHERE Id=3);
 
-                INSERT INTO ShopItems
-                    (Id, ItemName, IsPurchased, IsEquipped)
+            INSERT INTO ShopItems (Id, ItemName, IsPurchased, IsEquipped)
+            SELECT 4,'Titan',0,0
+            WHERE NOT EXISTS(SELECT 1 FROM ShopItems WHERE Id=4);
 
-                SELECT 3, 'Green Ship', 0, 0
-                WHERE NOT EXISTS (SELECT 1 FROM ShopItems WHERE Id = 3);
+
+            INSERT INTO ShopItems (Id, ItemName, IsPurchased, IsEquipped)
+            SELECT 101,'Normal Bullet',1,1
+            WHERE NOT EXISTS(SELECT 1 FROM ShopItems WHERE Id=101);
+
+            INSERT INTO ShopItems (Id, ItemName, IsPurchased, IsEquipped)
+            SELECT 102,'Laser Beam',0,0
+            WHERE NOT EXISTS(SELECT 1 FROM ShopItems WHERE Id=102);
+
+            INSERT INTO ShopItems (Id, ItemName, IsPurchased, IsEquipped)
+            SELECT 103,'Plasma Shot',0,0
+            WHERE NOT EXISTS(SELECT 1 FROM ShopItems WHERE Id=103);
+
+            INSERT INTO ShopItems (Id, ItemName, IsPurchased, IsEquipped)
+            SELECT 104,'Dark Matter',0,0
+            WHERE NOT EXISTS(SELECT 1 FROM ShopItems WHERE Id=104);
+
+
+            INSERT INTO ShopItems (Id, ItemName, IsPurchased, IsEquipped)
+            SELECT 201,'Earth Orbit',1,1
+            WHERE NOT EXISTS(SELECT 1 FROM ShopItems WHERE Id=201);
+
+            INSERT INTO ShopItems (Id, ItemName, IsPurchased, IsEquipped)
+            SELECT 202,'Nebula',0,0
+            WHERE NOT EXISTS(SELECT 1 FROM ShopItems WHERE Id=202);
+
+            INSERT INTO ShopItems (Id, ItemName, IsPurchased, IsEquipped)
+            SELECT 203,'Galaxy Core',0,0
+            WHERE NOT EXISTS(SELECT 1 FROM ShopItems WHERE Id=203);
+
+            INSERT INTO ShopItems (Id, ItemName, IsPurchased, IsEquipped)
+            SELECT 204,'Black Hole',0,0
+            WHERE NOT EXISTS(SELECT 1 FROM ShopItems WHERE Id=204);
+
             ";
 
             using (var command = new SQLiteCommand(query, connection))
@@ -151,13 +183,13 @@ namespace SpaceShooter.Database
                 connection.Open();
 
                 const string query = @"
-            SELECT
-                Id,
-                ItemName,
-                IsPurchased,
-                IsEquipped
-            FROM ShopItems;
-        ";
+                    SELECT
+                        Id,
+                        ItemName,
+                        IsPurchased,
+                        IsEquipped
+                    FROM ShopItems;
+                ";
 
                 using (var command = new SQLiteCommand(query, connection))
                 using (var reader = command.ExecuteReader())
@@ -177,6 +209,7 @@ namespace SpaceShooter.Database
 
             return items;
         }
+
         public bool UpdateCoins(int totalCoins)
         {
             using (var connection = new SQLiteConnection(_connectionString))
@@ -221,6 +254,9 @@ namespace SpaceShooter.Database
             }
         }
 
+
+
+
         public bool EquipItem(int itemId)
         {
             using (var connection = new SQLiteConnection(_connectionString))
@@ -231,10 +267,36 @@ namespace SpaceShooter.Database
                 {
                     try
                     {
-                        const string resetQuery = @"
-                            UPDATE ShopItems
-                            SET IsEquipped = 0;
-                        ";
+                        string resetQuery;
+
+                        if (itemId >= 1 && itemId <= 4)
+                        {
+                            resetQuery = @"
+                                UPDATE ShopItems
+                                SET IsEquipped = 0
+                                WHERE Id BETWEEN 1 AND 4;
+                            ";
+                        }
+                        else if (itemId >= 101 && itemId <= 104)
+                        {
+                            resetQuery = @"
+                                UPDATE ShopItems
+                                SET IsEquipped = 0
+                                WHERE Id BETWEEN 101 AND 104;
+                            ";
+                        }
+                        else if (itemId >= 201 && itemId <= 204)
+                        {
+                            resetQuery = @"
+                                UPDATE ShopItems
+                                SET IsEquipped = 0
+                                WHERE Id BETWEEN 201 AND 204;
+                            ";
+                        }
+                        else
+                        {
+                            return false;
+                        }
 
                         using (var resetCommand = new SQLiteCommand(resetQuery, connection, transaction))
                         {
@@ -275,6 +337,28 @@ namespace SpaceShooter.Database
                 const string query = @"
                     UPDATE ShopItems
                     SET IsPurchased = 1
+                    WHERE Id = @Id;
+                ";
+
+                using (var command = new SQLiteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Id", itemId);
+
+                    return command.ExecuteNonQuery() > 0;
+                }
+            }
+        }
+
+        public bool SellItem(int itemId)
+        {
+            using (var connection = new SQLiteConnection(_connectionString))
+            {
+                connection.Open();
+
+                const string query = @"
+                    UPDATE ShopItems
+                    SET IsPurchased = 0,
+                        IsEquipped = 0
                     WHERE Id = @Id;
                 ";
 

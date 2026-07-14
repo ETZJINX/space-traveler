@@ -1,9 +1,9 @@
-﻿using System;
+﻿using SpaceShooter.Database;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using WinFormsApp1.Forms;
 using WinFormsApp1.Logics;
-
 namespace WinFormsApp1.Managers;
 
 //ببینید این پلیر الکیه فقط تا کارمو راه بندازه در اصل در پیاده سازی منطق بازی باید پیاده سازیش کنم و با دیتا بیس به سکه ها دسترسی داشته باشم 
@@ -114,43 +114,79 @@ public class ItemShop<T> : IShopattitude where T : Item
     }
     public bool SellItem()
     {
-        GameWorld.player1.Coin += item.Price;  
-        UnEquipItem();
+        if (!Selled)
+        {
+            return false;
+        }
+
+        Database database = new Database();
+
+        PlayerData player = database.GetPlayerData();
+
+        player.TotalCoins += item.Price;
+
+        if (!database.UpdateCoins(player.TotalCoins))
+        {
+            return false;
+        }
+
+        if (!database.SellItem(Id))
+        {
+            return false;
+        }
+
         Selled = false;
+        Equiped = false;
+
         return true;
     }
     public bool BuyItem(int Price)
     {
+        Database database = new Database();
+
+        PlayerData player = database.GetPlayerData();
+
         if (Selled)
         {
             return false;
         }
-        else
+
+        if (player.TotalCoins < Price)
         {
-            if (GameWorld.player1.Coin < Price)
-            {
-                return false;
-            }
-            else
-            {
-                GameWorld.player1.Coin -= Price;
-                Selled = true;
-                return true;
-            }
+            return false;
         }
 
+        player.TotalCoins -= Price;
+
+        if (!database.UpdateCoins(player.TotalCoins))
+        {
+            return false;
+        }
+
+        if (!database.PurchaseItem(Id))
+        {
+            return false;
+        }
+
+        Selled = true;
+
+        return true;
     }
     public bool EquipItem()
     {
-        if (Selled)
-        {
-            Equiped = true;
-            return true;
-        }
-        else
+        if (!Selled)
         {
             return false;
         }
+
+        Database database = new Database();
+
+        if (!database.EquipItem(Id))
+        {
+            return false;
+        }
+
+        return true;
     }
     public bool UnEquipItem()
     {
@@ -172,6 +208,7 @@ public class ShopManager
     public static List<ItemShop<ItemShip>> ships = new List<ItemShop<ItemShip>>();
     public static List<ItemShop<ItemBackGround>> backGrounds = new List<ItemShop<ItemBackGround>>();
     public static List<ItemShop<ItemBullet>> bullets = new List<ItemShop<ItemBullet>>();
+
     public static bool AddShip(string name, string description, int price, float damage, int speed,int health,Image img, int id)
     {
         ItemShip ship1 = new ItemShip(name, description, price,img, damage, speed,health);
@@ -239,11 +276,16 @@ public class ShopManager
             {
                 if (item.Selled && !item.Equiped)
                 {
-                    item.EquipItem();
-                    return true;
-                }
-                else
-                {
+                    if (item.EquipItem())
+                    {
+                        foreach (var ship in ships)
+                            ship.Equiped = false;
+
+                        item.Equiped = true;
+
+                        return true;
+                    }
+
                     return false;
                 }
             }
@@ -254,11 +296,16 @@ public class ShopManager
             {
                 if (item.Selled && !item.Equiped)
                 {
-                    item.EquipItem();
-                    return true;
-                }
-                else
-                {
+                    if (item.EquipItem())
+                    {
+                        foreach (var bullet in bullets)
+                            bullet.Equiped = false;
+
+                        item.Equiped = true;
+
+                        return true;
+                    }
+
                     return false;
                 }
             }
@@ -269,11 +316,16 @@ public class ShopManager
             {
                 if (item.Selled && !item.Equiped)
                 {
-                    item.EquipItem();
-                    return true;
-                }
-                else
-                {
+                    if (item.EquipItem())
+                    {
+                        foreach (var background in backGrounds)
+                            background.Equiped = false;
+
+                        item.Equiped = true;
+
+                        return true;
+                    }
+
                     return false;
                 }
             }
@@ -340,45 +392,60 @@ public class ShopManager
         initialized = true;
         // ===================== Ships =====================
         ShopManager.AddShip("Falcon", "Balanced starter ship", 250, 20f, 10, 200,Properties.Resources.ship1,1);
-        foreach (var item in ships)
-        {
-            if (item.Id == 1)
-            {
-                item.Equiped = true;
-                item.Selled = true;
-            }
-        }
+        
         ShopManager.AddShip("Phoenix", "Fast attack ship", 500, 35f, 18, 150,Properties.Resources.ship2,2);
         ShopManager.AddShip("Destroyer", "Heavy armored ship", 800, 60f, 25, 100, Properties.Resources.ship3, 3);
         ShopManager.AddShip("Titan", "Ultimate battle ship", 1500, 90f, 15, 300, Properties.Resources.ship4, 4);
 
         // ===================== Bullets =====================
         ShopManager.AddBullet("Normal Bullet", "Standard bullet", 100, 75f, 20, Properties.Resources.playerbullet1, 101);
-        foreach (var item in bullets)
-        {
-            if (item.Id == 101)
-            {
-                item.Equiped = true;
-                item.Selled = true;
-            }
-        }
+
         ShopManager.AddBullet("Laser Beam", "High speed laser", 300, 100f, 35, Properties.Resources.playerbullet2, 102);
         ShopManager.AddBullet("Plasma Shot", "Powerful plasma bullet", 600, 160f, 25, Properties.Resources.playerbullet3, 103);
         ShopManager.AddBullet("Dark Matter", "Legendary projectile", 1200, 200f, 40, Properties.Resources.playerbullet4, 104);
 
         // ===================== Backgrounds =====================
         ShopManager.AddBackGround("Earth Orbit", "Beautiful space view", 150, Properties.Resources.background1, 201);
-        foreach (var item in backGrounds)
-        {
-            if (item.Id == 201)
-            {
-                item.Equiped = true;
-                item.Selled = true;
-            }
-        }
         ShopManager.AddBackGround("Nebula", "Colorful nebula background", 300, Properties.Resources.background2, 202);
         ShopManager.AddBackGround("Galaxy Core", "Epic galaxy center", 600, Properties.Resources.background3, 203);
         ShopManager.AddBackGround("Black Hole", "Dark mysterious background", 1000, Properties.Resources.background4, 204);
+
+        Database database =new Database();
+
+        List<ShopItem> shopItems = database.GetShopItems();
+
+        foreach (var dbItem in shopItems)
+        {
+            foreach (var ship in ships)
+            {
+                if (ship.Id == dbItem.Id)
+                {
+                    ship.Selled = dbItem.IsPurchased;
+                    ship.Equiped = dbItem.IsEquipped;
+                    break;
+                }
+            }
+
+            foreach (var bullet in bullets)
+            {
+                if (bullet.Id == dbItem.Id)
+                {
+                    bullet.Selled = dbItem.IsPurchased;
+                    bullet.Equiped = dbItem.IsEquipped;
+                    break;
+                }
+            }
+
+            foreach (var background in backGrounds)
+            {
+                if (background.Id == dbItem.Id)
+                {
+                    background.Selled = dbItem.IsPurchased;
+                    background.Equiped = dbItem.IsEquipped;
+                    break;
+                }
+            }
+        }
     }
     //اینارو برای کارای خودم اضافه کردم 
     public static Image getequipedbackground()
