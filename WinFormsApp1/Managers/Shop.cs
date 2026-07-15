@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SpaceShooter.Database;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using WinFormsApp1.Forms;
@@ -114,9 +115,12 @@ public class ItemShop<T> : IShopattitude where T : Item
     }
     public bool SellItem()
     {
-        GameWorld.player1.Coin += item.Price;  
+        GameWorld.player1.Coin += item.Price;
+        Database databasse = new Database();
+        databasse.UpdateCoins(GameWorld.player1.Coin);
         UnEquipItem();
         Selled = false;
+        databasse.SellItem(id);
         return true;
     }
     public bool BuyItem(int Price)
@@ -134,7 +138,10 @@ public class ItemShop<T> : IShopattitude where T : Item
             else
             {
                 GameWorld.player1.Coin -= Price;
+                Database database = new Database();
+                database.UpdateCoins(GameWorld.player1.Coin);
                 Selled = true;
+                database.SellItem(id);
                 return true;
             }
         }
@@ -145,6 +152,8 @@ public class ItemShop<T> : IShopattitude where T : Item
         if (Selled)
         {
             Equiped = true;
+            Database database = new Database();
+            database.EquipItem(id);
             return true;
         }
         else
@@ -157,6 +166,9 @@ public class ItemShop<T> : IShopattitude where T : Item
         if (Selled)
         {
             Equiped = false;
+            Database database = new Database();
+            database.UnEquipItem(id);
+
             return true;
         }
         else
@@ -202,6 +214,7 @@ public class ShopManager
             if (item.Id == id)
             {
                 item.SellItem();
+
                 return true;
             }
         }

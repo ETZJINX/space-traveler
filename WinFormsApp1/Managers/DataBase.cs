@@ -37,12 +37,10 @@ namespace SpaceShooter.Database
                     CREATE TABLE IF NOT EXISTS ShopItems
                     (
                         Id INTEGER PRIMARY KEY,
-                        ItemName TEXT NOT NULL,
                         IsPurchased INTEGER NOT NULL,
                         IsEquipped INTEGER NOT NULL
                     );
                 ";
-
                 using (var command = new SQLiteCommand(playerTableQuery, connection))
                 {
                     command.ExecuteNonQuery();
@@ -77,68 +75,70 @@ namespace SpaceShooter.Database
             }
         }
 
+
         private void SeedShopItems(SQLiteConnection connection)
         {
             const string query = @"
 
-            INSERT INTO ShopItems (Id, ItemName, IsPurchased, IsEquipped)
-            SELECT 1,'Falcon',1,1
-            WHERE NOT EXISTS(SELECT 1 FROM ShopItems WHERE Id=1);
+    INSERT INTO ShopItems (Id, IsPurchased, IsEquipped)
+    SELECT 1,1,1
+    WHERE NOT EXISTS(SELECT 1 FROM ShopItems WHERE Id=1);
 
-            INSERT INTO ShopItems (Id, ItemName, IsPurchased, IsEquipped)
-            SELECT 2,'Phoenix',0,0
-            WHERE NOT EXISTS(SELECT 1 FROM ShopItems WHERE Id=2);
+    INSERT INTO ShopItems (Id, IsPurchased, IsEquipped)
+    SELECT 2,0,0
+    WHERE NOT EXISTS(SELECT 1 FROM ShopItems WHERE Id=2);
 
-            INSERT INTO ShopItems (Id, ItemName, IsPurchased, IsEquipped)
-            SELECT 3,'Destroyer',0,0
-            WHERE NOT EXISTS(SELECT 1 FROM ShopItems WHERE Id=3);
+    INSERT INTO ShopItems (Id, IsPurchased, IsEquipped)
+    SELECT 3,0,0
+    WHERE NOT EXISTS(SELECT 1 FROM ShopItems WHERE Id=3);
 
-            INSERT INTO ShopItems (Id, ItemName, IsPurchased, IsEquipped)
-            SELECT 4,'Titan',0,0
-            WHERE NOT EXISTS(SELECT 1 FROM ShopItems WHERE Id=4);
-
-
-            INSERT INTO ShopItems (Id, ItemName, IsPurchased, IsEquipped)
-            SELECT 101,'Normal Bullet',1,1
-            WHERE NOT EXISTS(SELECT 1 FROM ShopItems WHERE Id=101);
-
-            INSERT INTO ShopItems (Id, ItemName, IsPurchased, IsEquipped)
-            SELECT 102,'Laser Beam',0,0
-            WHERE NOT EXISTS(SELECT 1 FROM ShopItems WHERE Id=102);
-
-            INSERT INTO ShopItems (Id, ItemName, IsPurchased, IsEquipped)
-            SELECT 103,'Plasma Shot',0,0
-            WHERE NOT EXISTS(SELECT 1 FROM ShopItems WHERE Id=103);
-
-            INSERT INTO ShopItems (Id, ItemName, IsPurchased, IsEquipped)
-            SELECT 104,'Dark Matter',0,0
-            WHERE NOT EXISTS(SELECT 1 FROM ShopItems WHERE Id=104);
+    INSERT INTO ShopItems (Id, IsPurchased, IsEquipped)
+    SELECT 4,0,0
+    WHERE NOT EXISTS(SELECT 1 FROM ShopItems WHERE Id=4);
 
 
-            INSERT INTO ShopItems (Id, ItemName, IsPurchased, IsEquipped)
-            SELECT 201,'Earth Orbit',1,1
-            WHERE NOT EXISTS(SELECT 1 FROM ShopItems WHERE Id=201);
 
-            INSERT INTO ShopItems (Id, ItemName, IsPurchased, IsEquipped)
-            SELECT 202,'Nebula',0,0
-            WHERE NOT EXISTS(SELECT 1 FROM ShopItems WHERE Id=202);
+    INSERT INTO ShopItems (Id, IsPurchased, IsEquipped)
+    SELECT 101,1,1
+    WHERE NOT EXISTS(SELECT 1 FROM ShopItems WHERE Id=101);
 
-            INSERT INTO ShopItems (Id, ItemName, IsPurchased, IsEquipped)
-            SELECT 203,'Galaxy Core',0,0
-            WHERE NOT EXISTS(SELECT 1 FROM ShopItems WHERE Id=203);
+    INSERT INTO ShopItems (Id, IsPurchased, IsEquipped)
+    SELECT 102,0,0
+    WHERE NOT EXISTS(SELECT 1 FROM ShopItems WHERE Id=102);
 
-            INSERT INTO ShopItems (Id, ItemName, IsPurchased, IsEquipped)
-            SELECT 204,'Black Hole',0,0
-            WHERE NOT EXISTS(SELECT 1 FROM ShopItems WHERE Id=204);
+    INSERT INTO ShopItems (Id, IsPurchased, IsEquipped)
+    SELECT 103,0,0
+    WHERE NOT EXISTS(SELECT 1 FROM ShopItems WHERE Id=103);
 
-            ";
+    INSERT INTO ShopItems (Id, IsPurchased, IsEquipped)
+    SELECT 104,0,0
+    WHERE NOT EXISTS(SELECT 1 FROM ShopItems WHERE Id=104);
+
+
+
+    INSERT INTO ShopItems (Id, IsPurchased, IsEquipped)
+    SELECT 201,1,1
+    WHERE NOT EXISTS(SELECT 1 FROM ShopItems WHERE Id=201);
+
+    INSERT INTO ShopItems (Id, IsPurchased, IsEquipped)
+    SELECT 202,0,0
+    WHERE NOT EXISTS(SELECT 1 FROM ShopItems WHERE Id=202);
+
+    INSERT INTO ShopItems (Id, IsPurchased, IsEquipped)
+    SELECT 203,0,0
+    WHERE NOT EXISTS(SELECT 1 FROM ShopItems WHERE Id=203);
+
+    INSERT INTO ShopItems (Id, IsPurchased, IsEquipped)
+    SELECT 204,0,0
+    WHERE NOT EXISTS(SELECT 1 FROM ShopItems WHERE Id=204);
+
+    ";
 
             using (var command = new SQLiteCommand(query, connection))
             {
                 command.ExecuteNonQuery();
             }
         }
-
         public PlayerData GetPlayerData()
         {
             using (var connection = new SQLiteConnection(_connectionString))
@@ -185,7 +185,6 @@ namespace SpaceShooter.Database
                 const string query = @"
                     SELECT
                         Id,
-                        ItemName,
                         IsPurchased,
                         IsEquipped
                     FROM ShopItems;
@@ -199,7 +198,6 @@ namespace SpaceShooter.Database
                         items.Add(new ShopItem
                         {
                             Id = Convert.ToInt32(reader["Id"]),
-                            ItemName = reader["ItemName"].ToString(),
                             IsPurchased = Convert.ToInt32(reader["IsPurchased"]) == 1,
                             IsEquipped = Convert.ToInt32(reader["IsEquipped"]) == 1
                         });
@@ -253,9 +251,6 @@ namespace SpaceShooter.Database
                 }
             }
         }
-
-
-
 
         public bool EquipItem(int itemId)
         {
@@ -325,6 +320,27 @@ namespace SpaceShooter.Database
                         transaction.Rollback();
                         throw;
                     }
+                }
+            }
+        }
+
+        public bool UnEquipItem(int itemId)
+        {
+            using (var connection = new SQLiteConnection(_connectionString))
+            {
+                connection.Open();
+
+                const string query = @"
+            UPDATE ShopItems
+            SET IsEquipped = 0
+            WHERE Id = @Id;
+        ";
+
+                using (var command = new SQLiteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Id", itemId);
+
+                    return command.ExecuteNonQuery() > 0;
                 }
             }
         }
