@@ -1,4 +1,6 @@
-﻿using System.Data.SQLite;
+﻿using System;
+using System.IO;
+using System.Data.SQLite;
 
 namespace SpaceShooter.Database
 {
@@ -7,10 +9,12 @@ namespace SpaceShooter.Database
         private readonly string _databasePath;
         private readonly string _connectionString;
 
-        public Database()
+        public Database(string? databasePath = null)
         {
-            _databasePath = "data_game.db";
-            _connectionString = $"Data Source={_databasePath};Version=3;";
+            _databasePath = databasePath ??
+                            Path.Combine(AppContext.BaseDirectory, "data_game.db");
+
+            _connectionString = $"Data Source={_databasePath};Version=3;"; _connectionString = $"Data Source={_databasePath};Version=3;";
         }
 
         public void InitializeDatabase()
@@ -60,7 +64,7 @@ namespace SpaceShooter.Database
         {
             const string query = @"
                 INSERT INTO PlayerData (Id, TotalCoins, HighScore)
-                SELECT 1, 0, 0
+                SELECT 1, 1500, 0
                 WHERE NOT EXISTS
                 (
                     SELECT 1

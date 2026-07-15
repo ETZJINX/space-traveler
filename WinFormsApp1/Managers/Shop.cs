@@ -141,7 +141,8 @@ public class ItemShop<T> : IShopattitude where T : Item
                 Database database = new Database();
                 database.UpdateCoins(GameWorld.player1.Coin);
                 Selled = true;
-                database.SellItem(id);
+                // Persist purchase
+                database.PurchaseItem(id);
                 return true;
             }
         }
@@ -392,6 +393,68 @@ public class ShopManager
         ShopManager.AddBackGround("Nebula", "Colorful nebula background", 300, Properties.Resources.background2, 202);
         ShopManager.AddBackGround("Galaxy Core", "Epic galaxy center", 600, Properties.Resources.background3, 203);
         ShopManager.AddBackGround("Black Hole", "Dark mysterious background", 1000, Properties.Resources.background4, 204);
+        // Load persisted player/shop state from database (if any)
+        try
+        {
+            var db = new Database();
+            db.InitializeDatabase();
+
+            // Load player data
+            try
+            {
+                var pdata = db.GetPlayerData();
+                if (pdata != null && GameWorld.player1 != null)
+                {
+                    GameWorld.player1.Coin = pdata.TotalCoins;
+                    // HighScore kept in DB; don't overwrite current session score
+                }
+            }
+            catch
+            {
+                // ignore read errors
+            }
+
+            // Load shop items state
+            try
+            {
+                var dbItems = db.GetShopItems();
+                foreach (var dbItem in dbItems)
+                {
+                    foreach (var s in ships)
+                    {
+                        if (s.Id == dbItem.Id)
+                        {
+                            s.Selled = dbItem.IsPurchased;
+                            s.Equiped = dbItem.IsEquipped;
+                        }
+                    }
+                    foreach (var b in bullets)
+                    {
+                        if (b.Id == dbItem.Id)
+                        {
+                            b.Selled = dbItem.IsPurchased;
+                            b.Equiped = dbItem.IsEquipped;
+                        }
+                    }
+                    foreach (var bg in backGrounds)
+                    {
+                        if (bg.Id == dbItem.Id)
+                        {
+                            bg.Selled = dbItem.IsPurchased;
+                            bg.Equiped = dbItem.IsEquipped;
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                // ignore
+            }
+        }
+        catch
+        {
+            // ignore DB initialization errors
+        }
     }
     //اینارو برای کارای خودم اضافه کردم 
     public static Image getequipedbackground()
