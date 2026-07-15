@@ -203,6 +203,16 @@ namespace WinFormsApp1.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap NextIcon {
+            get {
+                object obj = ResourceManager.GetObject("NextIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap playerbullet1 {
             get {
                 object obj = ResourceManager.GetObject("playerbullet1", resourceCulture);
@@ -236,6 +246,16 @@ namespace WinFormsApp1.Properties {
         internal static System.Drawing.Bitmap playerbullet4 {
             get {
                 object obj = ResourceManager.GetObject("playerbullet4", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PreviousIcon {
+            get {
+                object obj = ResourceManager.GetObject("PreviousIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

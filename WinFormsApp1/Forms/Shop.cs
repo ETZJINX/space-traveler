@@ -21,8 +21,8 @@ namespace WinFormsApp1.Forms
         public Shop11()
         {
             InitializeComponent();
-            
-            
+
+
             itemType = ItemType.Ship;
             //sample = new ItemShop1(ShopManager.ships[0]);
             Index1 = 0;
@@ -347,8 +347,8 @@ namespace WinFormsApp1.Forms
         {
             Audio.sell.Play();
             switch (itemType)
-            {       
-                case ItemType.Ship:              
+            {
+                case ItemType.Ship:
                     sample.SellItem();
                     info();
                     break;
@@ -381,7 +381,7 @@ namespace WinFormsApp1.Forms
                     {
                         sample4.UnEquipItem();
                     }
-                    
+
                     sample.EquipItem();
                     if (sample.Equiped)
                     {
@@ -403,7 +403,7 @@ namespace WinFormsApp1.Forms
                     {
                         sample5.UnEquipItem();
                     }
-                    
+
                     sample1.EquipItem();
                     if (sample1.Equiped)
                     {
@@ -425,7 +425,7 @@ namespace WinFormsApp1.Forms
                     {
                         sample6.UnEquipItem();
                     }
-                    
+
                     sample2.EquipItem();
                     if (sample2.Equiped)
                     {
@@ -438,6 +438,16 @@ namespace WinFormsApp1.Forms
 
         private void Shop11_FormClosing(object sender, FormClosingEventArgs e)
         {
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Shop1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

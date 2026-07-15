@@ -73,16 +73,19 @@ namespace WinFormsApp1.Forms
             panel1.Controls.Add(Bulletlist);
             panel1.Controls.Add(Backgroundlist);
             panel1.Controls.Add(Shipslist);
-            panel1.Location = new Point(5, 52);
+            panel1.Location = new Point(4, 39);
+            panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(130, 429);
+            panel1.Size = new Size(114, 322);
             panel1.TabIndex = 0;
+            panel1.Paint += panel1_Paint;
             // 
             // Bulletlist
             // 
-            Bulletlist.Location = new Point(17, 303);
+            Bulletlist.Location = new Point(15, 227);
+            Bulletlist.Margin = new Padding(3, 2, 3, 2);
             Bulletlist.Name = "Bulletlist";
-            Bulletlist.Size = new Size(100, 100);
+            Bulletlist.Size = new Size(88, 75);
             Bulletlist.TabIndex = 5;
             Bulletlist.Text = "Bullet";
             Bulletlist.UseVisualStyleBackColor = true;
@@ -90,9 +93,10 @@ namespace WinFormsApp1.Forms
             // 
             // Backgroundlist
             // 
-            Backgroundlist.Location = new Point(17, 169);
+            Backgroundlist.Location = new Point(15, 127);
+            Backgroundlist.Margin = new Padding(3, 2, 3, 2);
             Backgroundlist.Name = "Backgroundlist";
-            Backgroundlist.Size = new Size(100, 100);
+            Backgroundlist.Size = new Size(88, 75);
             Backgroundlist.TabIndex = 5;
             Backgroundlist.Text = "Background";
             Backgroundlist.UseVisualStyleBackColor = true;
@@ -100,9 +104,10 @@ namespace WinFormsApp1.Forms
             // 
             // Shipslist
             // 
-            Shipslist.Location = new Point(17, 33);
+            Shipslist.Location = new Point(15, 25);
+            Shipslist.Margin = new Padding(3, 2, 3, 2);
             Shipslist.Name = "Shipslist";
-            Shipslist.Size = new Size(100, 100);
+            Shipslist.Size = new Size(88, 75);
             Shipslist.TabIndex = 5;
             Shipslist.Text = "Ships";
             Shipslist.UseVisualStyleBackColor = true;
@@ -111,18 +116,19 @@ namespace WinFormsApp1.Forms
             // panel4
             // 
             panel4.Controls.Add(coin3);
-            panel4.Location = new Point(12, 5);
+            panel4.Location = new Point(10, 4);
+            panel4.Margin = new Padding(3, 2, 3, 2);
             panel4.Name = "panel4";
-            panel4.Size = new Size(123, 41);
+            panel4.Size = new Size(108, 31);
             panel4.TabIndex = 5;
             // 
             // coin3
             // 
             coin3.AutoSize = true;
             coin3.Font = new Font("Sylfaen", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            coin3.Location = new Point(3, 8);
+            coin3.Location = new Point(3, 6);
             coin3.Name = "coin3";
-            coin3.Size = new Size(45, 26);
+            coin3.Size = new Size(37, 22);
             coin3.TabIndex = 1;
             coin3.Text = "800";
             // 
@@ -139,71 +145,73 @@ namespace WinFormsApp1.Forms
             Showinfo2.Controls.Add(Equipbutton);
             Showinfo2.Controls.Add(Sellbutton);
             Showinfo2.Font = new Font("Sylfaen", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Showinfo2.Location = new Point(939, 52);
+            Showinfo2.Location = new Point(822, 39);
+            Showinfo2.Margin = new Padding(3, 2, 3, 2);
             Showinfo2.Name = "Showinfo2";
-            Showinfo2.Size = new Size(431, 429);
+            Showinfo2.Size = new Size(377, 322);
             Showinfo2.TabIndex = 2;
             // 
             // Health
             // 
             Health.AutoSize = true;
-            Health.Location = new Point(179, 270);
+            Health.Location = new Point(157, 202);
             Health.Name = "Health";
-            Health.Size = new Size(78, 26);
+            Health.Size = new Size(60, 22);
             Health.TabIndex = 8;
             Health.Text = "Health";
             // 
             // Itemspeed
             // 
             Itemspeed.AutoSize = true;
-            Itemspeed.Location = new Point(179, 221);
+            Itemspeed.Location = new Point(157, 166);
             Itemspeed.Name = "Itemspeed";
-            Itemspeed.Size = new Size(67, 26);
+            Itemspeed.Size = new Size(53, 22);
             Itemspeed.TabIndex = 7;
             Itemspeed.Text = "Speed";
             // 
             // Itemdamage
             // 
             Itemdamage.AutoSize = true;
-            Itemdamage.Location = new Point(179, 169);
+            Itemdamage.Location = new Point(157, 127);
             Itemdamage.Name = "Itemdamage";
-            Itemdamage.Size = new Size(89, 26);
+            Itemdamage.Size = new Size(70, 22);
             Itemdamage.TabIndex = 6;
             Itemdamage.Text = "Damage";
             // 
             // Itemprice
             // 
             Itemprice.AutoSize = true;
-            Itemprice.Location = new Point(179, 123);
+            Itemprice.Location = new Point(157, 92);
             Itemprice.Name = "Itemprice";
-            Itemprice.Size = new Size(61, 26);
+            Itemprice.Size = new Size(49, 22);
             Itemprice.TabIndex = 5;
             Itemprice.Text = "Price";
             // 
             // Itemname
             // 
             Itemname.AutoSize = true;
-            Itemname.Location = new Point(179, 69);
+            Itemname.Location = new Point(157, 52);
             Itemname.Name = "Itemname";
-            Itemname.Size = new Size(68, 26);
+            Itemname.Size = new Size(53, 22);
             Itemname.TabIndex = 4;
             Itemname.Text = "Name";
             // 
             // Itemtype12
             // 
             Itemtype12.AutoSize = true;
-            Itemtype12.Location = new Point(179, 16);
+            Itemtype12.Location = new Point(157, 12);
             Itemtype12.Name = "Itemtype12";
-            Itemtype12.Size = new Size(58, 26);
+            Itemtype12.Size = new Size(47, 22);
             Itemtype12.TabIndex = 3;
             Itemtype12.Text = "Type";
             // 
             // Buybutton
             // 
             Buybutton.Font = new Font("Sylfaen", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Buybutton.Location = new Point(179, 318);
+            Buybutton.Location = new Point(157, 238);
+            Buybutton.Margin = new Padding(3, 2, 3, 2);
             Buybutton.Name = "Buybutton";
-            Buybutton.Size = new Size(70, 70);
+            Buybutton.Size = new Size(61, 52);
             Buybutton.TabIndex = 2;
             Buybutton.Text = "Buy";
             Buybutton.UseVisualStyleBackColor = true;
@@ -212,9 +220,10 @@ namespace WinFormsApp1.Forms
             // Equipbutton
             // 
             Equipbutton.Font = new Font("Sylfaen", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Equipbutton.Location = new Point(358, 318);
+            Equipbutton.Location = new Point(313, 238);
+            Equipbutton.Margin = new Padding(3, 2, 3, 2);
             Equipbutton.Name = "Equipbutton";
-            Equipbutton.Size = new Size(70, 70);
+            Equipbutton.Size = new Size(61, 52);
             Equipbutton.TabIndex = 1;
             Equipbutton.Text = "Equip";
             Equipbutton.UseVisualStyleBackColor = true;
@@ -223,9 +232,10 @@ namespace WinFormsApp1.Forms
             // Sellbutton
             // 
             Sellbutton.Font = new Font("Sylfaen", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Sellbutton.Location = new Point(3, 318);
+            Sellbutton.Location = new Point(3, 238);
+            Sellbutton.Margin = new Padding(3, 2, 3, 2);
             Sellbutton.Name = "Sellbutton";
-            Sellbutton.Size = new Size(70, 70);
+            Sellbutton.Size = new Size(61, 52);
             Sellbutton.TabIndex = 0;
             Sellbutton.Text = "Sell";
             Sellbutton.UseVisualStyleBackColor = true;
@@ -235,9 +245,10 @@ namespace WinFormsApp1.Forms
             // 
             panel3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             panel3.Controls.Add(playername2);
-            panel3.Location = new Point(1223, 5);
+            panel3.Location = new Point(1070, 4);
+            panel3.Margin = new Padding(3, 2, 3, 2);
             panel3.Name = "panel3";
-            panel3.Size = new Size(147, 44);
+            panel3.Size = new Size(129, 33);
             panel3.TabIndex = 3;
             // 
             // playername2
@@ -245,9 +256,9 @@ namespace WinFormsApp1.Forms
             playername2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             playername2.AutoSize = true;
             playername2.Font = new Font("Sylfaen", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            playername2.Location = new Point(20, 8);
+            playername2.Location = new Point(18, 6);
             playername2.Name = "playername2";
-            playername2.Size = new Size(125, 26);
+            playername2.Size = new Size(96, 22);
             playername2.TabIndex = 0;
             playername2.Text = "playername";
             // 
@@ -258,11 +269,12 @@ namespace WinFormsApp1.Forms
             Shop1.BackColor = SystemColors.ButtonHighlight;
             Shop1.BorderStyle = BorderStyle.Fixed3D;
             Shop1.Font = new Font("Sylfaen", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Shop1.Location = new Point(692, 5);
+            Shop1.Location = new Point(399, 7);
             Shop1.Name = "Shop1";
-            Shop1.Size = new Size(79, 38);
+            Shop1.Size = new Size(63, 30);
             Shop1.TabIndex = 4;
             Shop1.Text = "Shop";
+            Shop1.Click += Shop1_Click;
             // 
             // panel2
             // 
@@ -274,23 +286,26 @@ namespace WinFormsApp1.Forms
             panel2.Controls.Add(DamageDamage);
             panel2.Controls.Add(prebutton);
             panel2.Controls.Add(nextbutton);
-            panel2.Location = new Point(141, 52);
+            panel2.Location = new Point(123, 39);
+            panel2.Margin = new Padding(3, 2, 3, 2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(795, 429);
+            panel2.Size = new Size(696, 322);
             panel2.TabIndex = 6;
             // 
             // healthbar1
             // 
-            healthbar1.Location = new Point(223, 337);
+            healthbar1.Location = new Point(195, 253);
+            healthbar1.Margin = new Padding(3, 2, 3, 2);
             healthbar1.Name = "healthbar1";
-            healthbar1.Size = new Size(100, 50);
+            healthbar1.Size = new Size(88, 38);
             healthbar1.TabIndex = 0;
             // 
             // pictureBox1
             // 
-            pictureBox1.Location = new Point(223, 35);
+            pictureBox1.Location = new Point(195, 26);
+            pictureBox1.Margin = new Padding(3, 2, 3, 2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(300, 212);
+            pictureBox1.Size = new Size(262, 159);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 6;
             pictureBox1.TabStop = false;
@@ -298,74 +313,80 @@ namespace WinFormsApp1.Forms
             // healthbar
             // 
             healthbar.AutoSize = true;
-            healthbar.Location = new Point(128, 354);
+            healthbar.Location = new Point(112, 266);
             healthbar.Name = "healthbar";
-            healthbar.Size = new Size(53, 20);
+            healthbar.Size = new Size(42, 15);
             healthbar.TabIndex = 5;
             healthbar.Text = "Health";
             // 
             // damagebar
             // 
             damagebar.AutoSize = true;
-            damagebar.Location = new Point(128, 285);
+            damagebar.Location = new Point(112, 214);
             damagebar.Name = "damagebar";
-            damagebar.Size = new Size(66, 20);
+            damagebar.Size = new Size(51, 15);
             damagebar.TabIndex = 4;
             damagebar.Text = "Damage";
             // 
             // HealthSpeed
             // 
-            HealthSpeed.Location = new Point(223, 337);
+            HealthSpeed.Location = new Point(195, 253);
+            HealthSpeed.Margin = new Padding(3, 2, 3, 2);
             HealthSpeed.Name = "HealthSpeed";
-            HealthSpeed.Size = new Size(300, 50);
+            HealthSpeed.Size = new Size(262, 38);
             HealthSpeed.TabIndex = 3;
             // 
             // DamageDamage
             // 
             DamageDamage.Controls.Add(damagebar1);
-            DamageDamage.Location = new Point(223, 270);
+            DamageDamage.Location = new Point(195, 202);
+            DamageDamage.Margin = new Padding(3, 2, 3, 2);
             DamageDamage.Name = "DamageDamage";
-            DamageDamage.Size = new Size(300, 50);
+            DamageDamage.Size = new Size(262, 38);
             DamageDamage.TabIndex = 2;
             // 
             // damagebar1
             // 
             damagebar1.Location = new Point(0, 0);
+            damagebar1.Margin = new Padding(3, 2, 3, 2);
             damagebar1.Name = "damagebar1";
-            damagebar1.Size = new Size(200, 50);
+            damagebar1.Size = new Size(175, 38);
             damagebar1.TabIndex = 4;
             // 
             // prebutton
             // 
-            prebutton.Location = new Point(3, 183);
+            prebutton.Image = Properties.Resources.PreviousIcon;
+            prebutton.Location = new Point(5, 99);
+            prebutton.Margin = new Padding(3, 2, 3, 2);
             prebutton.Name = "prebutton";
-            prebutton.Size = new Size(120, 40);
+            prebutton.Size = new Size(80, 80);
             prebutton.TabIndex = 1;
-            prebutton.Text = "Previous";
             prebutton.UseVisualStyleBackColor = true;
             prebutton.Click += prebutton_Click;
             // 
             // nextbutton
             // 
-            nextbutton.Location = new Point(672, 183);
+            nextbutton.Image = Properties.Resources.NextIcon;
+            nextbutton.Location = new Point(613, 99);
+            nextbutton.Margin = new Padding(3, 2, 3, 2);
             nextbutton.Name = "nextbutton";
-            nextbutton.Size = new Size(120, 40);
+            nextbutton.Size = new Size(80, 80);
             nextbutton.TabIndex = 0;
-            nextbutton.Text = "Next";
             nextbutton.UseVisualStyleBackColor = true;
             nextbutton.Click += nextbutton_Click;
             // 
             // Shop11
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1385, 493);
+            ClientSize = new Size(1199, 370);
             Controls.Add(panel2);
             Controls.Add(panel4);
             Controls.Add(Shop1);
             Controls.Add(panel3);
             Controls.Add(Showinfo2);
             Controls.Add(panel1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "Shop11";
             Text = "Shop";
             FormClosing += Shop11_FormClosing;

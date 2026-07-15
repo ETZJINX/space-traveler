@@ -160,6 +160,9 @@
   <data name="IMG_20260410_095028" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\IMG_20260410_095028.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="NextIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NextIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="playerbullet1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\gamesimage\playerbullet1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -171,6 +174,9 @@
   </data>
   <data name="playerbullet4" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\gamesimage\playerbullet5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PreviousIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PreviousIcon .png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ship1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\gamesimage\ship1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
